@@ -15,10 +15,13 @@
 		45438B4619CF3B700063F898 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4519CF3B700063F898 /* Images.xcassets */; };
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
-		FAA43E4B19D12C8700335A85 /* FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E4A19D12C8700335A85 /* FPP_Logo.png */; };
 		FAA43E5319D37A7000335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5219D37A7000335A85 /* road.png */; };
 		FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */; };
 		FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */; };
+		FAA43E5919D3819000335A85 /* iPhone_6Plus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5819D3819000335A85 /* iPhone_6Plus.storyboard */; };
+		FAA43E5D19D38A4F00335A85 /* iPhone_6.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5C19D38A4F00335A85 /* iPhone_6.storyboard */; };
+		FAA43E5F19D38A6400335A85 /* iPhone_5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5E19D38A6400335A85 /* iPhone_5.storyboard */; };
+		FAA43E6119D38A7400335A85 /* iPhone_4s.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E6019D38A7400335A85 /* iPhone_4s.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +49,13 @@
 		45438B4E19CF3B710063F898 /* FastPassParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastPassParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45438B5319CF3B710063F898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
-		FAA43E4A19D12C8700335A85 /* FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FPP_Logo.png; path = ../../../../FPP/FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E5219D37A7000335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparent_FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPP_Logo_No_Words.png; sourceTree = "<group>"; };
+		FAA43E5819D3819000335A85 /* iPhone_6Plus.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_6Plus.storyboard; sourceTree = "<group>"; };
+		FAA43E5C19D38A4F00335A85 /* iPhone_6.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_6.storyboard; sourceTree = "<group>"; };
+		FAA43E5E19D38A6400335A85 /* iPhone_5.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_5.storyboard; sourceTree = "<group>"; };
+		FAA43E6019D38A7400335A85 /* iPhone_4s.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_4s.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,10 @@
 				45438B3F19CF3B700063F898 /* ViewController.h */,
 				45438B4019CF3B700063F898 /* ViewController.m */,
 				45438B4219CF3B700063F898 /* Main.storyboard */,
+				FAA43E5819D3819000335A85 /* iPhone_6Plus.storyboard */,
+				FAA43E5C19D38A4F00335A85 /* iPhone_6.storyboard */,
+				FAA43E5E19D38A6400335A85 /* iPhone_5.storyboard */,
+				FAA43E6019D38A7400335A85 /* iPhone_4s.storyboard */,
 				45438B4519CF3B700063F898 /* Images.xcassets */,
 				45438B4719CF3B700063F898 /* LaunchScreen.xib */,
 				45438B3C19CF3B700063F898 /* FastPassParking.xcdatamodeld */,
@@ -110,7 +120,6 @@
 				FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */,
 				FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */,
 				FAA43E5219D37A7000335A85 /* road.png */,
-				FAA43E4A19D12C8700335A85 /* FPP_Logo.png */,
 				45438B3619CF3B700063F898 /* Info.plist */,
 				45438B3719CF3B700063F898 /* main.m */,
 			);
@@ -215,10 +224,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				45438B4419CF3B700063F898 /* Main.storyboard in Resources */,
-				FAA43E4B19D12C8700335A85 /* FPP_Logo.png in Resources */,
 				45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */,
+				FAA43E5D19D38A4F00335A85 /* iPhone_6.storyboard in Resources */,
+				FAA43E5919D3819000335A85 /* iPhone_6Plus.storyboard in Resources */,
 				FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */,
 				FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */,
+				FAA43E6119D38A7400335A85 /* iPhone_4s.storyboard in Resources */,
+				FAA43E5F19D38A6400335A85 /* iPhone_5.storyboard in Resources */,
 				FAA43E5319D37A7000335A85 /* road.png in Resources */,
 				45438B4619CF3B700063F898 /* Images.xcassets in Resources */,
 			);

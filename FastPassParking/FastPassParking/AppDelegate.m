@@ -16,6 +16,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    UIStoryboard *storyboard = [self grabStoryboard];
+    
+    // show the storyboard
+    self.window.rootViewController = [storyboard instantiateInitialViewController];
+    [self.window makeKeyAndVisible];
+    
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -42,6 +50,33 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+
+- (UIStoryboard *)grabStoryboard {
+    
+    UIStoryboard *storyboard;
+    
+    // detect the height of our screen
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    if (height == 480) {
+        storyboard = [UIStoryboard storyboardWithName:@"iPhone_4s" bundle:nil];
+        // NSLog(@"Device has a 3.5inch Display.");
+    }
+    
+    else if (height == 568) {
+        storyboard = [UIStoryboard storyboardWithName:@"iPhone_5" bundle:nil];
+        // NSLog(@"Device has a 4inch Display.");
+    }
+    
+    else{
+        NSLog(@"hello");
+       
+        
+    }
+    
+    return storyboard;
 }
 
 #pragma mark - Core Data stack
