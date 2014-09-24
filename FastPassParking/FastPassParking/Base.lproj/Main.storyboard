@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,19 +18,100 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FPP_Logo_No_Words.png" translatesAutoresizingMaskIntoConstraints="NO" id="iR4-1a-Xfe">
-                                <rect key="frame" x="0.0" y="20" width="43" height="42"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Transparent_FPP_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="1Ci-by-YKK">
+                                <rect key="frame" x="16" y="2" width="568" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="1eX-hQ-QMy"/>
+                                    <constraint firstAttribute="width" constant="568" id="CYX-kj-4Zh"/>
+                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mm9-LX-1d7">
+                                <rect key="frame" x="0.0" y="457" width="600" height="144"/>
+                                <color key="backgroundColor" red="0.0039215686274509803" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mm9-LX-1d7" secondAttribute="height" multiplier="600:77" id="Is3-wP-yIc"/>
+                                    <constraint firstAttribute="width" secondItem="mm9-LX-1d7" secondAttribute="height" multiplier="600:77" id="jYI-xW-ASs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Create Account">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Is3-wP-yIc"/>
+                                        <exclude reference="jYI-xW-ASs"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oM-tQ-Axg">
+                                <rect key="frame" x="0.0" y="313" width="600" height="144"/>
+                                <color key="backgroundColor" red="0.078431372549019607" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="6oM-tQ-Axg" secondAttribute="height" multiplier="600:77" id="2fN-qH-buH"/>
+                                    <constraint firstAttribute="width" secondItem="6oM-tQ-Axg" secondAttribute="height" multiplier="600:77" id="KyN-Tl-hwW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2fN-qH-buH"/>
+                                        <exclude reference="KyN-Tl-hwW"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Convienence When You Need It" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4y-Q5-uKc">
+                                <rect key="frame" x="0.0" y="249" width="600" height="21"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="17"/>
+                                <color key="textColor" red="0.0078431372549019607" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="1Ci-by-YKK" secondAttribute="centerX" id="3I1-Vv-nq2"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mm9-LX-1d7" secondAttribute="bottom" id="7Yn-Ru-IvR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6oM-tQ-Axg" secondAttribute="bottom" constant="54" id="BL7-iN-xtO"/>
+                            <constraint firstItem="f4y-Q5-uKc" firstAttribute="top" secondItem="1Ci-by-YKK" secondAttribute="bottom" constant="-53" id="Bzx-kR-i7n"/>
+                            <constraint firstItem="f4y-Q5-uKc" firstAttribute="centerX" secondItem="1Ci-by-YKK" secondAttribute="centerX" id="J8z-gs-Pqk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mm9-LX-1d7" secondAttribute="bottom" id="OSu-2I-cnQ"/>
+                            <constraint firstItem="mm9-LX-1d7" firstAttribute="centerX" secondItem="6oM-tQ-Axg" secondAttribute="centerX" id="Q4I-wQ-Gbh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mm9-LX-1d7" secondAttribute="trailing" constant="-16" id="Q7E-gE-sF4"/>
+                            <constraint firstAttribute="centerY" secondItem="1Ci-by-YKK" secondAttribute="centerY" id="Qza-7g-jph"/>
+                            <constraint firstItem="mm9-LX-1d7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="TZb-TY-BH2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6oM-tQ-Axg" secondAttribute="trailing" constant="-16" id="XLL-Hp-dlY"/>
+                            <constraint firstItem="6oM-tQ-Axg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ar7-Vf-RHI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mm9-LX-1d7" secondAttribute="bottom" id="hy5-rf-79E"/>
+                            <constraint firstItem="mm9-LX-1d7" firstAttribute="top" secondItem="6oM-tQ-Axg" secondAttribute="bottom" constant="-1" id="i2r-3X-18j"/>
+                            <constraint firstItem="1Ci-by-YKK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="50" id="k78-jh-QGZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6oM-tQ-Axg" secondAttribute="trailing" constant="-16" id="qzk-EI-a6c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mm9-LX-1d7" secondAttribute="trailing" constant="-16" id="seW-Hk-K3B"/>
+                            <constraint firstItem="6oM-tQ-Axg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="wGy-dn-W8F"/>
+                            <constraint firstItem="mm9-LX-1d7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="wH6-Xe-1Zl"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Qza-7g-jph"/>
+                                <exclude reference="XLL-Hp-dlY"/>
+                                <exclude reference="ar7-Vf-RHI"/>
+                                <exclude reference="Q7E-gE-sF4"/>
+                                <exclude reference="TZb-TY-BH2"/>
+                                <exclude reference="BL7-iN-xtO"/>
+                                <exclude reference="OSu-2I-cnQ"/>
+                                <exclude reference="hy5-rf-79E"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-130" y="5"/>
+            <point key="canvasLocation" x="-892" y="-17"/>
         </scene>
     </scenes>
     <resources>
-        <image name="FPP_Logo_No_Words.png" width="86" height="84"/>
+        <image name="Transparent_FPP_Logo.png" width="220" height="169"/>
     </resources>
 </document>
