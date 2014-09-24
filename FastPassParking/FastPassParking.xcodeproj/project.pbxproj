@@ -17,8 +17,8 @@
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
 		FAA43E4B19D12C8700335A85 /* FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E4A19D12C8700335A85 /* FPP_Logo.png */; };
 		FAA43E4D19D12D9F00335A85 /* FPP_Logo_No_Words.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E4C19D12D9F00335A85 /* FPP_Logo_No_Words.png */; };
-		FAA43E4F19D2850100335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E4E19D2850100335A85 /* road.png */; };
 		FAA43E5119D2888500335A85 /* Transparent_FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5019D2888500335A85 /* Transparent_FPP_Logo.png */; };
+		FAA43E5319D37A7000335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5219D37A7000335A85 /* road.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +48,8 @@
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
 		FAA43E4A19D12C8700335A85 /* FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FPP_Logo.png; path = ../../../../FPP/FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E4C19D12D9F00335A85 /* FPP_Logo_No_Words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FPP_Logo_No_Words.png; path = ../../../../FPP/FPP_Logo_No_Words.png; sourceTree = "<group>"; };
-		FAA43E4E19D2850100335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = road.png; path = ../../../../FPP/road.png; sourceTree = "<group>"; };
 		FAA43E5019D2888500335A85 /* Transparent_FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Transparent_FPP_Logo.png; path = ../../../../FPP/Transparent_FPP_Logo.png; sourceTree = "<group>"; };
+		FAA43E5219D37A7000335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +107,8 @@
 		45438B3519CF3B700063F898 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAA43E5219D37A7000335A85 /* road.png */,
 				FAA43E5019D2888500335A85 /* Transparent_FPP_Logo.png */,
-				FAA43E4E19D2850100335A85 /* road.png */,
 				FAA43E4C19D12D9F00335A85 /* FPP_Logo_No_Words.png */,
 				FAA43E4A19D12C8700335A85 /* FPP_Logo.png */,
 				45438B3619CF3B700063F898 /* Info.plist */,
@@ -219,8 +219,8 @@
 				FAA43E4D19D12D9F00335A85 /* FPP_Logo_No_Words.png in Resources */,
 				45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */,
 				FAA43E5119D2888500335A85 /* Transparent_FPP_Logo.png in Resources */,
+				FAA43E5319D37A7000335A85 /* road.png in Resources */,
 				45438B4619CF3B700063F898 /* Images.xcassets in Resources */,
-				FAA43E4F19D2850100335A85 /* road.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
