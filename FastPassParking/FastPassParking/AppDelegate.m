@@ -53,7 +53,7 @@
 }
 
 
-- (UIStoryboard *)grabStoryboard {
+- (UIStoryboard *)grabStoryboard { //Determines which story board to use
     
     UIStoryboard *storyboard;
     
@@ -62,16 +62,29 @@
     
     if (height == 480) {
         storyboard = [UIStoryboard storyboardWithName:@"iPhone_4s" bundle:nil];
-        // NSLog(@"Device has a 3.5inch Display.");
+        // NSLog(@"Device has a 3.5 inch Display.");
     }
     
     else if (height == 568) {
-        storyboard = [UIStoryboard storyboardWithName:@"iPhone_5" bundle:nil];
-        // NSLog(@"Device has a 4inch Display.");
+         storyboard = [UIStoryboard storyboardWithName:@"iPhone_5" bundle:nil];
+        // NSLog(@"Device has a 4 inch Display.");
+    }
+    
+    else if (height == 667) {
+        storyboard = [UIStoryboard storyboardWithName:@"iPhone_6" bundle:nil];
+        // NSLog(@"Device has a 4.7 inch Display.");
+    }
+    
+    
+    else if (height == 736) {
+        storyboard = [UIStoryboard storyboardWithName:@"iPhone_6Plus" bundle:nil];
+        // NSLog(@"Device has a 5.5 inch Display.");
     }
     
     else{
-        NSLog(@"hello");
+        
+        storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+       
        
         
     }

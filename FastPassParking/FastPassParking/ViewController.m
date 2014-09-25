@@ -19,6 +19,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     NSLog(@"Ivan overwrote the test.");
+    int height2 = [UIScreen mainScreen].bounds.size.height;
+    test_height.text = [NSString stringWithFormat:@"%d",height2];
+    
     
 }
 
