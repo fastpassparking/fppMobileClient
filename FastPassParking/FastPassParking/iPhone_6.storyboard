@@ -36,7 +36,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFn-Vg-3vA">
-                                <rect key="frame" x="56" y="436" width="263" height="77"/>
+                                <rect key="frame" x="87" y="445" width="200" height="45"/>
                                 <color key="backgroundColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Sign In">
