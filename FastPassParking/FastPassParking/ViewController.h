@@ -14,6 +14,11 @@
     
     IBOutlet UILabel *test_height;  //Used to test pixl height for storyboards ** Is not needed any longer.
     
+    IBOutlet UIButton *SignInButton;
+    IBOutlet UIButton *CreateAccountButton;
+
+    IBOutlet UITextField *SignInScreen_UserName;
+    IBOutlet UITextField *SignInScreen_Password;
 
 
 

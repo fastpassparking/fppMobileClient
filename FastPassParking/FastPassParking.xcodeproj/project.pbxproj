@@ -15,6 +15,7 @@
 		45438B4619CF3B700063F898 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4519CF3B700063F898 /* Images.xcassets */; };
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
+		FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */; };
 		FAA43E5319D37A7000335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5219D37A7000335A85 /* road.png */; };
 		FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */; };
 		FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */; };
@@ -49,6 +50,8 @@
 		45438B4E19CF3B710063F898 /* FastPassParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastPassParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45438B5319CF3B710063F898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
+		FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateProfile.h; path = ../CreateProfile.h; sourceTree = "<group>"; };
+		FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateProfile.m; path = ../CreateProfile.m; sourceTree = "<group>"; };
 		FAA43E5219D37A7000335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparent_FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPP_Logo_No_Words.png; sourceTree = "<group>"; };
@@ -99,6 +102,8 @@
 			children = (
 				45438B3919CF3B700063F898 /* AppDelegate.h */,
 				45438B3A19CF3B700063F898 /* AppDelegate.m */,
+				FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */,
+				FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */,
 				45438B3F19CF3B700063F898 /* ViewController.h */,
 				45438B4019CF3B700063F898 /* ViewController.m */,
 				45438B4219CF3B700063F898 /* Main.storyboard */,
@@ -252,6 +257,7 @@
 			files = (
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
 				45438B3E19CF3B700063F898 /* FastPassParking.xcdatamodeld in Sources */,
+				FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */,
 				45438B4119CF3B700063F898 /* ViewController.m in Sources */,
 				45438B3819CF3B700063F898 /* main.m in Sources */,
 			);

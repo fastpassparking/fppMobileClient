@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="Rcg-Au-Ony">
             <objects>
-                <viewController id="xvr-GV-et9" sceneMemberID="viewController">
+                <viewController id="xvr-GV-et9" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f7O-wS-dkf"/>
                         <viewControllerLayoutGuide type="bottom" id="hwh-HT-Mis"/>
@@ -67,6 +67,12 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="CreateAccountButton" destination="MQb-ap-3Xn" id="N2J-Vd-xvd"/>
+                        <outlet property="SignInButton" destination="hqh-u9-z7S" id="nEd-fl-M57"/>
+                        <outlet property="SignInScreen_Password" destination="2Vu-TL-ZOx" id="usE-u7-qbP"/>
+                        <outlet property="SignInScreen_UserName" destination="jbG-QF-Vp9" id="FUr-EI-Lh7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8c-ZG-hT0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
