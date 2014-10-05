@@ -8,7 +8,10 @@
 
 #import "FPMainViewController.h"
 
+#define showLotDetailView @"showLotDetailView"
+
 @interface FPMainViewController ()
+@property (strong, nonatomic) IBOutlet UITableViewCell *ParkingLotViewCell;
 
 @end
 
@@ -126,6 +129,8 @@
     
     lotForCell.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
+    
+    [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
 }
 
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
