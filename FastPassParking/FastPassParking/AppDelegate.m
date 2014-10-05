@@ -57,37 +57,39 @@
     
     UIStoryboard *storyboard;
     
-    // detect the height of our screen
-    int height = [UIScreen mainScreen].bounds.size.height;
+//    // detect the height of our screen
+//    int height = [UIScreen mainScreen].bounds.size.height;
+//    
+//    if (height == 480) {
+//        storyboard = [UIStoryboard storyboardWithName:@"iPhone_4s" bundle:nil];
+//        // NSLog(@"Device has a 3.5 inch Display.");
+//    }
+//    
+//    else if (height == 568) {
+//         storyboard = [UIStoryboard storyboardWithName:@"iPhone_5" bundle:nil];
+//        // NSLog(@"Device has a 4 inch Display.");
+//    }
+//    
+//    else if (height == 667) {
+//        storyboard = [UIStoryboard storyboardWithName:@"iPhone_6" bundle:nil];
+//        // NSLog(@"Device has a 4.7 inch Display.");
+//    }
+//    
+//    
+//    else if (height == 736) {
+//        storyboard = [UIStoryboard storyboardWithName:@"iPhone_6Plus" bundle:nil];
+//        // NSLog(@"Device has a 5.5 inch Display.");
+//    }
+//    
+//    else{
+//        
+//        storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//       
+//       
+//        
+//    }
     
-    if (height == 480) {
-        storyboard = [UIStoryboard storyboardWithName:@"iPhone_4s" bundle:nil];
-        // NSLog(@"Device has a 3.5 inch Display.");
-    }
-    
-    else if (height == 568) {
-         storyboard = [UIStoryboard storyboardWithName:@"iPhone_5" bundle:nil];
-        // NSLog(@"Device has a 4 inch Display.");
-    }
-    
-    else if (height == 667) {
-        storyboard = [UIStoryboard storyboardWithName:@"iPhone_6" bundle:nil];
-        // NSLog(@"Device has a 4.7 inch Display.");
-    }
-    
-    
-    else if (height == 736) {
-        storyboard = [UIStoryboard storyboardWithName:@"iPhone_6Plus" bundle:nil];
-        // NSLog(@"Device has a 5.5 inch Display.");
-    }
-    
-    else{
-        
-        storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-       
-       
-        
-    }
+     storyboard = [UIStoryboard storyboardWithName:@"iPhone_5" bundle:nil];
     
     return storyboard;
 }
