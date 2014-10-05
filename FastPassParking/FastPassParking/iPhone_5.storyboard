@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -51,7 +51,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="1BY-pM-51T" kind="presentation" id="o7i-g2-jfG"/>
+                                    <segue destination="UEz-aa-85g" kind="presentation" id="o7i-g2-jfG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="leU-gb-qI4">
@@ -126,52 +126,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3d8-8h-cDr">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="barTintColor" red="0.0078431372550000003" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Create Profile" id="KPs-Wq-kmR">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="uWv-GE-pau">
-                                            <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <segue destination="ufB-ED-ehF" kind="presentation" modalTransitionStyle="crossDissolve" id="dx8-HP-sAo"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Next" id="Zft-qL-4Km">
-                                            <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDi-h1-YHx">
-                                <rect key="frame" x="36" y="138" width="249" height="30"/>
+                                <rect key="frame" x="176" y="138" width="249" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email: name@example.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pMb-83-t8O">
-                                <rect key="frame" x="36" y="198" width="249" height="30"/>
+                                <rect key="frame" x="176" y="198" width="249" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password: Min 5 characters" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbW-b4-XMZ">
-                                <rect key="frame" x="36" y="168" width="249" height="30"/>
+                                <rect key="frame" x="176" y="168" width="249" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Mobile" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tap-BL-1Po">
-                                <rect key="frame" x="36" y="228" width="249" height="30"/>
+                                <rect key="frame" x="176" y="228" width="249" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uj-AK-cof">
-                                <rect key="frame" x="36" y="113" width="249" height="25"/>
+                                <rect key="frame" x="176" y="113" width="249" height="25"/>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,15 +160,42 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="CreateProfileNavBar" destination="3d8-8h-cDr" id="7yy-RK-Rge"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Create Profile" id="mEQ-HL-nyf">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="2rw-tZ-H7G">
+                            <connections>
+                                <action selector="CancelButtonAction:" destination="1BY-pM-51T" id="f6t-0H-ztb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="cE1-80-5Oe">
+                            <connections>
+                                <segue destination="ozR-Fo-71H" kind="show" id="DKB-tO-VqN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOi-qB-B9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="-466"/>
+            <point key="canvasLocation" x="1617" y="-508"/>
         </scene>
-        <!--Main View Controller-->
+        <!--View Controller-->
+        <scene sceneID="3fW-MG-G9q">
+            <objects>
+                <viewController id="ozR-Fo-71H" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gei-Cu-EdE"/>
+                        <viewControllerLayoutGuide type="bottom" id="tHP-bo-no6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dyx-Ax-Z8T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6hD-72-COk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2355" y="-508"/>
+        </scene>
+        <!--Find A Parking Lot-->
         <scene sceneID="ScD-vd-n9v">
             <objects>
                 <viewController id="VdS-K1-sAj" customClass="FPMainViewController" sceneMemberID="viewController">
@@ -221,7 +228,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Funds: $00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-fE-eYd">
                                 <rect key="frame" x="194" y="78" width="212" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.46274513010000001" green="0.74509805439999999" blue="0.231372565" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -239,7 +246,9 @@
                             <constraint firstItem="kMM-Dg-wQ7" firstAttribute="top" secondItem="S8t-ph-Q6b" secondAttribute="bottom" id="oav-7r-H6I"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yco-05-97F"/>
+                    <navigationItem key="navigationItem" title="Find A Parking Lot" id="yco-05-97F">
+                        <barButtonItem key="backBarButtonItem" title="Item" id="V3b-qb-Sty"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mainNavigationBar" destination="yco-05-97F" id="6vo-Y2-aGp"/>
                         <outlet property="mapView" destination="S8t-ph-Q6b" id="UqA-gL-nKz"/>
@@ -298,6 +307,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e1C-DZ-7sR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -307,6 +317,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGn-DQ-XXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1204" y="294"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jNx-nJ-3Gr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UEz-aa-85g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O16-5i-CBk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1BY-pM-51T" kind="relationship" relationship="rootViewController" id="hPh-F9-0jE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dDR-VE-gkf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805" y="-508"/>
         </scene>
     </scenes>
     <resources>
