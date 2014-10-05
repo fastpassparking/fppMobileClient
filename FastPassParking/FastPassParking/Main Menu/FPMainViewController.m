@@ -11,7 +11,7 @@
 #define showLotDetailView @"showLotDetailView"
 
 @interface FPMainViewController ()
-@property (strong, nonatomic) IBOutlet UITableViewCell *ParkingLotViewCell;
+@property (strong, nonatomic) IBOutlet UINavigationItem *mainNavigationBar;
 
 @end
 
@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"STARTING MAIN VIEW");
     
     // View initializing properties
     CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
@@ -90,6 +92,12 @@
     
     
     [_parkingLotTableView reloadData];
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(0, 0, 32, 32)];
+    self.mainNavigationBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
 }
 
 - (void)didReceiveMemoryWarning {
