@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -188,7 +188,7 @@
             </objects>
             <point key="canvasLocation" x="489" y="-466"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Find A Parking Lot-->
         <scene sceneID="ScD-vd-n9v">
             <objects>
                 <viewController id="VdS-K1-sAj" customClass="FPMainViewController" sceneMemberID="viewController">
@@ -221,7 +221,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Funds: $00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-fE-eYd">
                                 <rect key="frame" x="194" y="78" width="212" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.46274513010000001" green="0.74509805439999999" blue="0.231372565" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -239,7 +239,9 @@
                             <constraint firstItem="kMM-Dg-wQ7" firstAttribute="top" secondItem="S8t-ph-Q6b" secondAttribute="bottom" id="oav-7r-H6I"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yco-05-97F"/>
+                    <navigationItem key="navigationItem" title="Find A Parking Lot" id="yco-05-97F">
+                        <barButtonItem key="backBarButtonItem" title="Item" id="V3b-qb-Sty"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="S8t-ph-Q6b" id="UqA-gL-nKz"/>
                         <outlet property="parkingLotTableView" destination="kMM-Dg-wQ7" id="Uvj-3K-ohe"/>
@@ -257,6 +259,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e1C-DZ-7sR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
