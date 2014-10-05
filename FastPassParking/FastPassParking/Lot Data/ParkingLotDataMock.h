@@ -19,5 +19,6 @@
 
 
 + (ParkingLotDataMock*) createPolygonWithCoordinates:(CLLocationCoordinate2D*)coords andCount:(NSUInteger)count;
+- (UITableViewCell*) createTableViewCellForTableView:(UITableView*)tableView;
 
 @end
