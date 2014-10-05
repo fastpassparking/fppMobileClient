@@ -241,6 +241,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yco-05-97F"/>
                     <connections>
+                        <outlet property="mainNavigationBar" destination="yco-05-97F" id="6vo-Y2-aGp"/>
                         <outlet property="mapView" destination="S8t-ph-Q6b" id="UqA-gL-nKz"/>
                         <outlet property="parkingLotTableView" destination="kMM-Dg-wQ7" id="Uvj-3K-ohe"/>
                         <segue destination="dNN-TO-a6C" kind="show" identifier="showLotDetailView" id="BR2-Bh-w0s"/>
@@ -288,6 +289,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Transparent_FPP_Logo.png" width="220" height="169"/>
+        <image name="Transparent_FPP_Logo.png" width="80" height="80"/>
     </resources>
 </document>
