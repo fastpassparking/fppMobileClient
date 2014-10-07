@@ -320,10 +320,10 @@
             </objects>
             <point key="canvasLocation" x="1950" y="294"/>
         </scene>
-        <!--View Controller-->
+        <!--Lot Detail View Controller-->
         <scene sceneID="azu-Jl-bPJ">
             <objects>
-                <viewController id="dNN-TO-a6C" sceneMemberID="viewController">
+                <viewController id="dNN-TO-a6C" customClass="FPLotDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yNq-PN-EOF"/>
                         <viewControllerLayoutGuide type="bottom" id="Ucc-XU-CHG"/>
@@ -331,7 +331,28 @@
                     <view key="view" contentMode="scaleToFill" id="hfl-e8-U0p">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nun-9i-Xpk">
+                                <rect key="frame" x="0.0" y="546" width="600" height="54"/>
+                                <color key="backgroundColor" red="0.71890782828282829" green="0.0" blue="0.10953327866728757" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="p5y-FT-aHe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Park">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                </variation>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ucc-XU-CHG" firstAttribute="top" secondItem="Nun-9i-Xpk" secondAttribute="bottom" id="BDS-cU-nw9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nun-9i-Xpk" secondAttribute="trailing" constant="-16" id="VN3-Z9-OiE"/>
+                            <constraint firstItem="Nun-9i-Xpk" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-16" id="qlE-0N-4Aw"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yN-2i-zRT" userLabel="First Responder" sceneMemberID="firstResponder"/>

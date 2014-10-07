@@ -93,8 +93,11 @@
     
     [_parkingLotTableView reloadData];
     
+    [_mainNavigationBar setTitle:@"Funds go here"];
+    
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(blah) forControlEvents:UIControlEventTouchUpInside];
     [button setFrame:CGRectMake(0, 0, 32, 32)];
     self.mainNavigationBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     
