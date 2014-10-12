@@ -480,6 +480,9 @@
                                 <state key="normal" title="Scan Your Card">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="TfZ-gX-eoy" kind="show" id="X6b-gt-GSb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -524,7 +527,7 @@
             </objects>
             <point key="canvasLocation" x="3081" y="-508"/>
         </scene>
-        <!--Cars-->
+        <!--Add A Car-->
         <scene sceneID="bF6-i0-tXr">
             <objects>
                 <viewController id="DBY-xe-aE3" customClass="CreateProfile" sceneMemberID="viewController">
@@ -651,7 +654,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Cars" id="b5l-xO-nK2">
+                    <navigationItem key="navigationItem" title="Add A Car" id="b5l-xO-nK2">
                         <barButtonItem key="backBarButtonItem" title="Back" id="VcJ-iG-Hru"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="2z5-vM-oq6">
                             <connections>
@@ -663,6 +666,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exG-Ns-sj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2297" y="-508"/>
+        </scene>
+        <!--Scan Card-->
+        <scene sceneID="wMD-Hk-M9B">
+            <objects>
+                <viewController id="TfZ-gX-eoy" customClass="CreditCardInfo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fQg-0c-k5e"/>
+                        <viewControllerLayoutGuide type="bottom" id="2iq-5X-TRH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7w4-Xx-8y5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scan Card" id="lBT-gu-rwN">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="KHp-pn-Rwm"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jha-IT-3h7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3081" y="-1197"/>
         </scene>
     </scenes>
     <resources>
