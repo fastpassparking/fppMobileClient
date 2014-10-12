@@ -19,12 +19,13 @@
 {
     static NSString *cellIdentifier = @"parkingLot";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"parkingLot"];
-    
+
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
     cell.textLabel.text = _parkingLotName;
+    
     return cell;
 }
 

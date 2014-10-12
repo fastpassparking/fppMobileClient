@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="817-5P-x83" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283" y="294"/>
+            <point key="canvasLocation" x="247" y="-242"/>
         </scene>
         <!--CreateProfile-->
         <scene sceneID="Rb2-uz-3NQ">
@@ -244,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOi-qB-B9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1617" y="-508"/>
+            <point key="canvasLocation" x="1997" y="-988"/>
         </scene>
         <!--Find A Parking Lot-->
         <scene sceneID="ScD-vd-n9v">
@@ -259,7 +259,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8t-ph-Q6b" customClass="FPMapView">
-                                <rect key="frame" x="0.0" y="116" width="600" height="245"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="VdS-K1-sAj" id="nO8-5h-ETc"/>
@@ -276,21 +276,13 @@
                                     <outlet property="delegate" destination="VdS-K1-sAj" id="tEL-Lx-VWb"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Funds: $00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-fE-eYd">
-                                <rect key="frame" x="194" y="78" width="212" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="S8t-ph-Q6b" firstAttribute="top" secondItem="coM-gm-ntl" secondAttribute="bottom" id="4ur-b0-mXQ"/>
                             <constraint firstItem="kMM-Dg-wQ7" firstAttribute="top" secondItem="S8t-ph-Q6b" secondAttribute="bottom" id="H4U-Rh-UyV"/>
                             <constraint firstItem="kMM-Dg-wQ7" firstAttribute="leading" secondItem="mfQ-na-BEQ" secondAttribute="leadingMargin" constant="-16" id="Ig9-Jj-cDR"/>
-                            <constraint firstItem="bbE-fE-eYd" firstAttribute="top" secondItem="coM-gm-ntl" secondAttribute="bottom" constant="14" id="Klk-ML-9xx"/>
                             <constraint firstItem="S8t-ph-Q6b" firstAttribute="leading" secondItem="mfQ-na-BEQ" secondAttribute="leadingMargin" constant="-16" id="MbZ-uC-6wj"/>
-                            <constraint firstAttribute="centerX" secondItem="bbE-fE-eYd" secondAttribute="centerX" id="N7t-f0-fsN"/>
-                            <constraint firstItem="S8t-ph-Q6b" firstAttribute="top" secondItem="bbE-fE-eYd" secondAttribute="bottom" constant="8" id="NU2-XD-S9R"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kMM-Dg-wQ7" secondAttribute="trailing" constant="-16" id="cQz-dM-RcB"/>
                             <constraint firstItem="Rnd-V6-sAx" firstAttribute="top" secondItem="kMM-Dg-wQ7" secondAttribute="bottom" id="jWo-kJ-x1P"/>
                             <constraint firstAttribute="trailingMargin" secondItem="S8t-ph-Q6b" secondAttribute="trailing" constant="-16" id="kQ9-fR-lg1"/>
@@ -309,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y5S-ln-EwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1950" y="294"/>
+            <point key="canvasLocation" x="1950" y="290"/>
         </scene>
         <!--Lot Detail View Controller-->
         <scene sceneID="azu-Jl-bPJ">
@@ -385,7 +377,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dDR-VE-gkf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="805" y="-508"/>
+            <point key="canvasLocation" x="1185" y="-988"/>
         </scene>
         <!--Credit Card-->
         <scene sceneID="H7w-B5-FuN">
@@ -422,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yu3-0e-Deo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3081" y="-508"/>
+            <point key="canvasLocation" x="3461" y="-988"/>
         </scene>
         <!--CreateProfile-->
         <scene sceneID="bF6-i0-tXr">
@@ -561,7 +553,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exG-Ns-sj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="-508"/>
+            <point key="canvasLocation" x="2677" y="-988"/>
         </scene>
     </scenes>
     <resources>

@@ -7,6 +7,7 @@
 //
 
 #import "FPMainViewController.h"
+#import "FPLotTableViewCell.h"
 
 #define showLotDetailView @"showLotDetailView"
 
@@ -20,15 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"STARTING MAIN VIEW");
-    
     // View initializing properties
     CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(ucfCampusCenter, span);
     
     [_mapView setRegion:region];
+    [_mapView attachPinchGestureRecognizer];
+    
     _parkingLotDataObjectsIDsToPolygons = [NSMutableDictionary dictionary];
+    _mapView.parkingLotDataObjectsIDsToPolygons = _parkingLotDataObjectsIDsToPolygons;
     
     // ==================
     // testing rendering
@@ -49,7 +51,7 @@
     polygonVertices[3] = bl;
     polygonVertices[4] = tl;
     
-    ParkingLotDataMock* newPoly = [ParkingLotDataMock createPolygonWithCoordinates:polygonVertices andCount:5];
+    FPParkingLotData* newPoly = [FPParkingLotData createPolygonWithCoordinates:polygonVertices andCount:5];
     MKPolygonRenderer* renderer = [[MKPolygonRenderer alloc] initWithPolygon:newPoly];
     renderer.lineWidth = 2.0;
     renderer.strokeColor = [UIColor blackColor];
@@ -79,7 +81,7 @@
     polygonVertices[6] = br;
     polygonVertices[7] = bl;
     
-    ParkingLotDataMock* newPoly2 = [ParkingLotDataMock createPolygonWithCoordinates:polygonVertices andCount:8];
+    FPParkingLotData* newPoly2 = [FPParkingLotData createPolygonWithCoordinates:polygonVertices andCount:8];
     MKPolygonRenderer* renderer2 = [[MKPolygonRenderer alloc] initWithPolygon:newPoly2];
     renderer2.lineWidth = 2.0;
     renderer2.strokeColor = [UIColor blackColor];
@@ -91,9 +93,15 @@
     [_parkingLotDataObjectsIDsToPolygons setObject:newPoly2 forKey:newPoly2.parkingLotName];
     
     
+    newPoly.polygonIsDrawn = YES;
+    newPoly.annotationIsDrawn = NO;
+    newPoly2.polygonIsDrawn = YES;
+    newPoly2.annotationIsDrawn = NO;
+    
     [_parkingLotTableView reloadData];
     
-    [_mainNavigationBar setTitle:@"Funds go here"];
+    [_mainNavigationBar setTitle:@"$Arbitrary.Dollars"];
+//    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
     
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
@@ -111,12 +119,49 @@
 #pragma MapView Delegate
 - (MKOverlayRenderer*) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-    if([overlay isKindOfClass:[ParkingLotDataMock class]])
+    if([overlay isKindOfClass:[FPParkingLotData class]])
     {
-        return ((ParkingLotDataMock*)overlay).rendererForLot;
+        return ((FPParkingLotData*)overlay).rendererForLot;
     }
     
     return nil;
+}
+
+- (void) mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+//    _mapView.lastZoomLevel = [_mapView getZoomLevel];
+}
+
+- (void) mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+//    NSArray* views = [_parkingLotDataObjectsIDsToPolygons allValues];
+//    
+//    if([_mapView getZoomLevel] <= 16.0)
+//    {
+//        for(FPParkingLotData* lot in views)
+//        {
+//            if(lot.polygonIsDrawn)
+//            {
+//                [_mapView removeOverlay:lot];
+//                [_mapView addAnnotation:lot];
+//                lot.polygonIsDrawn = NO;
+//                lot.annotationIsDrawn = YES;
+//            }
+//        }
+//    }
+//    else
+//    {
+//        for(FPParkingLotData* lot in views)
+//        {
+//            if(lot.annotationIsDrawn)
+//            {
+//                [_mapView removeAnnotation:lot];
+//                [_mapView addOverlay:lot];
+//                lot.polygonIsDrawn = YES;
+//                lot.annotationIsDrawn = NO;
+//            }
+//        }
+//    }
 }
 
 #pragma TableView Delegate
@@ -128,15 +173,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray* allLots = [_parkingLotDataObjectsIDsToPolygons allValues];
-    ParkingLotDataMock* lotForCell = [allLots objectAtIndex:indexPath.row];
+    FPParkingLotData* lotForCell = [allLots objectAtIndex:indexPath.row];
     
-    return [lotForCell createTableViewCellForTableView:tableView];
+    FPLotTableViewCell* parkingLotCell = [tableView dequeueReusableCellWithIdentifier:FPLotTableViewCellIdentifier];
+    if(parkingLotCell == nil)
+    {
+        parkingLotCell = [[FPLotTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FPLotTableViewCellIdentifier];
+    }
+    
+//    [parkingLotCell.parkingLotName setText: lotForCell.parkingLotName];
+//    [parkingLotCell.parkingLotDetails setText: lotForCell.parkingLotDocumentID];
+    [parkingLotCell.textLabel setText:lotForCell.parkingLotName];
+    
+    return parkingLotCell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray* allLots = [_parkingLotDataObjectsIDsToPolygons allValues];
-    ParkingLotDataMock* lotForCell = [allLots objectAtIndex:indexPath.row];
+    FPParkingLotData* lotForCell = [allLots objectAtIndex:indexPath.row];
     
     lotForCell.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
@@ -147,7 +202,7 @@
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray* allLots = [_parkingLotDataObjectsIDsToPolygons allValues];
-    ParkingLotDataMock* lotForCell = [allLots objectAtIndex:indexPath.row];
+    FPParkingLotData* lotForCell = [allLots objectAtIndex:indexPath.row];
     
     lotForCell.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
     [_mapView setNeedsDisplay];
