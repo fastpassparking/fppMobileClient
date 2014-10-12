@@ -23,6 +23,9 @@
 		FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */; };
 		FA1CA11619E3A97C00EC98E7 /* FPP_Logo_Transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11519E3A97C00EC98E7 /* FPP_Logo_Transparent.png */; };
 		FA1CA11819E3B20C00EC98E7 /* FPP_Logo_Letters.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11719E3B20C00EC98E7 /* FPP_Logo_Letters.png */; };
+		FA1CA11C19EAF22900EC98E7 /* 13202-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11B19EAF22900EC98E7 /* 13202-1.png */; };
+		FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */; };
+		FA1CA12219EAF7AF00EC98E7 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA12119EAF7AF00EC98E7 /* camera.png */; };
 		FAA43E5319D37A7000335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5219D37A7000335A85 /* road.png */; };
 		FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */; };
 		FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */; };
@@ -71,6 +74,10 @@
 		FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateProfile.m; path = ../CreateProfile.m; sourceTree = "<group>"; };
 		FA1CA11519E3A97C00EC98E7 /* FPP_Logo_Transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FPP_Logo_Transparent.png; path = Images.xcassets/Logo.imageset/FPP_Logo_Transparent.png; sourceTree = "<group>"; };
 		FA1CA11719E3B20C00EC98E7 /* FPP_Logo_Letters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPP_Logo_Letters.png; sourceTree = "<group>"; };
+		FA1CA11B19EAF22900EC98E7 /* 13202-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "13202-1.png"; sourceTree = "<group>"; };
+		FA1CA11D19EAF62700EC98E7 /* CreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditCardInfo.h; sourceTree = "<group>"; };
+		FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditCardInfo.m; sourceTree = "<group>"; };
+		FA1CA12119EAF7AF00EC98E7 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		FAA43E5219D37A7000335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparent_FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPP_Logo_No_Words.png; sourceTree = "<group>"; };
@@ -141,6 +148,7 @@
 		45438B3419CF3B700063F898 /* FastPassParking */ = {
 			isa = PBXGroup;
 			children = (
+				FA1CA12019EAF64100EC98E7 /* Create Account */,
 				9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */,
 				9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */,
 				45438B3919CF3B700063F898 /* AppDelegate.h */,
@@ -167,6 +175,8 @@
 		45438B3519CF3B700063F898 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA1CA12119EAF7AF00EC98E7 /* camera.png */,
+				FA1CA11B19EAF22900EC98E7 /* 13202-1.png */,
 				FA1CA11719E3B20C00EC98E7 /* FPP_Logo_Letters.png */,
 				FA1CA11519E3A97C00EC98E7 /* FPP_Logo_Transparent.png */,
 				FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */,
@@ -193,6 +203,15 @@
 				45438B5319CF3B710063F898 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA1CA12019EAF64100EC98E7 /* Create Account */ = {
+			isa = PBXGroup;
+			children = (
+				FA1CA11D19EAF62700EC98E7 /* CreditCardInfo.h */,
+				FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */,
+			);
+			name = "Create Account";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,8 +299,10 @@
 				FAA43E5D19D38A4F00335A85 /* iPhone_6.storyboard in Resources */,
 				FAA43E5919D3819000335A85 /* iPhone_6Plus.storyboard in Resources */,
 				FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */,
+				FA1CA11C19EAF22900EC98E7 /* 13202-1.png in Resources */,
 				FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */,
 				FAA43E6119D38A7400335A85 /* iPhone_4s.storyboard in Resources */,
+				FA1CA12219EAF7AF00EC98E7 /* camera.png in Resources */,
 				FA1CA11619E3A97C00EC98E7 /* FPP_Logo_Transparent.png in Resources */,
 				FAA43E5F19D38A6400335A85 /* iPhone_5.storyboard in Resources */,
 				FAA43E5319D37A7000335A85 /* road.png in Resources */,
@@ -304,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
 				453B893219E1748600D3483F /* FPMapView.m in Sources */,
 				453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */,
