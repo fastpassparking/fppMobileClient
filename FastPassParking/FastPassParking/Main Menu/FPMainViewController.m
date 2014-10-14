@@ -11,6 +11,9 @@
 #define showLotDetailView @"showLotDetailView"
 
 @interface FPMainViewController ()
+{
+    int _lotCount;
+}
 @property (strong, nonatomic) IBOutlet UINavigationItem *mainNavigationBar;
 
 @end
@@ -21,6 +24,20 @@
     [super viewDidLoad];
     
     NSLog(@"STARTING MAIN VIEW");
+    
+    NSString *url = @"http://107.203.220.120/parkinglots";
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    [[session dataTaskWithURL:[NSURL URLWithString:url]
+            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+      {
+          NSLog(@"Response from URL: %@", response);
+          NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+          
+          [self parseArrayOfLots:jsonArray];
+      }] resume];
+
+    
     
     // View initializing properties
     CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
@@ -108,6 +125,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)parseArrayOfLots:(NSArray *)arrayOfLots
+{
+    _lotCount = [arrayOfLots count];
+//    
+//    NSArray *indexPaths = [NSArray arrayWithObject:[NSIndexPath indexPathWithIndex:0]];
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [self.parkingLotTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//    });
+}
+
+
 #pragma MapView Delegate
 - (MKOverlayRenderer*) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
@@ -122,7 +152,9 @@
 #pragma TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView  numberOfRowsInSection:(NSInteger)section
 {
-    return [[_parkingLotDataObjectsIDsToPolygons allValues] count];
+//    NSLog(@"Returning count of %d", _lotCount);
+    return 2;
+//    return [[_parkingLotDataObjectsIDsToPolygons allValues] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,7 +165,7 @@
     return [lotForCell createTableViewCellForTableView:tableView];
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray* allLots = [_parkingLotDataObjectsIDsToPolygons allValues];
     ParkingLotDataMock* lotForCell = [allLots objectAtIndex:indexPath.row];
@@ -144,7 +176,7 @@
     [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
 }
 
-- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray* allLots = [_parkingLotDataObjectsIDsToPolygons allValues];
     ParkingLotDataMock* lotForCell = [allLots objectAtIndex:indexPath.row];
