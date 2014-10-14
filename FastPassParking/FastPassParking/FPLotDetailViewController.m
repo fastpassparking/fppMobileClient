@@ -16,6 +16,7 @@
 
 @implementation FPLotDetailViewController
 
+<<<<<<< HEAD
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -53,6 +54,24 @@
     
     
     NSLog(@"STARTING LOT DETAIL VIEW");
+=======
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    _main.implementation.frame = _lotDetailMapView.frame;
+    [_lotDetailMapView addSubview:_main.implementation];
+    
+    
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    _main.implementation.frame = _main.mapView.frame;
+    [_main.mapView addSubview:_main.implementation];
+>>>>>>> ivan-mapview-changes
 }
 
 @end
