@@ -10,4 +10,22 @@
 
 @implementation FPLotDetailViewController
 
+- (void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    _main.implementation.frame = _lotDetailMapView.frame;
+    [_lotDetailMapView addSubview:_main.implementation];
+    
+    
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    _main.implementation.frame = _main.mapView.frame;
+    [_main.mapView addSubview:_main.implementation];
+}
+
 @end

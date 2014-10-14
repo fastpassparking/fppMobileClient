@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPMainViewController.h"
 
 @interface FPLotDetailViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIView *lotDetailMapView;
+@property (strong, nonatomic) FPMainViewController* main;
 
 @end

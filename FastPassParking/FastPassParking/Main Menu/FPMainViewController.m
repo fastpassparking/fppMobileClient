@@ -8,6 +8,7 @@
 
 #import "FPMainViewController.h"
 #import "FPLotTableViewCell.h"
+#import "FPLotDetailViewController.h"
 
 #define showLotDetailView @"showLotDetailView"
 
@@ -26,11 +27,16 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(ucfCampusCenter, span);
     
-    [_mapView setRegion:region];
-    [_mapView attachPinchGestureRecognizer];
+    FPMapView* implementation = [[FPMapView alloc] initWithFrame:CGRectMake(0, 0, _mapView.frame.size.width, _mapView.frame.size.height)];
+    _implementation = implementation;
+    
+    [_mapView addSubview:implementation];
+    
+    [implementation setRegion:region];
+    [implementation attachPinchGestureRecognizer];
     
     _parkingLotDataObjectsIDsToPolygons = [NSMutableDictionary dictionary];
-    _mapView.parkingLotDataObjectsIDsToPolygons = _parkingLotDataObjectsIDsToPolygons;
+    implementation.parkingLotDataObjectsIDsToPolygons = _parkingLotDataObjectsIDsToPolygons;
     
     // ==================
     // testing rendering
@@ -59,7 +65,7 @@
     newPoly.rendererForLot = renderer;
     newPoly.parkingLotName = @"Lot C";
     
-    [_mapView addOverlay:newPoly];
+    [implementation addOverlay:newPoly];
     [_parkingLotDataObjectsIDsToPolygons setObject:newPoly forKey:newPoly.parkingLotName];
     free(polygonVertices);
     
@@ -89,7 +95,7 @@
     newPoly2.rendererForLot = renderer2;
     newPoly2.parkingLotName = @"Lot D";
     
-    [_mapView addOverlay:newPoly2];
+    [implementation addOverlay:newPoly2];
     [_parkingLotDataObjectsIDsToPolygons setObject:newPoly2 forKey:newPoly2.parkingLotName];
     
     
@@ -206,17 +212,22 @@
     
     lotForCell.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
     [_mapView setNeedsDisplay];
+    
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+    if([segue.identifier isEqualToString:@"showLotDetailView"])
+    {
+        FPLotDetailViewController* dest = [segue destinationViewController];
+        dest.main = self;
+    }
 }
-*/
+
 
 @end

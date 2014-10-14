@@ -255,22 +255,19 @@
                         <viewControllerLayoutGuide type="bottom" id="Rnd-V6-sAx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mfQ-na-BEQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8t-ph-Q6b" customClass="FPMapView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="297"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="VdS-K1-sAj" id="nO8-5h-ETc"/>
-                                </connections>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kMM-Dg-wQ7">
-                                <rect key="frame" x="0.0" y="361" width="600" height="239"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8t-ph-Q6b">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="239" id="6ch-aw-mtI"/>
+                                    <constraint firstAttribute="height" constant="297" id="njh-qv-PZY"/>
                                 </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="kMM-Dg-wQ7">
+                                <rect key="frame" x="0.0" y="297" width="600" height="239"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="VdS-K1-sAj" id="geM-gj-WSk"/>
                                     <outlet property="delegate" destination="VdS-K1-sAj" id="tEL-Lx-VWb"/>
@@ -279,22 +276,23 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="S8t-ph-Q6b" firstAttribute="top" secondItem="coM-gm-ntl" secondAttribute="bottom" id="4ur-b0-mXQ"/>
-                            <constraint firstItem="kMM-Dg-wQ7" firstAttribute="top" secondItem="S8t-ph-Q6b" secondAttribute="bottom" id="H4U-Rh-UyV"/>
-                            <constraint firstItem="kMM-Dg-wQ7" firstAttribute="leading" secondItem="mfQ-na-BEQ" secondAttribute="leadingMargin" constant="-16" id="Ig9-Jj-cDR"/>
-                            <constraint firstItem="S8t-ph-Q6b" firstAttribute="leading" secondItem="mfQ-na-BEQ" secondAttribute="leadingMargin" constant="-16" id="MbZ-uC-6wj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kMM-Dg-wQ7" secondAttribute="trailing" constant="-16" id="cQz-dM-RcB"/>
-                            <constraint firstItem="Rnd-V6-sAx" firstAttribute="top" secondItem="kMM-Dg-wQ7" secondAttribute="bottom" id="jWo-kJ-x1P"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="S8t-ph-Q6b" secondAttribute="trailing" constant="-16" id="kQ9-fR-lg1"/>
-                            <constraint firstItem="kMM-Dg-wQ7" firstAttribute="top" secondItem="S8t-ph-Q6b" secondAttribute="bottom" id="oav-7r-H6I"/>
+                            <constraint firstItem="kMM-Dg-wQ7" firstAttribute="leading" secondItem="mfQ-na-BEQ" secondAttribute="leadingMargin" constant="-16" id="0Gz-aA-Oly"/>
+                            <constraint firstItem="S8t-ph-Q6b" firstAttribute="leading" secondItem="mfQ-na-BEQ" secondAttribute="leadingMargin" constant="-16" id="4qW-0g-YZP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S8t-ph-Q6b" secondAttribute="trailing" constant="-16" id="6AC-wk-TC5"/>
+                            <constraint firstItem="kMM-Dg-wQ7" firstAttribute="top" secondItem="S8t-ph-Q6b" secondAttribute="bottom" id="ZwS-x4-Xda"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kMM-Dg-wQ7" secondAttribute="trailing" constant="-16" id="ayX-Gr-tTz"/>
+                            <constraint firstItem="kMM-Dg-wQ7" firstAttribute="top" secondItem="S8t-ph-Q6b" secondAttribute="bottom" id="eyC-aT-qXB"/>
+                            <constraint firstItem="Rnd-V6-sAx" firstAttribute="top" secondItem="kMM-Dg-wQ7" secondAttribute="bottom" id="ktu-dx-eP5"/>
+                            <constraint firstItem="S8t-ph-Q6b" firstAttribute="top" secondItem="coM-gm-ntl" secondAttribute="bottom" id="vv5-GD-8qe"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Find A Parking Lot" id="yco-05-97F">
                         <barButtonItem key="backBarButtonItem" title="Item" id="V3b-qb-Sty"/>
                     </navigationItem>
                     <connections>
                         <outlet property="mainNavigationBar" destination="yco-05-97F" id="6vo-Y2-aGp"/>
-                        <outlet property="mapView" destination="S8t-ph-Q6b" id="UqA-gL-nKz"/>
+                        <outlet property="mapView" destination="S8t-ph-Q6b" id="mel-aH-f0l"/>
                         <outlet property="parkingLotTableView" destination="kMM-Dg-wQ7" id="Uvj-3K-ohe"/>
                         <segue destination="dNN-TO-a6C" kind="show" identifier="showLotDetailView" id="BR2-Bh-w0s"/>
                     </connections>
@@ -312,11 +310,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Ucc-XU-CHG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hfl-e8-U0p">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nun-9i-Xpk">
-                                <rect key="frame" x="0.0" y="546" width="600" height="54"/>
+                                <rect key="frame" x="0.0" y="482" width="600" height="54"/>
                                 <color key="backgroundColor" red="0.71890782828282829" green="0.0" blue="0.10953327866728757" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="p5y-FT-aHe"/>
@@ -329,14 +327,28 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 </variation>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqm-fu-ijC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="158"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="158" id="poD-x9-eVB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lqm-fu-ijC" firstAttribute="top" secondItem="yNq-PN-EOF" secondAttribute="bottom" id="0r4-Fb-49K"/>
+                            <constraint firstItem="lqm-fu-ijC" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-16" id="4dB-0w-bSe"/>
                             <constraint firstItem="Ucc-XU-CHG" firstAttribute="top" secondItem="Nun-9i-Xpk" secondAttribute="bottom" id="BDS-cU-nw9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lqm-fu-ijC" secondAttribute="trailing" constant="-16" id="Ily-XJ-AmW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Nun-9i-Xpk" secondAttribute="trailing" constant="-16" id="VN3-Z9-OiE"/>
                             <constraint firstItem="Nun-9i-Xpk" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-16" id="qlE-0N-4Aw"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="lotDetailMapView" destination="lqm-fu-ijC" id="XyG-5O-FNL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yN-2i-zRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
