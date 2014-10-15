@@ -8,11 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
-#import "ParkingLotDataMock.h"
+#import "FPParkingLotData.h"
 
 
-@interface FPMapView : MKMapView
+@interface FPMapView : MKMapView <UIGestureRecognizerDelegate>
+
+@property (nonatomic, assign) double lastZoomLevel;
+
+@property (strong, nonatomic) UIPinchGestureRecognizer* pinchToZoom;
+@property (weak, nonatomic) NSMutableDictionary* parkingLotDataObjectsIDsToPolygons;
 
 // Main map view
+- (double) getZoomLevel;
+
+- (void) detectPinchStatus:(UIGestureRecognizer*)gestureRecognizer;
+- (void) attachPinchGestureRecognizer;
+- (void) updatePolygonsAndAnnotations;
+
 
 @end

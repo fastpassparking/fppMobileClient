@@ -13,14 +13,18 @@
 
 
 // Storyboard
-@property (strong, nonatomic) IBOutlet FPMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIView *mapView;
+
 @property (strong, nonatomic) IBOutlet UITableView *parkingLotTableView;
+@property (strong, nonatomic) FPMapView* implementation;
 
 // User Information
 @property (weak, nonatomic) IBOutlet UILabel *userFundsLabel;
 
 // ParkingLotData
 @property (strong, nonatomic) NSMutableDictionary* parkingLotDataObjectsIDsToPolygons;
+
+@property (strong, nonatomic) UIView* pin;
 
 #pragma MapView Delegate
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView

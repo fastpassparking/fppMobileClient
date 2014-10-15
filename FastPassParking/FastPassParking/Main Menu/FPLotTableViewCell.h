@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPParkingLotData.h"
+static NSString* const FPLotTableViewCellIdentifier = @"FPLotDataCell";
 
 @interface FPLotTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) IBOutlet UILabel* parkingLotName;
+@property (nonatomic, weak) IBOutlet UILabel* parkingLotDetails;
+
 
 @end

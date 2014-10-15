@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 453B892E19E1738A00D3483F /* FPMainViewController.m */; };
 		453B893219E1748600D3483F /* FPMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 453B893119E1748600D3483F /* FPMapView.m */; };
-		453B893619E17FDD00D3483F /* ParkingLotDataMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 453B893519E17FDD00D3483F /* ParkingLotDataMock.m */; };
 		453B893919E19B7D00D3483F /* FPLotTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 453B893819E19B7D00D3483F /* FPLotTableViewCell.m */; };
 		45438B3819CF3B700063F898 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B3719CF3B700063F898 /* main.m */; };
 		45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B3A19CF3B700063F898 /* AppDelegate.m */; };
@@ -19,6 +18,7 @@
 		45438B4619CF3B700063F898 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4519CF3B700063F898 /* Images.xcassets */; };
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
+		45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */ = {isa = PBXBuildFile; fileRef = 45847F3719EDC0B700F28C51 /* FPParkingLotData.m */; };
 		9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */; };
 		FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */; };
 		FA1CA11619E3A97C00EC98E7 /* FPP_Logo_Transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11519E3A97C00EC98E7 /* FPP_Logo_Transparent.png */; };
@@ -50,8 +50,6 @@
 		453B892E19E1738A00D3483F /* FPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPMainViewController.m; path = "Main Menu/FPMainViewController.m"; sourceTree = "<group>"; };
 		453B893019E1748600D3483F /* FPMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPMapView.h; path = "Main Menu/FPMapView.h"; sourceTree = "<group>"; };
 		453B893119E1748600D3483F /* FPMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPMapView.m; path = "Main Menu/FPMapView.m"; sourceTree = "<group>"; };
-		453B893419E17FDD00D3483F /* ParkingLotDataMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParkingLotDataMock.h; path = "Lot Data/ParkingLotDataMock.h"; sourceTree = "<group>"; };
-		453B893519E17FDD00D3483F /* ParkingLotDataMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParkingLotDataMock.m; path = "Lot Data/ParkingLotDataMock.m"; sourceTree = "<group>"; };
 		453B893719E19B7D00D3483F /* FPLotTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPLotTableViewCell.h; path = "Main Menu/FPLotTableViewCell.h"; sourceTree = "<group>"; };
 		453B893819E19B7D00D3483F /* FPLotTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPLotTableViewCell.m; path = "Main Menu/FPLotTableViewCell.m"; sourceTree = "<group>"; };
 		45438B3219CF3B700063F898 /* FastPassParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastPassParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +66,8 @@
 		45438B4E19CF3B710063F898 /* FastPassParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastPassParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45438B5319CF3B710063F898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
+		45847F3619EDC0B700F28C51 /* FPParkingLotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPParkingLotData.h; path = "Lot Data/FPParkingLotData.h"; sourceTree = "<group>"; };
+		45847F3719EDC0B700F28C51 /* FPParkingLotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPParkingLotData.m; path = "Lot Data/FPParkingLotData.m"; sourceTree = "<group>"; };
 		9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLotDetailViewController.h; sourceTree = "<group>"; };
 		9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLotDetailViewController.m; sourceTree = "<group>"; };
 		FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateProfile.h; path = ../CreateProfile.h; sourceTree = "<group>"; };
@@ -121,8 +121,10 @@
 		453B893319E17FA500D3483F /* Lot Data */ = {
 			isa = PBXGroup;
 			children = (
-				453B893419E17FDD00D3483F /* ParkingLotDataMock.h */,
-				453B893519E17FDD00D3483F /* ParkingLotDataMock.m */,
+				9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */,
+				9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */,
+				45847F3619EDC0B700F28C51 /* FPParkingLotData.h */,
+				45847F3719EDC0B700F28C51 /* FPParkingLotData.m */,
 			);
 			name = "Lot Data";
 			sourceTree = "<group>";
@@ -149,8 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				FA1CA12019EAF64100EC98E7 /* Create Account */,
-				9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */,
-				9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */,
 				45438B3919CF3B700063F898 /* AppDelegate.h */,
 				45438B3A19CF3B700063F898 /* AppDelegate.m */,
 				FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */,
@@ -325,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */,
 				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
 				453B893219E1748600D3483F /* FPMapView.m in Sources */,
@@ -333,7 +334,6 @@
 				45438B3E19CF3B700063F898 /* FastPassParking.xcdatamodeld in Sources */,
 				FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */,
 				45438B4119CF3B700063F898 /* ViewController.m in Sources */,
-				453B893619E17FDD00D3483F /* ParkingLotDataMock.m in Sources */,
 				45438B3819CF3B700063F898 /* main.m in Sources */,
 				453B893919E19B7D00D3483F /* FPLotTableViewCell.m in Sources */,
 			);
