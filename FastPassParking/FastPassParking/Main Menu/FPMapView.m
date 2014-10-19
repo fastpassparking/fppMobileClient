@@ -35,13 +35,25 @@
 {
     if(gestureRecognizer.state == UIGestureRecognizerStateChanged)
     {
-        [self updatePolygonsAndAnnotations];
+        [self updatePolygonsAndAnnotationsAndForceDraw:NO];
     }
 }
 
-- (void) updatePolygonsAndAnnotations
+- (void) updatePolygonsAndAnnotationsAndForceDraw:(BOOL)force
 {
     NSArray* views = [_parkingLotDataObjectsIDsToPolygons allValues];
+    
+    if(force)
+    {
+        for(FPParkingLotData* lot in views)
+        {
+            [self addOverlay:lot];
+            lot.polygonIsDrawn = YES;
+            lot.annotationIsDrawn = NO;
+        }
+        
+        return;
+    }
     
     if([self getZoomLevel] <= 14.5)
     {

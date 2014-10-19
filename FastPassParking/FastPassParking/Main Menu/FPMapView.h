@@ -23,7 +23,7 @@
 
 - (void) detectPinchStatus:(UIGestureRecognizer*)gestureRecognizer;
 - (void) attachPinchGestureRecognizer;
-- (void) updatePolygonsAndAnnotations;
+- (void) updatePolygonsAndAnnotationsAndForceDraw:(BOOL)force;
 
 
 @end
