@@ -32,9 +32,11 @@
     FPMapView* implementation = [[FPMapView alloc] init];
     _implementation = implementation;
     _implementation.delegate = self;
+    _implementation.mapDelegate = self;
     
     [implementation setRegion:region];
     [implementation attachPinchGestureRecognizer];
+    [implementation attachTapGestureRecognizer];
     
     _parkingLotDataObjectsIDsToPolygons = [NSMutableDictionary dictionary];
     implementation.parkingLotDataObjectsIDsToPolygons = _parkingLotDataObjectsIDsToPolygons;
@@ -134,6 +136,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma FPMapView delegate
+- (void) respondToTapSelectionOfLotData:(FPParkingLotData *)lot
+{
+    if(_selectedLot)
+    {
+        _selectedLot.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    }
+    
+    _selectedLot = lot;
+    
+    lot.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+    [_mapView setNeedsDisplay];
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self performSegueWithIdentifier:showLotDetailView sender:lot];
+    });
+}
+
 #pragma MapView Delegate
 - (MKOverlayRenderer*) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
@@ -151,6 +171,13 @@
         return;
     
     FPParkingLotData* lotForCell = ((FPParkingLotAnnotation*)view).lotForView;
+    
+    if(_selectedLot)
+    {
+        _selectedLot.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    }
+    
+    _selectedLot = lotForCell;
     
     lotForCell.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
@@ -236,6 +263,8 @@
 
         dest.main = self;
         dest.lot = (FPParkingLotData*)sender;
+        
+        _selectedLot = (FPParkingLotData*)sender;
         
         dispatch_async(dispatch_get_main_queue(), ^(void){
             [_implementation removeOverlays:_implementation.overlays];

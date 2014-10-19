@@ -16,9 +16,10 @@
 
 - (void) attachPinchGestureRecognizer
 {
-    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(detectPinchStatus:)];
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(detectPinchStatus:)];
     
-    //    self.pinchToZoom = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(detectPinchStatus:)];
     pinch.enabled = YES;
     pinch.delegate = self;
     self.pinchToZoom = pinch;
@@ -26,9 +27,56 @@
     [self addGestureRecognizer:pinch];
 }
 
+- (void) attachTapGestureRecognizer
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(userDidTapMap:)];
+    tap.enabled = YES;
+    tap.delegate = self;
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    
+    self.tapRecognizer = tap;
+    
+    [self addGestureRecognizer:tap];
+}
+
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
+}
+
+- (void) userDidTapMap:(UITapGestureRecognizer*)gesture
+{
+    CGPoint point = [gesture locationInView:self];
+    CLLocationCoordinate2D tapPoint = [self convertPoint:point toCoordinateFromView:self];
+    
+    double delta = 0.00000001;
+    CLLocationCoordinate2D topLeft = CLLocationCoordinate2DMake(tapPoint.latitude + delta, tapPoint.longitude - delta);
+    CLLocationCoordinate2D topRight = CLLocationCoordinate2DMake(tapPoint.latitude + delta, tapPoint.longitude + delta); ;
+    CLLocationCoordinate2D bottom = CLLocationCoordinate2DMake(tapPoint.latitude - delta, tapPoint.longitude);
+    
+    CLLocationCoordinate2D* touchTri = malloc(sizeof(CLLocationCoordinate2D) * 4);
+    touchTri[0] = topLeft;
+    touchTri[1] = topRight;
+    touchTri[2] = bottom;
+    touchTri[3] = topLeft;
+    
+    MKPolygon* touchPoly = [MKPolygon polygonWithCoordinates:touchTri count:4];
+    
+    NSArray* visible = [_parkingLotDataObjectsIDsToPolygons allValues];
+    for(FPParkingLotData* polygon in visible)
+    {
+        if([polygon isKindOfClass:[FPParkingLotData class]] &&
+           [polygon intersectsMapRect:[touchPoly boundingMapRect]])
+        {
+            if([_mapDelegate respondsToSelector:@selector(respondToTapSelectionOfLotData:)])
+            {
+                [_mapDelegate performSelector:@selector(respondToTapSelectionOfLotData:) withObject:polygon];
+            }
+        }
+    }
 }
 
 - (void) detectPinchStatus:(UIGestureRecognizer*)gestureRecognizer

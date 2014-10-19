@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FPMapView.h"
 
-@interface FPMainViewController : UIViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface FPMainViewController : UIViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, FPMapViewDelegate>
 
 
 // Storyboard
@@ -23,6 +23,7 @@
 
 // ParkingLotData
 @property (strong, nonatomic) NSMutableDictionary* parkingLotDataObjectsIDsToPolygons;
+@property (strong, nonatomic) FPParkingLotData* selectedLot;
 
 @property (strong, nonatomic) UIView* pin;
 
