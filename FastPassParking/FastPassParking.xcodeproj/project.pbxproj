@@ -20,6 +20,7 @@
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
 		9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */; };
+		93EFEDAB19EDBA09007B2133 /* FPParkingLot.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EFEDAA19EDBA09007B2133 /* FPParkingLot.m */; };
 		FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */; };
 		FA1CA11619E3A97C00EC98E7 /* FPP_Logo_Transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11519E3A97C00EC98E7 /* FPP_Logo_Transparent.png */; };
 		FA1CA11819E3B20C00EC98E7 /* FPP_Logo_Letters.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11719E3B20C00EC98E7 /* FPP_Logo_Letters.png */; };
@@ -70,6 +71,8 @@
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
 		9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLotDetailViewController.h; sourceTree = "<group>"; };
 		9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLotDetailViewController.m; sourceTree = "<group>"; };
+		93EFEDA919EDBA09007B2133 /* FPParkingLot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPParkingLot.h; path = Model/FPParkingLot.h; sourceTree = "<group>"; };
+		93EFEDAA19EDBA09007B2133 /* FPParkingLot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPParkingLot.m; path = Model/FPParkingLot.m; sourceTree = "<group>"; };
 		FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateProfile.h; path = ../CreateProfile.h; sourceTree = "<group>"; };
 		FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateProfile.m; path = ../CreateProfile.m; sourceTree = "<group>"; };
 		FA1CA11519E3A97C00EC98E7 /* FPP_Logo_Transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FPP_Logo_Transparent.png; path = Images.xcassets/Logo.imageset/FPP_Logo_Transparent.png; sourceTree = "<group>"; };
@@ -157,6 +160,7 @@
 				FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */,
 				45438B3F19CF3B700063F898 /* ViewController.h */,
 				45438B4019CF3B700063F898 /* ViewController.m */,
+				93EFEDAC19EDBA11007B2133 /* Model */,
 				453B893319E17FA500D3483F /* Lot Data */,
 				453B892A19E172AC00D3483F /* Main Menu */,
 				45438B4219CF3B700063F898 /* Main.storyboard */,
@@ -203,6 +207,15 @@
 				45438B5319CF3B710063F898 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93EFEDAC19EDBA11007B2133 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93EFEDA919EDBA09007B2133 /* FPParkingLot.h */,
+				93EFEDAA19EDBA09007B2133 /* FPParkingLot.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		FA1CA12019EAF64100EC98E7 /* Create Account */ = {
@@ -327,6 +340,7 @@
 			files = (
 				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
+				93EFEDAB19EDBA09007B2133 /* FPParkingLot.m in Sources */,
 				453B893219E1748600D3483F /* FPMapView.m in Sources */,
 				453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */,
 				9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */,
