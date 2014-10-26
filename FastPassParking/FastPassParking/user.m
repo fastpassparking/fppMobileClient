@@ -1,28 +1,19 @@
 //
-//  User_Information.m
+//  user.m
 //  FastPassParking
 //
 //  Created by Alex Gordon on 10/26/14.
 //  Copyright (c) 2014 FastPassParking. All rights reserved.
 //
 
-#import "User_Information.h"
+#import "user.h"
 
-@interface User_Information ()
+@interface user ()
 
 @end
 
-@implementation User_Information
+@implementation user
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation

@@ -33,7 +33,8 @@
 		FAA43E5D19D38A4F00335A85 /* iPhone_6.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5C19D38A4F00335A85 /* iPhone_6.storyboard */; };
 		FAA43E5F19D38A6400335A85 /* iPhone_5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5E19D38A6400335A85 /* iPhone_5.storyboard */; };
 		FAA43E6119D38A7400335A85 /* iPhone_4s.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E6019D38A7400335A85 /* iPhone_4s.storyboard */; };
-		FAC0765319FD69C30024C87A /* User_Information.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0765219FD69C30024C87A /* User_Information.m */; };
+		FAC0765619FD72460024C87A /* user.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0765519FD72460024C87A /* user.m */; };
+		FAC0765919FD740E0024C87A /* userHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0765819FD740E0024C87A /* userHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +87,10 @@
 		FAA43E5C19D38A4F00335A85 /* iPhone_6.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_6.storyboard; sourceTree = "<group>"; };
 		FAA43E5E19D38A6400335A85 /* iPhone_5.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_5.storyboard; sourceTree = "<group>"; };
 		FAA43E6019D38A7400335A85 /* iPhone_4s.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_4s.storyboard; sourceTree = "<group>"; };
-		FAC0765119FD69C30024C87A /* User_Information.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User_Information.h; sourceTree = "<group>"; };
-		FAC0765219FD69C30024C87A /* User_Information.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User_Information.m; sourceTree = "<group>"; };
+		FAC0765419FD72460024C87A /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
+		FAC0765519FD72460024C87A /* user.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = user.m; sourceTree = "<group>"; };
+		FAC0765719FD740E0024C87A /* userHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userHandler.h; sourceTree = "<group>"; };
+		FAC0765819FD740E0024C87A /* userHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +127,6 @@
 		453B893319E17FA500D3483F /* Lot Data */ = {
 			isa = PBXGroup;
 			children = (
-				9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */,
-				9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */,
 				45847F3619EDC0B700F28C51 /* FPParkingLotData.h */,
 				45847F3719EDC0B700F28C51 /* FPParkingLotData.m */,
 			);
@@ -231,8 +232,10 @@
 		FAC0765019FD68810024C87A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FAC0765119FD69C30024C87A /* User_Information.h */,
-				FAC0765219FD69C30024C87A /* User_Information.m */,
+				FAC0765419FD72460024C87A /* user.h */,
+				FAC0765519FD72460024C87A /* user.m */,
+				FAC0765719FD740E0024C87A /* userHandler.h */,
+				FAC0765819FD740E0024C87A /* userHandler.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -349,16 +352,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */,
+				FAC0765919FD740E0024C87A /* userHandler.m in Sources */,
 				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
 				453B893219E1748600D3483F /* FPMapView.m in Sources */,
+				FAC0765619FD72460024C87A /* user.m in Sources */,
 				453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */,
 				9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */,
 				45438B3E19CF3B700063F898 /* FastPassParking.xcdatamodeld in Sources */,
 				FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */,
 				45438B4119CF3B700063F898 /* ViewController.m in Sources */,
-				453B893619E17FDD00D3483F /* ParkingLotDataMock.m in Sources */,
-				FAC0765319FD69C30024C87A /* User_Information.m in Sources */,
 				45438B3819CF3B700063F898 /* main.m in Sources */,
 				453B893919E19B7D00D3483F /* FPLotTableViewCell.m in Sources */,
 			);

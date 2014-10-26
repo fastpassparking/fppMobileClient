@@ -1,5 +1,5 @@
 //
-//  User_Information.h
+//  userHandler.h
 //  FastPassParking
 //
 //  Created by Alex Gordon on 10/26/14.
@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface User_Information : UIViewController
+@interface userHandler : NSObject
+
+@property(nonatomic,copy) NSString* kBaseURL;
+
+
+
+-(void) authenticateLogin;
 
 @end
