@@ -33,6 +33,7 @@
 		FAA43E5D19D38A4F00335A85 /* iPhone_6.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5C19D38A4F00335A85 /* iPhone_6.storyboard */; };
 		FAA43E5F19D38A6400335A85 /* iPhone_5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5E19D38A6400335A85 /* iPhone_5.storyboard */; };
 		FAA43E6119D38A7400335A85 /* iPhone_4s.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E6019D38A7400335A85 /* iPhone_4s.storyboard */; };
+		FAC0765319FD69C30024C87A /* User_Information.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC0765219FD69C30024C87A /* User_Information.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		FAA43E5C19D38A4F00335A85 /* iPhone_6.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_6.storyboard; sourceTree = "<group>"; };
 		FAA43E5E19D38A6400335A85 /* iPhone_5.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_5.storyboard; sourceTree = "<group>"; };
 		FAA43E6019D38A7400335A85 /* iPhone_4s.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_4s.storyboard; sourceTree = "<group>"; };
+		FAC0765119FD69C30024C87A /* User_Information.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User_Information.h; sourceTree = "<group>"; };
+		FAC0765219FD69C30024C87A /* User_Information.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User_Information.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,13 +151,13 @@
 		45438B3419CF3B700063F898 /* FastPassParking */ = {
 			isa = PBXGroup;
 			children = (
+				FAC0765019FD68810024C87A /* Models */,
 				FA1CA12019EAF64100EC98E7 /* Create Account */,
+				FAC0764F19FD68420024C87A /* LogIn */,
 				9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */,
 				9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */,
 				45438B3919CF3B700063F898 /* AppDelegate.h */,
 				45438B3A19CF3B700063F898 /* AppDelegate.m */,
-				FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */,
-				FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */,
 				45438B3F19CF3B700063F898 /* ViewController.h */,
 				45438B4019CF3B700063F898 /* ViewController.m */,
 				453B893319E17FA500D3483F /* Lot Data */,
@@ -212,6 +215,24 @@
 				FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */,
 			);
 			name = "Create Account";
+			sourceTree = "<group>";
+		};
+		FAC0764F19FD68420024C87A /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */,
+				FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */,
+			);
+			name = LogIn;
+			sourceTree = "<group>";
+		};
+		FAC0765019FD68810024C87A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAC0765119FD69C30024C87A /* User_Information.h */,
+				FAC0765219FD69C30024C87A /* User_Information.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +355,7 @@
 				FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */,
 				45438B4119CF3B700063F898 /* ViewController.m in Sources */,
 				453B893619E17FDD00D3483F /* ParkingLotDataMock.m in Sources */,
+				FAC0765319FD69C30024C87A /* User_Information.m in Sources */,
 				45438B3819CF3B700063F898 /* main.m in Sources */,
 				453B893919E19B7D00D3483F /* FPLotTableViewCell.m in Sources */,
 			);
