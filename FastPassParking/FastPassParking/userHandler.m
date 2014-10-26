@@ -28,8 +28,6 @@
     request.HTTPMethod = @"GET";
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    NSURl
-    
     
     
     
