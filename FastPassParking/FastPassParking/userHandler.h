@@ -13,7 +13,8 @@
 @property(nonatomic,copy) NSString* kBaseURL;
 
 
+-(void) initWithBaseURL;
+-(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword;
 
--(void) authenticateLogin;
 
 @end

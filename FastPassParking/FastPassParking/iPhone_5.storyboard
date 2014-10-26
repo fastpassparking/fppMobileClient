@@ -74,6 +74,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 </variation>
                                 <connections>
+                                    <action selector="checkSignIn:" destination="ufB-ED-ehF" eventType="touchUpInside" id="G4P-DF-yYP"/>
                                     <segue destination="btl-PD-y29" kind="show" id="ZAa-T7-fmf"/>
                                 </connections>
                             </button>

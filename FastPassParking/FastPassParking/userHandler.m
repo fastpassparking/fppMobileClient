@@ -7,8 +7,11 @@
 //
 
 #import "userHandler.h"
+#import "user.h"
 
-#define BASE_URL @"107.203.220.120"
+#define BASE_URL @"http://107.203.220.120"
+#define User @"User";
+
 @interface userHandler ()
 
 @end
@@ -21,12 +24,33 @@
 }
 
 
--(void) authenticateLogin{
+-(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword{
     
-    NSURL* url = [NSURL URLWithString:[self.kBaseURL stringByAppendingPathComponent:@"User"]];
+    NSURL* url = [NSURL URLWithString:[[[self.kBaseURL stringByAppendingPathComponent:@"User"] stringByAppendingPathComponent:@"login?email="] stringByAppendingFormat:@"%@&password=%@",loginName,loginPassword]];
+
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if(error == nil){
+            
+            NSLog(@"Connected");
+            user* currentUser = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            
+        }
+        
+        else{
+            NSLog(@"Failed");
+        }
+    }];
+    
+    [dataTask resume];
+    
     
     
     

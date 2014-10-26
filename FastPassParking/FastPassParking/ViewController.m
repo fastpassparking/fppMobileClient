@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "User.h"
+#import "userHandler.h"
 
 @interface ViewController ()
 
@@ -28,6 +30,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)checkSignIn:(id)sender{
+    
+    NSString* loginText = [SignInScreen_UserName text];
+    NSString* passwordText = [SignInScreen_Password text];
+    
+    userHandler* checkingUser = [[userHandler alloc] init];
+    
+    [checkingUser initWithBaseURL];
+    
+    [checkingUser authenticateLogin:loginText withLoginPassword:passwordText];
+    
 }
 
 @end

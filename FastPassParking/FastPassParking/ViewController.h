@@ -24,6 +24,8 @@
 
 }
 
+- (IBAction)checkSignIn:(id)sender;
+
 
 @end
 
