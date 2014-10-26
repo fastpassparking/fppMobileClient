@@ -9,18 +9,23 @@
 #import <UIKit/UIKit.h>
 #import "FPMapView.h"
 
-@interface FPMainViewController : UIViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface FPMainViewController : UIViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, FPMapViewDelegate>
 
 
 // Storyboard
-@property (strong, nonatomic) IBOutlet FPMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIView *mapView;
+
 @property (strong, nonatomic) IBOutlet UITableView *parkingLotTableView;
+@property (strong, nonatomic) FPMapView* implementation;
 
 // User Information
 @property (weak, nonatomic) IBOutlet UILabel *userFundsLabel;
 
 // ParkingLotData
 @property (strong, nonatomic) NSMutableDictionary* parkingLotDataObjectsIDsToPolygons;
+@property (strong, nonatomic) FPParkingLotData* selectedLot;
+
+@property (strong, nonatomic) UIView* pin;
 
 #pragma MapView Delegate
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
