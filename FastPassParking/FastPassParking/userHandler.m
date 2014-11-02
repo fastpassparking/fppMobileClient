@@ -8,9 +8,7 @@
 
 #import "userHandler.h"
 #import "user.h"
-
-#define BASE_URL @"http://107.203.220.120"
-#define User @"User";
+#import "AppDelegate.h"
 
 @interface userHandler ()
 
@@ -18,46 +16,52 @@
 
 @implementation userHandler
 
--(void) initWithBaseURL
+-(void) initWithAppDelegate
 {
-    _kBaseURL = BASE_URL;
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
+-(void) authenticateLogin:(NSString*)loginName withLoginPassword:(NSString*)loginPassword withCompletionHandler:(void (^)(BOOL))Finished{
+    
+    NSString* endUrl = @"user/login?email=";
+    endUrl = [endUrl  stringByAppendingFormat:@"%@&password=%@",loginName,loginPassword];
 
--(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword{
-    
-    NSURL* url = [NSURL URLWithString:[[[self.kBaseURL stringByAppendingPathComponent:@"User"] stringByAppendingPathComponent:@"login?email="] stringByAppendingFormat:@"%@&password=%@",loginName,loginPassword]];
-
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"GET";
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [httpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        if(error == nil){
-            
-            NSLog(@"Connected");
-            user* currentUser = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-            
-        }
-        
-        else{
-            NSLog(@"Failed");
+        if(!error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            if(httpResponse.statusCode == 200) {
+                appDelegate->globalUser = [[user alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+                Finished(YES);
+            } else {
+                NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+            }
+        } else {
+            NSLog(@"Error");
         }
     }];
     
-    [dataTask resume];
-    
-    
-    
-    
-    
-    
 }
 
+-(void) createAccount:(user*) userObject {
+    
+    NSString* endUrl = @"user";
+    NSMutableDictionary* userJsonObject = [user serializeToJson:userObject];
+    
+    [httpRequestHandler httpPostRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if(error == nil) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            if(httpResponse.statusCode == 200) {
+                
+            } else {
+                NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+            }
+        } else {
+            NSLog(@"Error");
+        }
+    }];
+}
 
 
 /*

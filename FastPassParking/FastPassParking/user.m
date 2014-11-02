@@ -14,6 +14,39 @@
 
 @implementation user
 
+- (id) initWithJson:(NSObject*)jsonObject{
+    self = [super init];
+    if (self && jsonObject) {
+        self.dbId = [jsonObject valueForKey:@"id"];
+        self.firstName = [jsonObject valueForKey:@"firstName"];
+        self.lastName = [jsonObject valueForKey:@"lastName"];
+        self.email = [jsonObject valueForKey:@"email"];
+        self.password = [jsonObject valueForKey:@"password"];
+        self.phoneNumber = [jsonObject valueForKey:@"phoneNumber"];
+        self.availableCredit = [jsonObject valueForKey:@"availableCredit"];
+    }
+    return self;
+}
+
++ (NSMutableDictionary*) serializeToJson:(user*)userObject {
+    
+    NSMutableDictionary* userWrapper;
+    if(userObject) {
+        userWrapper = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary* newUser = [[NSMutableDictionary alloc] init];
+        [newUser setObject:userObject.dbId forKey:@"id"];
+        [newUser setObject:userObject.firstName forKey:@"firstName"];
+        [newUser setObject:userObject.lastName forKey:@"lastName"];
+        [newUser setObject:userObject.email forKey:@"email"];
+        [newUser setObject:userObject.password forKey:@"password"];
+        [newUser setObject:userObject.phoneNumber forKey:@"phoneNumber"];
+        [newUser setObject:userObject.availableCredit forKey:@"availableCredit"];
+        
+        [userWrapper setObject:newUser forKey:@"user"];
+    }
+    
+    return userWrapper;
+}
 
 /*
 #pragma mark - Navigation

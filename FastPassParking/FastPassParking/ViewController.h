@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface ViewController : UIViewController
 
 {
-    
     IBOutlet UILabel *test_height;  //Used to test pixl height for storyboards ** Is not needed any longer.
     
     IBOutlet UIButton *SignInButton;

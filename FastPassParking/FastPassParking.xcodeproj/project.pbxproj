@@ -19,6 +19,14 @@
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
 		45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */ = {isa = PBXBuildFile; fileRef = 45847F3719EDC0B700F28C51 /* FPParkingLotData.m */; };
+		4B9234761A01B91200E9071A /* parkingPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9234751A01B91200E9071A /* parkingPass.m */; };
+		4B9576221A01E9D4003DA5AF /* vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576211A01E9D4003DA5AF /* vehicle.m */; };
+		4B9576251A01EC57003DA5AF /* parkingPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576241A01EC57003DA5AF /* parkingPayment.m */; };
+		4B9576281A01EDF0003DA5AF /* accountCredit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576271A01EDF0003DA5AF /* accountCredit.m */; };
+		4B95762B1A01EE40003DA5AF /* parkingLot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B95762A1A01EE40003DA5AF /* parkingLot.m */; };
+		4B95762E1A01F08A003DA5AF /* geoCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B95762D1A01F08A003DA5AF /* geoCoordinate.m */; };
+		4B9576311A01F0F0003DA5AF /* parkingViolation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576301A01F0F0003DA5AF /* parkingViolation.m */; };
+		4BA82F391A022C3900A57843 /* httpRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA82F381A022C3900A57843 /* httpRequestHandler.m */; };
 		9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */; };
 		FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */; };
 		FA1CA11619E3A97C00EC98E7 /* FPP_Logo_Transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11519E3A97C00EC98E7 /* FPP_Logo_Transparent.png */; };
@@ -70,6 +78,22 @@
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
 		45847F3619EDC0B700F28C51 /* FPParkingLotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPParkingLotData.h; path = "Lot Data/FPParkingLotData.h"; sourceTree = "<group>"; };
 		45847F3719EDC0B700F28C51 /* FPParkingLotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPParkingLotData.m; path = "Lot Data/FPParkingLotData.m"; sourceTree = "<group>"; };
+		4B9234741A01B91200E9071A /* parkingPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parkingPass.h; sourceTree = "<group>"; };
+		4B9234751A01B91200E9071A /* parkingPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parkingPass.m; sourceTree = "<group>"; };
+		4B9576201A01E9D4003DA5AF /* vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vehicle.h; sourceTree = "<group>"; };
+		4B9576211A01E9D4003DA5AF /* vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = vehicle.m; sourceTree = "<group>"; };
+		4B9576231A01EC57003DA5AF /* parkingPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parkingPayment.h; sourceTree = "<group>"; };
+		4B9576241A01EC57003DA5AF /* parkingPayment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parkingPayment.m; sourceTree = "<group>"; };
+		4B9576261A01EDF0003DA5AF /* accountCredit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = accountCredit.h; sourceTree = "<group>"; };
+		4B9576271A01EDF0003DA5AF /* accountCredit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = accountCredit.m; sourceTree = "<group>"; };
+		4B9576291A01EE40003DA5AF /* parkingLot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parkingLot.h; sourceTree = "<group>"; };
+		4B95762A1A01EE40003DA5AF /* parkingLot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parkingLot.m; sourceTree = "<group>"; };
+		4B95762C1A01F08A003DA5AF /* geoCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geoCoordinate.h; sourceTree = "<group>"; };
+		4B95762D1A01F08A003DA5AF /* geoCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = geoCoordinate.m; sourceTree = "<group>"; };
+		4B95762F1A01F0F0003DA5AF /* parkingViolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parkingViolation.h; sourceTree = "<group>"; };
+		4B9576301A01F0F0003DA5AF /* parkingViolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parkingViolation.m; sourceTree = "<group>"; };
+		4BA82F371A022C3900A57843 /* httpRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httpRequestHandler.h; sourceTree = "<group>"; };
+		4BA82F381A022C3900A57843 /* httpRequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = httpRequestHandler.m; sourceTree = "<group>"; };
 		9375F34A19E1DB9000790030 /* FPLotDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPLotDetailViewController.h; sourceTree = "<group>"; };
 		9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPLotDetailViewController.m; sourceTree = "<group>"; };
 		FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateProfile.h; path = ../CreateProfile.h; sourceTree = "<group>"; };
@@ -154,6 +178,7 @@
 		45438B3419CF3B700063F898 /* FastPassParking */ = {
 			isa = PBXGroup;
 			children = (
+				4B95761F1A01E998003DA5AF /* Handlers */,
 				FAC0765019FD68810024C87A /* Models */,
 				FA1CA12019EAF64100EC98E7 /* Create Account */,
 				FAC0764F19FD68420024C87A /* LogIn */,
@@ -211,6 +236,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4B95761F1A01E998003DA5AF /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				FAC0765719FD740E0024C87A /* userHandler.h */,
+				FAC0765819FD740E0024C87A /* userHandler.m */,
+				4BA82F371A022C3900A57843 /* httpRequestHandler.h */,
+				4BA82F381A022C3900A57843 /* httpRequestHandler.m */,
+			);
+			name = Handlers;
+			sourceTree = "<group>";
+		};
 		FA1CA12019EAF64100EC98E7 /* Create Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,10 +268,22 @@
 		FAC0765019FD68810024C87A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4B9234741A01B91200E9071A /* parkingPass.h */,
+				4B9234751A01B91200E9071A /* parkingPass.m */,
 				FAC0765419FD72460024C87A /* user.h */,
 				FAC0765519FD72460024C87A /* user.m */,
-				FAC0765719FD740E0024C87A /* userHandler.h */,
-				FAC0765819FD740E0024C87A /* userHandler.m */,
+				4B9576201A01E9D4003DA5AF /* vehicle.h */,
+				4B9576211A01E9D4003DA5AF /* vehicle.m */,
+				4B9576231A01EC57003DA5AF /* parkingPayment.h */,
+				4B9576241A01EC57003DA5AF /* parkingPayment.m */,
+				4B9576261A01EDF0003DA5AF /* accountCredit.h */,
+				4B9576271A01EDF0003DA5AF /* accountCredit.m */,
+				4B9576291A01EE40003DA5AF /* parkingLot.h */,
+				4B95762A1A01EE40003DA5AF /* parkingLot.m */,
+				4B95762C1A01F08A003DA5AF /* geoCoordinate.h */,
+				4B95762D1A01F08A003DA5AF /* geoCoordinate.m */,
+				4B95762F1A01F0F0003DA5AF /* parkingViolation.h */,
+				4B9576301A01F0F0003DA5AF /* parkingViolation.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -351,16 +399,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B9576281A01EDF0003DA5AF /* accountCredit.m in Sources */,
 				45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */,
+				4B9234761A01B91200E9071A /* parkingPass.m in Sources */,
 				FAC0765919FD740E0024C87A /* userHandler.m in Sources */,
+				4B95762E1A01F08A003DA5AF /* geoCoordinate.m in Sources */,
 				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
+				4B9576251A01EC57003DA5AF /* parkingPayment.m in Sources */,
 				453B893219E1748600D3483F /* FPMapView.m in Sources */,
 				FAC0765619FD72460024C87A /* user.m in Sources */,
+				4BA82F391A022C3900A57843 /* httpRequestHandler.m in Sources */,
+				4B9576311A01F0F0003DA5AF /* parkingViolation.m in Sources */,
+				4B9576221A01E9D4003DA5AF /* vehicle.m in Sources */,
 				453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */,
 				9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */,
 				45438B3E19CF3B700063F898 /* FastPassParking.xcdatamodeld in Sources */,
 				FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */,
+				4B95762B1A01EE40003DA5AF /* parkingLot.m in Sources */,
 				45438B4119CF3B700063F898 /* ViewController.m in Sources */,
 				45438B3819CF3B700063F898 /* main.m in Sources */,
 				453B893919E19B7D00D3483F /* FPLotTableViewCell.m in Sources */,

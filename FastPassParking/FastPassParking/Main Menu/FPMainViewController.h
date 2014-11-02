@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "FPMapView.h"
+#import "AppDelegate.h"
 
-@interface FPMainViewController : UIViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, FPMapViewDelegate>
+@interface FPMainViewController : UIViewController <MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, FPMapViewDelegate> {
+    AppDelegate* appDelegate;
+}
 
 
 // Storyboard

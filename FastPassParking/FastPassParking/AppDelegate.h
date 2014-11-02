@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "user.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+    @public user* globalUser;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -22,4 +25,3 @@
 
 
 @end
-

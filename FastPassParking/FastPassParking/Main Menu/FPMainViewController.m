@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     // View initializing properties
-    CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
+    appDelegate = [[UIApplication sharedApplication] delegate];    CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(ucfCampusCenter, span);
     
@@ -109,7 +109,11 @@
     
     [_parkingLotTableView reloadData];
     
-    [_mainNavigationBar setTitle:@"$Arbitrary.Dollars"];
+    //Move global variable to title
+    NSString *accountBalance = [appDelegate->globalUser.availableCredit stringValue];
+    NSString *currentBalance = @"Balance: $";
+    NSString *accountBalancePlus = [currentBalance stringByAppendingString:accountBalance];
+    [_mainNavigationBar setTitle:accountBalancePlus];
     //    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
     
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
