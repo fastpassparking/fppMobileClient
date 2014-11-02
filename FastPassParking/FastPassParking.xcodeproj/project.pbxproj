@@ -20,6 +20,8 @@
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
 		45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */ = {isa = PBXBuildFile; fileRef = 45847F3719EDC0B700F28C51 /* FPParkingLotData.m */; };
 		4B8DB9851A06DA59000F2D78 /* VehicleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */; };
+		4B8DB9881A06E3EA000F2D78 /* ParkingLotHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB9871A06E3EA000F2D78 /* ParkingLotHandler.m */; };
+		4B8DB98B1A06EB00000F2D78 /* ParkingPassHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB98A1A06EB00000F2D78 /* ParkingPassHandler.m */; };
 		4B9234761A01B91200E9071A /* parkingPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9234751A01B91200E9071A /* parkingPass.m */; };
 		4B9576221A01E9D4003DA5AF /* vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576211A01E9D4003DA5AF /* vehicle.m */; };
 		4B9576251A01EC57003DA5AF /* parkingPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576241A01EC57003DA5AF /* parkingPayment.m */; };
@@ -81,6 +83,10 @@
 		45847F3719EDC0B700F28C51 /* FPParkingLotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPParkingLotData.m; path = "Lot Data/FPParkingLotData.m"; sourceTree = "<group>"; };
 		4B8DB9831A06DA59000F2D78 /* VehicleHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleHandler.h; sourceTree = "<group>"; };
 		4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleHandler.m; sourceTree = "<group>"; };
+		4B8DB9861A06E3EA000F2D78 /* ParkingLotHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingLotHandler.h; sourceTree = "<group>"; };
+		4B8DB9871A06E3EA000F2D78 /* ParkingLotHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingLotHandler.m; sourceTree = "<group>"; };
+		4B8DB9891A06EB00000F2D78 /* ParkingPassHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingPassHandler.h; sourceTree = "<group>"; };
+		4B8DB98A1A06EB00000F2D78 /* ParkingPassHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingPassHandler.m; sourceTree = "<group>"; };
 		4B9234741A01B91200E9071A /* parkingPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parkingPass.h; sourceTree = "<group>"; };
 		4B9234751A01B91200E9071A /* parkingPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parkingPass.m; sourceTree = "<group>"; };
 		4B9576201A01E9D4003DA5AF /* vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vehicle.h; sourceTree = "<group>"; };
@@ -248,6 +254,10 @@
 				4BA82F381A022C3900A57843 /* httpRequestHandler.m */,
 				4B8DB9831A06DA59000F2D78 /* VehicleHandler.h */,
 				4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */,
+				4B8DB9861A06E3EA000F2D78 /* ParkingLotHandler.h */,
+				4B8DB9871A06E3EA000F2D78 /* ParkingLotHandler.m */,
+				4B8DB9891A06EB00000F2D78 /* ParkingPassHandler.h */,
+				4B8DB98A1A06EB00000F2D78 /* ParkingPassHandler.m */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -412,10 +422,12 @@
 				4B8DB9851A06DA59000F2D78 /* VehicleHandler.m in Sources */,
 				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
+				4B8DB98B1A06EB00000F2D78 /* ParkingPassHandler.m in Sources */,
 				4B9576251A01EC57003DA5AF /* parkingPayment.m in Sources */,
 				453B893219E1748600D3483F /* FPMapView.m in Sources */,
 				FAC0765619FD72460024C87A /* user.m in Sources */,
 				4BA82F391A022C3900A57843 /* httpRequestHandler.m in Sources */,
+				4B8DB9881A06E3EA000F2D78 /* ParkingLotHandler.m in Sources */,
 				4B9576311A01F0F0003DA5AF /* parkingViolation.m in Sources */,
 				4B9576221A01E9D4003DA5AF /* vehicle.m in Sources */,
 				453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */,
