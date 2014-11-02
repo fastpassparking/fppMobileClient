@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "httpRequestHandler.h"
+#import "HttpRequestHandler.h"
 #import "user.h"
 
-@interface userHandler : NSObject
+@interface UserHandler : NSObject
 
 @property(nonatomic, strong) void (^Finished)(BOOL isFinished);
 

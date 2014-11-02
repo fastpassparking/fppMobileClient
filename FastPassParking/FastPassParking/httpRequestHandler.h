@@ -11,7 +11,7 @@
 #define BASE_URL @"http://107.203.220.120"
 extern NSString *const SERVER_BASE_URL;
 
-@interface httpRequestHandler : NSObject
+@interface HttpRequestHandler : NSObject
 
 @property (nonatomic, strong) void(^completionHandler)(NSData *data, NSURLResponse *response, NSError *error);
 

@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "User.h"
-#import "userHandler.h"
+#import "UserHandler.h"
 #import "AppDelegate.h"
 
 @interface ViewController ()
@@ -33,7 +33,7 @@
     NSString* loginText = [SignInScreen_UserName text];
     NSString* passwordText = [SignInScreen_Password text];
     
-    [userHandler authenticateLogin:loginText withLoginPassword:passwordText withCompletionHandler:^(BOOL success, user* returnedUser) {
+    [UserHandler authenticateLogin:loginText withLoginPassword:passwordText withCompletionHandler:^(BOOL success, user* returnedUser) {
         
         if(success == YES) {
             // Set the logged in user

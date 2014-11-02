@@ -6,21 +6,21 @@
 //  Copyright (c) 2014 FastPassParking. All rights reserved.
 //
 
-#import "userHandler.h"
+#import "UserHandler.h"
 #import "user.h"
 
-@interface userHandler ()
+@interface UserHandler ()
 
 @end
 
-@implementation userHandler
+@implementation UserHandler
 
 +(void) authenticateLogin:(NSString*)loginName withLoginPassword:(NSString*)loginPassword withCompletionHandler:(void(^)(BOOL, user*)) handler{
     
     NSString* endUrl = @"user/login?email=";
     endUrl = [endUrl  stringByAppendingFormat:@"%@&password=%@",loginName,loginPassword];
 
-    [httpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         BOOL wasSuccessful = NO;
         user* returnedUser = nil;
@@ -51,7 +51,7 @@
     NSString* endUrl = @"user";
     NSMutableDictionary* userJsonObject = [user serializeToJson:userObject];
     
-    [httpRequestHandler httpPostRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [HttpRequestHandler httpPostRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         BOOL wasSuccessful = NO;
         user* returnedUser = nil;

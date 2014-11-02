@@ -19,6 +19,7 @@
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
 		45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */ = {isa = PBXBuildFile; fileRef = 45847F3719EDC0B700F28C51 /* FPParkingLotData.m */; };
+		4B8DB9851A06DA59000F2D78 /* VehicleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */; };
 		4B9234761A01B91200E9071A /* parkingPass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9234751A01B91200E9071A /* parkingPass.m */; };
 		4B9576221A01E9D4003DA5AF /* vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576211A01E9D4003DA5AF /* vehicle.m */; };
 		4B9576251A01EC57003DA5AF /* parkingPayment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9576241A01EC57003DA5AF /* parkingPayment.m */; };
@@ -78,6 +79,8 @@
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
 		45847F3619EDC0B700F28C51 /* FPParkingLotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPParkingLotData.h; path = "Lot Data/FPParkingLotData.h"; sourceTree = "<group>"; };
 		45847F3719EDC0B700F28C51 /* FPParkingLotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPParkingLotData.m; path = "Lot Data/FPParkingLotData.m"; sourceTree = "<group>"; };
+		4B8DB9831A06DA59000F2D78 /* VehicleHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleHandler.h; sourceTree = "<group>"; };
+		4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleHandler.m; sourceTree = "<group>"; };
 		4B9234741A01B91200E9071A /* parkingPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parkingPass.h; sourceTree = "<group>"; };
 		4B9234751A01B91200E9071A /* parkingPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parkingPass.m; sourceTree = "<group>"; };
 		4B9576201A01E9D4003DA5AF /* vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vehicle.h; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 				FAC0765819FD740E0024C87A /* userHandler.m */,
 				4BA82F371A022C3900A57843 /* httpRequestHandler.h */,
 				4BA82F381A022C3900A57843 /* httpRequestHandler.m */,
+				4B8DB9831A06DA59000F2D78 /* VehicleHandler.h */,
+				4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				4B9234761A01B91200E9071A /* parkingPass.m in Sources */,
 				FAC0765919FD740E0024C87A /* userHandler.m in Sources */,
 				4B95762E1A01F08A003DA5AF /* geoCoordinate.m in Sources */,
+				4B8DB9851A06DA59000F2D78 /* VehicleHandler.m in Sources */,
 				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
 				4B9576251A01EC57003DA5AF /* parkingPayment.m in Sources */,
