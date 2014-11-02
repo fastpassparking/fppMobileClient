@@ -16,7 +16,7 @@
                          withMinLong:(NSNumber*) minLong withMaxLong:(NSNumber*) maxLong
                          withCompletionHandler:(void(^)(BOOL, NSArray*)) handler {
     
-    NSString* endUrl = @"parkingLot";
+    NSString* endUrl = @"parkingLot/byBoundingBox";
     endUrl = [endUrl  stringByAppendingFormat:@"?minLat=%@&maxLat=%@&minLong=%@&maxLong=%@",minLat,maxLat, minLong, maxLong];
     
     [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
