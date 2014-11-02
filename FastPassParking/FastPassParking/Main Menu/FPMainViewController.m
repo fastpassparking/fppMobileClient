@@ -110,7 +110,7 @@
     [_parkingLotTableView reloadData];
     
     //Move global variable to title
-    NSString *accountBalance = [appDelegate->globalUser.availableCredit stringValue];
+    NSString *accountBalance = [appDelegate->loggedInUser.availableCredit stringValue];
     NSString *currentBalance = @"Balance: $";
     NSString *accountBalancePlus = [currentBalance stringByAppendingString:accountBalance];
     [_mainNavigationBar setTitle:accountBalancePlus];

@@ -8,18 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "httpRequestHandler.h"
-#import "AppDelegate.h"
+#import "user.h"
 
-@interface userHandler : NSObject {
-    AppDelegate* appDelegate;
-}
+@interface userHandler : NSObject
 
 @property(nonatomic, strong) void (^Finished)(BOOL isFinished);
 
-// TODO: These methods need to return something (user object?)
-// TODO: Remove the initWithBaseUrl since the base url is stored in AppDelegate now
--(void) initWithAppDelegate;
--(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword withCompletionHandler:(void(^)(BOOL isFinished)) Finished;
--(void) createAccount:(user*) userObject;
++(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword withCompletionHandler:(void(^)(BOOL, user*)) handler;
++(void) createAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*)) handler;
 
 @end

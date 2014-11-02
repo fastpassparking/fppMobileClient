@@ -15,8 +15,8 @@ extern NSString *const SERVER_BASE_URL;
 
 @property (nonatomic, strong) void(^completionHandler)(NSData *data, NSURLResponse *response, NSError *error);
 
-+ (void) httpGetRequest:(NSString*) endUrl withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler;
-+ (void) httpPostRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler;
-+ (void) httpPutRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler;
++ (void) httpGetRequest:(NSString*) endUrl withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler;
++ (void) httpPostRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler;
++ (void) httpPutRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler;
 
 @end

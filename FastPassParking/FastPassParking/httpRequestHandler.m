@@ -13,7 +13,7 @@ NSString *const SERVER_BASE_URL = BASE_URL;
 
 @implementation httpRequestHandler
 
-+ (void) httpGetRequest:(NSString*) endUrl withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler {
++ (void) httpGetRequest:(NSString*) endUrl withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler {
     
     NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
     
@@ -31,7 +31,7 @@ NSString *const SERVER_BASE_URL = BASE_URL;
     [dataTask resume];
     
 }
-+ (void) httpPostRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler {
++ (void) httpPostRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler {
     
     NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
     

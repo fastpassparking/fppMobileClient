@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "User.h"
 #import "userHandler.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
 
@@ -32,17 +33,21 @@
     NSString* loginText = [SignInScreen_UserName text];
     NSString* passwordText = [SignInScreen_Password text];
     
-    userHandler* checkingUser = [[userHandler alloc] init];
-    [checkingUser initWithAppDelegate];
-    
-    [checkingUser authenticateLogin:loginText withLoginPassword:passwordText withCompletionHandler:^(BOOL isFinished) {
+    [userHandler authenticateLogin:loginText withLoginPassword:passwordText withCompletionHandler:^(BOOL success, user* returnedUser) {
         
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self performSegueWithIdentifier:@"LoginSegue" sender:self];
-        });
+        if(success == YES) {
+            // Set the logged in user
+            AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+            appDelegate->loggedInUser = returnedUser;
+            
+            // Perform segue
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [self performSegueWithIdentifier:@"LoginSegue" sender:self];
+            });
+        } else {
+            // Make user aware that login failed
+        }
     }];
-    
-    
     
 }
 
