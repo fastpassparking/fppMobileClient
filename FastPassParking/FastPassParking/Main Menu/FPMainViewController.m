@@ -110,15 +110,53 @@
     newPoly2.annotationIsDrawn = NO;
     
     // testing lot handler; request, parse, and add to map
-    NSNumber* MILA = [NSNumber numberWithInt:0];
-    NSNumber* MALA = [NSNumber numberWithInt:3];
-    NSNumber* MILO = [NSNumber numberWithInt:0];
-    NSNumber* MALO = [NSNumber numberWithInt:3];
+    NSNumber* MILA = [NSNumber numberWithInt:15];
+    NSNumber* MALA = [NSNumber numberWithInt:17];
+    NSNumber* MILO = [NSNumber numberWithInt:15];
+    NSNumber* MALO = [NSNumber numberWithInt:17];
     [ParkingLotHandler getParkingLotsForBoundingBox:MILA withMaxLat:MALA withMinLong:MILO withMaxLong:MALO withCompletionHandler:^(BOOL success, NSArray* lotArray){
         if(success)
         {
-            parkingLot* lot = [lotArray objectAtIndex:0];
-            NSLog(@"Success - got lots: %@", [parkingLot serializeToJson:lot]);
+            NSLog(@"Success - got lots");
+            
+            for(parkingLot* lot in lotArray)
+            {
+                CLLocationCoordinate2D* lotVs = malloc(sizeof(CLLocationCoordinate2D) * [lot.coordinates count] + 1);
+                int i = 0;
+                
+                for(NSDictionary* coord in lot.coordinates)
+                {
+                    double gLat = [[coord valueForKey:@"latitude"] doubleValue];
+                    double gLong = [[coord valueForKey:@"longitude"] doubleValue];
+                    CLLocationCoordinate2D c = CLLocationCoordinate2DMake(gLat, gLong);
+                    
+                    lotVs[i++] = c;
+                }
+                
+                // test data does not have repeated first and last entries; no big deal.
+                lotVs[i] = lotVs[0];
+                
+                FPParkingLotData* newLotFromNet = [FPParkingLotData createPolygonWithCoordinates:lotVs andCount:[lot.coordinates count] + 1];
+                
+                MKPolygonRenderer* netRender = [[MKPolygonRenderer alloc] initWithPolygon:newLotFromNet];
+                netRender.lineWidth = 2.0;
+                netRender.strokeColor = [UIColor blackColor];
+                netRender.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+                newLotFromNet.rendererForLot = netRender;
+                newLotFromNet.parkingLotName = lot.name;
+                
+                [implementation addOverlay:newLotFromNet];
+                [_parkingLotDataObjectsIDsToPolygons setObject:newLotFromNet forKey:newLotFromNet.parkingLotName];
+                
+                newLotFromNet.polygonIsDrawn = YES;
+                newLotFromNet.annotationIsDrawn = NO;
+                
+                free(lotVs);
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                [_parkingLotTableView reloadData];
+            });
         }
         else
         {
@@ -299,12 +337,12 @@
             
             _selectedLot = (FPParkingLotData*)sender;
             
-            [_implementation removeOverlays:_implementation.overlays];
-            [_implementation removeAnnotations:_implementation.annotations];
-            [_implementation addOverlay:((FPParkingLotData*)sender)];
+//            [_implementation removeOverlays:_implementation.overlays];
+//            [_implementation removeAnnotations:_implementation.annotations];
+//            [_implementation addOverlay:((FPParkingLotData*)sender)];
             
-            ((FPParkingLotData*)sender).polygonIsDrawn = YES;
-            ((FPParkingLotData*)sender).annotationIsDrawn = NO;
+//            ((FPParkingLotData*)sender).polygonIsDrawn = YES;
+//            ((FPParkingLotData*)sender).annotationIsDrawn = NO;
             
             [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
         });

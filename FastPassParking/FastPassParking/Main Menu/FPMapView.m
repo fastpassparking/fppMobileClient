@@ -24,7 +24,7 @@
     pinch.delegate = self;
     self.pinchToZoom = pinch;
     
-    [self addGestureRecognizer:pinch];
+//    [self addGestureRecognizer:pinch];
 }
 
 - (void) attachTapGestureRecognizer
@@ -66,6 +66,7 @@
     MKPolygon* touchPoly = [MKPolygon polygonWithCoordinates:touchTri count:4];
     
     NSArray* visible = [_parkingLotDataObjectsIDsToPolygons allValues];
+    BOOL searchMore = YES;
     for(FPParkingLotData* polygon in visible)
     {
         if([polygon isKindOfClass:[FPParkingLotData class]] &&
@@ -74,6 +75,7 @@
             if([_mapDelegate respondsToSelector:@selector(respondToTapSelectionOfLotData:)])
             {
                 [_mapDelegate performSelector:@selector(respondToTapSelectionOfLotData:) withObject:polygon];
+                break;
             }
         }
     }
