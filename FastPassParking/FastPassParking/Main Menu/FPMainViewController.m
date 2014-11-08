@@ -160,7 +160,7 @@
         }
         else
         {
-            NSLog(@"Fuck this shit.");
+            NSLog(@"Parking lot net query unsuccessful; skipping.");
         }
     }];
     // end lot handler
@@ -172,7 +172,7 @@
     NSString *currentBalance = @"Balance: $";
     NSString *accountBalancePlus = [currentBalance stringByAppendingString:accountBalance];
     [_mainNavigationBar setTitle:accountBalancePlus];
-    //    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
+    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
     
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];

@@ -24,7 +24,7 @@
     pinch.delegate = self;
     self.pinchToZoom = pinch;
     
-//    [self addGestureRecognizer:pinch];
+    [self addGestureRecognizer:pinch];
 }
 
 - (void) attachTapGestureRecognizer
