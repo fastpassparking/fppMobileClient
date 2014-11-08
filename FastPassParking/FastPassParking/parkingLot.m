@@ -13,22 +13,22 @@
 - (id) initWithJson:(NSObject*)jsonObject{
     self = [super init];
     if (self && jsonObject) {
-        self.dbId = [jsonObject valueForKey:@"id"];
+        self.dbId = [jsonObject valueForKey:@"_id"];
         self.clientId = [jsonObject valueForKey:@"clientId"];
         self.name = [jsonObject valueForKey:@"name"];
         
         // TODO: Properly parse this nested object
-        self.centerLocation = [jsonObject valueForKey:@"geoLocation"];
+        self.centerLocation = [jsonObject valueForKey:@"centerLocation"];
         
         // TODO: Properly parse this arrays of objects
         self.coordinates = [jsonObject valueForKey:@"coordinates"];
         
         // TODO: Properly parse this nested object
-        self.addressCity = [jsonObject valueForKey:@"city"];
-        self.addressState = [jsonObject valueForKey:@"state"];
-        self.addressStreet = [jsonObject valueForKey:@"street"];
-        self.addressTimeZone = [jsonObject valueForKey:@"timeZone"];
-        self.addressZipCode = [jsonObject valueForKey:@"zipcode"];
+        self.addressCity = [jsonObject valueForKeyPath:@"address.city"];
+        self.addressState = [jsonObject valueForKeyPath:@"address.state"];
+        self.addressStreet = [jsonObject valueForKeyPath:@"address.street"];
+//        self.addressTimeZone = [jsonObject valueForKeyPath:@"address.timeZone"];
+        self.addressZipCode = [jsonObject valueForKeyPath:@"address.zipcode"];
     }
     return self;
 }
@@ -39,12 +39,12 @@
     if(object) {
         wrapper = [[NSMutableDictionary alloc] init];
         NSMutableDictionary* newObject = [[NSMutableDictionary alloc] init];
-        [newObject setObject:object.dbId forKey:@"id"];
+        [newObject setObject:object.dbId forKey:@"_id"];
         [newObject setObject:object.clientId forKey:@"clientId"];
         [newObject setObject:object.name forKey:@"name"];
         
         // TODO: Properly
-        [newObject setObject:object.centerLocation forKey:@"geoLocation"];
+        [newObject setObject:object.centerLocation forKey:@"centerLocation"];
         
         // TODO: Properly
         [newObject setObject:object.coordinates forKey:@"coordinates"];
@@ -53,7 +53,7 @@
         [newObject setObject:object.addressCity forKey:@"city"];
         [newObject setObject:object.addressState forKey:@"state"];
         [newObject setObject:object.addressStreet forKey:@"street"];
-        [newObject setObject:object.addressTimeZone forKey:@"timeZone"];
+//        [newObject setObject:object.addressTimeZone forKey:@"timeZone"];
         [newObject setObject:object.addressZipCode forKey:@"zipcode"];
         
         [wrapper setObject:newObject forKey:@"parkingLot"];

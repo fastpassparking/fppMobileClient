@@ -10,6 +10,8 @@
 #import "FPLotTableViewCell.h"
 #import "FPLotDetailViewController.h"
 #import "FPParkingLotData.h"
+#import "ParkingLotHandler.h"
+#import "parkingLot.h"
 
 #define showLotDetailView @"showLotDetailView"
 #define kFPPAnnotationReuseIdentifier @"kFPPAnnotationReuseIdentifier"
@@ -106,6 +108,24 @@
     newPoly.annotationIsDrawn = NO;
     newPoly2.polygonIsDrawn = YES;
     newPoly2.annotationIsDrawn = NO;
+    
+    // testing lot handler; request, parse, and add to map
+    NSNumber* MILA = [NSNumber numberWithInt:0];
+    NSNumber* MALA = [NSNumber numberWithInt:3];
+    NSNumber* MILO = [NSNumber numberWithInt:0];
+    NSNumber* MALO = [NSNumber numberWithInt:3];
+    [ParkingLotHandler getParkingLotsForBoundingBox:MILA withMaxLat:MALA withMinLong:MILO withMaxLong:MALO withCompletionHandler:^(BOOL success, NSArray* lotArray){
+        if(success)
+        {
+            parkingLot* lot = [lotArray objectAtIndex:0];
+            NSLog(@"Success - got lots: %@", [parkingLot serializeToJson:lot]);
+        }
+        else
+        {
+            NSLog(@"Fuck this shit.");
+        }
+    }];
+    // end lot handler
     
     [_parkingLotTableView reloadData];
     
