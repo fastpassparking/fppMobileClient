@@ -153,9 +153,7 @@
     lot.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
     
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self performSegueWithIdentifier:showLotDetailView sender:lot];
-    });
+    [self performSegueWithIdentifier:showLotDetailView sender:lot];
 }
 
 #pragma MapView Delegate
@@ -234,15 +232,18 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(_selectedLot)
+    {
+        _selectedLot.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    }
+    
     NSArray* allLots = [_parkingLotDataObjectsIDsToPolygons allValues];
     FPParkingLotData* lotForCell = [allLots objectAtIndex:indexPath.row];
     
     lotForCell.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
     
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
-    });
+    [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
 }
 
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -251,6 +252,11 @@
     FPParkingLotData* lotForCell = [allLots objectAtIndex:indexPath.row];
     
     lotForCell.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    if(_selectedLot)
+    {
+        _selectedLot.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+        _selectedLot = nil;
+    }
 }
 
 
@@ -263,14 +269,16 @@
     
     if([segue.identifier isEqualToString:@"showLotDetailView"])
     {
-        FPLotDetailViewController* dest = [segue destinationViewController];
-
-        dest.main = self;
-        dest.lot = (FPParkingLotData*)sender;
         
-        _selectedLot = (FPParkingLotData*)sender;
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            
+            FPLotDetailViewController* dest = [segue destinationViewController];
+            
+            dest.main = self;
+            dest.lot = (FPParkingLotData*)sender;
+            
+            _selectedLot = (FPParkingLotData*)sender;
+            
             [_implementation removeOverlays:_implementation.overlays];
             [_implementation removeAnnotations:_implementation.annotations];
             [_implementation addOverlay:((FPParkingLotData*)sender)];
@@ -280,6 +288,24 @@
             
             [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
         });
+        
+//        FPLotDetailViewController* dest = [segue destinationViewController];
+
+//        dest.main = self;
+//        dest.lot = (FPParkingLotData*)sender;
+//        
+//        _selectedLot = (FPParkingLotData*)sender;
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^(void){
+//            [_implementation removeOverlays:_implementation.overlays];
+//            [_implementation removeAnnotations:_implementation.annotations];
+//            [_implementation addOverlay:((FPParkingLotData*)sender)];
+//            
+//            ((FPParkingLotData*)sender).polygonIsDrawn = YES;
+//            ((FPParkingLotData*)sender).annotationIsDrawn = NO;
+//            
+//            [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
+//        });
     }
 }
 
