@@ -11,16 +11,31 @@
 #import "UserHandler.h"
 #import "AppDelegate.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
+    // Do any additional setup after loading the view, typically from a nib.
+    SignInScreen_UserName.delegate = self;
+    SignInScreen_Password.delegate = self;
+    
+}
+
+- (IBAction)didTapView:(id)sender {
+    [SignInScreen_UserName resignFirstResponder];
+    [SignInScreen_Password resignFirstResponder];
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    [theTextField resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +63,6 @@
             // Make user aware that login failed
         }
     }];
-    
 }
 
 @end
