@@ -187,10 +187,11 @@
     NSString *accountBalance = [appDelegate->loggedInUser.availableCredit stringValue];
     NSString *currentBalance = @"Balance: $";
     NSString *accountBalancePlus = [currentBalance stringByAppendingString:accountBalance];
-    [_mainNavigationBar setTitle:accountBalancePlus];
-    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
     
-
+    dispatch_async(dispatch_get_main_queue(), ^() {
+        [_mainNavigationBar setTitle:accountBalancePlus];
+        [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
+    });
     
 }
 
@@ -302,7 +303,7 @@
     return pinView;
 }
 
-#pragma TableView Delegate
+#pragma mark - TableView Delegate
 - (NSInteger)tableView:(UITableView *)tableView  numberOfRowsInSection:(NSInteger)section
 {
     return [[_parkingLotDataObjectsIDsToPolygons allValues] count];
@@ -354,7 +355,20 @@
 }
 
 
+#pragma mark - IBOutlet Actions
 
+- (IBAction)didPressAddFundsButton:(id)sender
+{
+    UIView *fundsPicker = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+    
+    fundsPicker.center = self.view.center;
+    
+    fundsPicker.backgroundColor = [UIColor greenColor];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.view addSubview:fundsPicker];
+    });
+}
 
 #pragma mark - Navigation
 
