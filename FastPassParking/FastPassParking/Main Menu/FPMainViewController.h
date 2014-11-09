@@ -15,6 +15,9 @@
 }
 
 
+//Bar Buttons
+@property (weak,nonatomic) IBOutlet UIBarButtonItem *barButton;
+
 // Storyboard
 @property (strong, nonatomic) IBOutlet UIView *mapView;
 

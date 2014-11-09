@@ -37,6 +37,8 @@
 		FA1CA11C19EAF22900EC98E7 /* 13202-1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA11B19EAF22900EC98E7 /* 13202-1.png */; };
 		FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */; };
 		FA1CA12219EAF7AF00EC98E7 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1CA12119EAF7AF00EC98E7 /* camera.png */; };
+		FA376CDD1A0FD6EE00CD2295 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA376CDC1A0FD6EE00CD2295 /* SWRevealViewController.m */; };
+		FA376CE01A0FD9C600CD2295 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA376CDF1A0FD9C600CD2295 /* TableViewController.m */; };
 		FAA43E5319D37A7000335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5219D37A7000335A85 /* road.png */; };
 		FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */; };
 		FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */; };
@@ -113,6 +115,10 @@
 		FA1CA11D19EAF62700EC98E7 /* CreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditCardInfo.h; sourceTree = "<group>"; };
 		FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditCardInfo.m; sourceTree = "<group>"; };
 		FA1CA12119EAF7AF00EC98E7 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		FA376CDB1A0FD6EE00CD2295 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		FA376CDC1A0FD6EE00CD2295 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		FA376CDE1A0FD9C600CD2295 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		FA376CDF1A0FD9C600CD2295 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		FAA43E5219D37A7000335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparent_FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPP_Logo_No_Words.png; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				45438B3A19CF3B700063F898 /* AppDelegate.m */,
 				45438B3F19CF3B700063F898 /* ViewController.h */,
 				45438B4019CF3B700063F898 /* ViewController.m */,
+				FA376CDE1A0FD9C600CD2295 /* TableViewController.h */,
+				FA376CDF1A0FD9C600CD2295 /* TableViewController.m */,
 				453B893319E17FA500D3483F /* Lot Data */,
 				453B892A19E172AC00D3483F /* Main Menu */,
 				45438B4219CF3B700063F898 /* Main.storyboard */,
@@ -215,6 +223,7 @@
 		45438B3519CF3B700063F898 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA376CDA1A0FD6EE00CD2295 /* SlideOutMenuFiles */,
 				FA1CA12119EAF7AF00EC98E7 /* camera.png */,
 				FA1CA11B19EAF22900EC98E7 /* 13202-1.png */,
 				FA1CA11719E3B20C00EC98E7 /* FPP_Logo_Letters.png */,
@@ -269,6 +278,16 @@
 				FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */,
 			);
 			name = "Create Account";
+			sourceTree = "<group>";
+		};
+		FA376CDA1A0FD6EE00CD2295 /* SlideOutMenuFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FA376CDB1A0FD6EE00CD2295 /* SWRevealViewController.h */,
+				FA376CDC1A0FD6EE00CD2295 /* SWRevealViewController.m */,
+			);
+			name = SlideOutMenuFiles;
+			path = ../../../../../Downloads/SlideOutMenu/SlideOutMenuFiles;
 			sourceTree = "<group>";
 		};
 		FAC0764F19FD68420024C87A /* LogIn */ = {
@@ -421,11 +440,13 @@
 				4B95762E1A01F08A003DA5AF /* geoCoordinate.m in Sources */,
 				4B8DB9851A06DA59000F2D78 /* VehicleHandler.m in Sources */,
 				FA1CA11F19EAF62700EC98E7 /* CreditCardInfo.m in Sources */,
+				FA376CE01A0FD9C600CD2295 /* TableViewController.m in Sources */,
 				45438B3B19CF3B700063F898 /* AppDelegate.m in Sources */,
 				4B8DB98B1A06EB00000F2D78 /* ParkingPassHandler.m in Sources */,
 				4B9576251A01EC57003DA5AF /* parkingPayment.m in Sources */,
 				453B893219E1748600D3483F /* FPMapView.m in Sources */,
 				FAC0765619FD72460024C87A /* user.m in Sources */,
+				FA376CDD1A0FD6EE00CD2295 /* SWRevealViewController.m in Sources */,
 				4BA82F391A022C3900A57843 /* httpRequestHandler.m in Sources */,
 				4B8DB9881A06E3EA000F2D78 /* ParkingLotHandler.m in Sources */,
 				4B9576311A01F0F0003DA5AF /* parkingViolation.m in Sources */,
