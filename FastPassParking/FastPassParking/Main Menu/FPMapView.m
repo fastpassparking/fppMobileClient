@@ -49,6 +49,9 @@
 
 - (void) userDidTapMap:(UITapGestureRecognizer*)gesture
 {
+    if([self getZoomLevel] <= 14.5)
+        return;
+    
     CGPoint point = [gesture locationInView:self];
     CLLocationCoordinate2D tapPoint = [self convertPoint:point toCoordinateFromView:self];
     
@@ -66,7 +69,7 @@
     MKPolygon* touchPoly = [MKPolygon polygonWithCoordinates:touchTri count:4];
     
     NSArray* visible = [_parkingLotDataObjectsIDsToPolygons allValues];
-    BOOL searchMore = YES;
+    BOOL continueSearch = YES;
     for(FPParkingLotData* polygon in visible)
     {
         if([polygon isKindOfClass:[FPParkingLotData class]] &&
@@ -75,10 +78,16 @@
             if([_mapDelegate respondsToSelector:@selector(respondToTapSelectionOfLotData:)])
             {
                 [_mapDelegate performSelector:@selector(respondToTapSelectionOfLotData:) withObject:polygon];
-                break;
+                continueSearch = NO;
             }
         }
     }
+}
+
+- (void) didMoveToSuperview
+{
+    [self updatePolygonsAndAnnotationsAndForceDraw:NO];
+    [self setNeedsDisplay];
 }
 
 - (void) detectPinchStatus:(UIGestureRecognizer*)gestureRecognizer
@@ -98,6 +107,7 @@
         for(FPParkingLotData* lot in views)
         {
             [self addOverlay:lot];
+            [self removeAnnotation:lot];
             lot.polygonIsDrawn = YES;
             lot.annotationIsDrawn = NO;
         }

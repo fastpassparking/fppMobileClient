@@ -30,6 +30,8 @@
 
 @property (strong, nonatomic) UIView* pin;
 
+@property (assign, nonatomic) BOOL isRecognizer;
+
 #pragma MapView Delegate
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
             rendererForOverlay:(id<MKOverlay>)overlay;
