@@ -6,60 +6,72 @@
 //  Copyright (c) 2014 FastPassParking. All rights reserved.
 //
 
-#import "userHandler.h"
+#import "UserHandler.h"
 #import "user.h"
-#import "AppDelegate.h"
 
-@interface userHandler ()
+@interface UserHandler ()
 
 @end
 
-@implementation userHandler
+@implementation UserHandler
 
--(void) initWithAppDelegate
-{
-    appDelegate = [[UIApplication sharedApplication] delegate];
-}
-
--(void) authenticateLogin:(NSString*)loginName withLoginPassword:(NSString*)loginPassword withCompletionHandler:(void (^)(BOOL))Finished{
++(void) authenticateLogin:(NSString*)loginName withLoginPassword:(NSString*)loginPassword withCompletionHandler:(void(^)(BOOL, user*)) handler{
     
     NSString* endUrl = @"user/login?email=";
     endUrl = [endUrl  stringByAppendingFormat:@"%@&password=%@",loginName,loginPassword];
 
-    [httpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
+        BOOL wasSuccessful = NO;
+        user* returnedUser = nil;
         if(!error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             if(httpResponse.statusCode == 200) {
-                appDelegate->globalUser = [[user alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
-                Finished(YES);
+                // Parse the user from json data
+                returnedUser = [[user alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+                
+                // Set the completionHandler response
+                wasSuccessful = YES;
             } else {
+                // Make user aware that
                 NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
             }
         } else {
             NSLog(@"Error");
         }
+        
+        // Return the completion handler to the caller
+        handler(wasSuccessful, returnedUser);
     }];
     
 }
 
--(void) createAccount:(user*) userObject {
++(void) createAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*))handler {
     
     NSString* endUrl = @"user";
     NSMutableDictionary* userJsonObject = [user serializeToJson:userObject];
     
-    [httpRequestHandler httpPostRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    [HttpRequestHandler httpPostRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        if(error == nil) {
+        BOOL wasSuccessful = NO;
+        user* returnedUser = nil;
+        if(!error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             if(httpResponse.statusCode == 200) {
+                // Parse the user from json data
+                returnedUser = [[user alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
                 
+                // Set the completionHandler response
+                wasSuccessful = YES;
             } else {
                 NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
             }
         } else {
             NSLog(@"Error");
         }
+        
+        // Return the completion handler to the caller
+        handler(wasSuccessful, returnedUser);
     }];
 }
 

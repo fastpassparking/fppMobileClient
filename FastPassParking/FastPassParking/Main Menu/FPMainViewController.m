@@ -10,6 +10,8 @@
 #import "FPLotTableViewCell.h"
 #import "FPLotDetailViewController.h"
 #import "FPParkingLotData.h"
+#import "ParkingLotHandler.h"
+#import "parkingLot.h"
 
 #define showLotDetailView @"showLotDetailView"
 #define kFPPAnnotationReuseIdentifier @"kFPPAnnotationReuseIdentifier"
@@ -107,14 +109,70 @@
     newPoly2.polygonIsDrawn = YES;
     newPoly2.annotationIsDrawn = NO;
     
+    // testing lot handler; request, parse, and add to map
+    NSNumber* MILA = [NSNumber numberWithInt:15];
+    NSNumber* MALA = [NSNumber numberWithInt:17];
+    NSNumber* MILO = [NSNumber numberWithInt:15];
+    NSNumber* MALO = [NSNumber numberWithInt:17];
+    [ParkingLotHandler getParkingLotsForBoundingBox:MILA withMaxLat:MALA withMinLong:MILO withMaxLong:MALO withCompletionHandler:^(BOOL success, NSArray* lotArray){
+        if(success)
+        {
+            NSLog(@"Success - got lots");
+            
+            for(parkingLot* lot in lotArray)
+            {
+                CLLocationCoordinate2D* lotVs = malloc(sizeof(CLLocationCoordinate2D) * [lot.coordinates count] + 1);
+                int i = 0;
+                
+                for(NSDictionary* coord in lot.coordinates)
+                {
+                    double gLat = [[coord valueForKey:@"latitude"] doubleValue];
+                    double gLong = [[coord valueForKey:@"longitude"] doubleValue];
+                    CLLocationCoordinate2D c = CLLocationCoordinate2DMake(gLat, gLong);
+                    
+                    lotVs[i++] = c;
+                }
+                
+                // test data does not have repeated first and last entries; no big deal.
+                lotVs[i] = lotVs[0];
+                
+                FPParkingLotData* newLotFromNet = [FPParkingLotData createPolygonWithCoordinates:lotVs andCount:[lot.coordinates count] + 1];
+                
+                MKPolygonRenderer* netRender = [[MKPolygonRenderer alloc] initWithPolygon:newLotFromNet];
+                netRender.lineWidth = 2.0;
+                netRender.strokeColor = [UIColor blackColor];
+                netRender.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+                newLotFromNet.rendererForLot = netRender;
+                newLotFromNet.parkingLotName = lot.name;
+                
+                [implementation addOverlay:newLotFromNet];
+                [_parkingLotDataObjectsIDsToPolygons setObject:newLotFromNet forKey:newLotFromNet.parkingLotName];
+                
+                newLotFromNet.polygonIsDrawn = YES;
+                newLotFromNet.annotationIsDrawn = NO;
+                
+                free(lotVs);
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                [_parkingLotTableView reloadData];
+            });
+        }
+        else
+        {
+            NSLog(@"Parking lot net query unsuccessful; skipping.");
+        }
+    }];
+    // end lot handler
+    
     [_parkingLotTableView reloadData];
     
     //Move global variable to title
-    NSString *accountBalance = [appDelegate->globalUser.availableCredit stringValue];
+    NSString *accountBalance = [appDelegate->loggedInUser.availableCredit stringValue];
     NSString *currentBalance = @"Balance: $";
     NSString *accountBalancePlus = [currentBalance stringByAppendingString:accountBalance];
     [_mainNavigationBar setTitle:accountBalancePlus];
-    //    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
+    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
     
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
@@ -153,9 +211,7 @@
     lot.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
     
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self performSegueWithIdentifier:showLotDetailView sender:lot];
-    });
+    [self performSegueWithIdentifier:showLotDetailView sender:lot];
 }
 
 #pragma MapView Delegate
@@ -234,15 +290,18 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(_selectedLot)
+    {
+        _selectedLot.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    }
+    
     NSArray* allLots = [_parkingLotDataObjectsIDsToPolygons allValues];
     FPParkingLotData* lotForCell = [allLots objectAtIndex:indexPath.row];
     
     lotForCell.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
     
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
-    });
+    [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
 }
 
 - (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -251,6 +310,11 @@
     FPParkingLotData* lotForCell = [allLots objectAtIndex:indexPath.row];
     
     lotForCell.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    if(_selectedLot)
+    {
+        _selectedLot.rendererForLot.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+        _selectedLot = nil;
+    }
 }
 
 
@@ -263,23 +327,43 @@
     
     if([segue.identifier isEqualToString:@"showLotDetailView"])
     {
-        FPLotDetailViewController* dest = [segue destinationViewController];
-
-        dest.main = self;
-        dest.lot = (FPParkingLotData*)sender;
         
-        _selectedLot = (FPParkingLotData*)sender;
-        
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [_implementation removeOverlays:_implementation.overlays];
-            [_implementation removeAnnotations:_implementation.annotations];
-            [_implementation addOverlay:((FPParkingLotData*)sender)];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
-            ((FPParkingLotData*)sender).polygonIsDrawn = YES;
-            ((FPParkingLotData*)sender).annotationIsDrawn = NO;
+            FPLotDetailViewController* dest = [segue destinationViewController];
+            
+            dest.main = self;
+            dest.lot = (FPParkingLotData*)sender;
+            
+            _selectedLot = (FPParkingLotData*)sender;
+            
+//            [_implementation removeOverlays:_implementation.overlays];
+//            [_implementation removeAnnotations:_implementation.annotations];
+//            [_implementation addOverlay:((FPParkingLotData*)sender)];
+            
+//            ((FPParkingLotData*)sender).polygonIsDrawn = YES;
+//            ((FPParkingLotData*)sender).annotationIsDrawn = NO;
             
             [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
         });
+        
+//        FPLotDetailViewController* dest = [segue destinationViewController];
+
+//        dest.main = self;
+//        dest.lot = (FPParkingLotData*)sender;
+//        
+//        _selectedLot = (FPParkingLotData*)sender;
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^(void){
+//            [_implementation removeOverlays:_implementation.overlays];
+//            [_implementation removeAnnotations:_implementation.annotations];
+//            [_implementation addOverlay:((FPParkingLotData*)sender)];
+//            
+//            ((FPParkingLotData*)sender).polygonIsDrawn = YES;
+//            ((FPParkingLotData*)sender).annotationIsDrawn = NO;
+//            
+//            [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
+//        });
     }
 }
 

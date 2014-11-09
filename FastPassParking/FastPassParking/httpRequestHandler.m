@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 FastPassParking. All rights reserved.
 //
 
-#import "httpRequestHandler.h"
+#import "HttpRequestHandler.h"
 
 // Set the server's base url in a place that the entire app can reach
 NSString *const SERVER_BASE_URL = BASE_URL;
 
-@implementation httpRequestHandler
+@implementation HttpRequestHandler
 
-+ (void) httpGetRequest:(NSString*) endUrl withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler {
++ (void) httpGetRequest:(NSString*) endUrl withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler {
     
     NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
     
@@ -31,7 +31,7 @@ NSString *const SERVER_BASE_URL = BASE_URL;
     [dataTask resume];
     
 }
-+ (void) httpPostRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler {
++ (void) httpPostRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler {
     
     NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
     

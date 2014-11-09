@@ -11,7 +11,7 @@
 #import "user.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
-    @public user* globalUser;
+    @public user* loggedInUser;
 }
 
 @property (strong, nonatomic) UIWindow *window;
