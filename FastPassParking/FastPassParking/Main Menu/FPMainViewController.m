@@ -49,6 +49,8 @@
     _implementation = implementation;
     _implementation.delegate = self;
     _implementation.mapDelegate = self;
+    _implementation.pitchEnabled = NO;
+    _implementation.rotateEnabled = NO;
     
     [implementation setRegion:region];
     [implementation attachPinchGestureRecognizer];
@@ -194,7 +196,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    
+    [_implementation updatePolygonsAndAnnotationsAndForceDraw:YES];
+    [_implementation setNeedsDisplay];
 }
 
 - (void) viewDidLayoutSubviews
@@ -233,6 +236,29 @@
     }
     
     return nil;
+}
+
+- (void) mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+    for(UIGestureRecognizer* gr in _implementation.gestureRecognizers)
+        if(gr.state != 0)
+            _isRecognizer = YES;
+    NSArray* grs = [[_implementation.subviews firstObject] gestureRecognizers];
+    for(id gr in grs)
+        if(((UIGestureRecognizer*)gr).state != 0)
+            _isRecognizer = YES;
+    
+}
+
+- (void) mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    if(_isRecognizer)
+    {
+        _isRecognizer = NO;
+        return;
+    }
+    [_implementation updatePolygonsAndAnnotationsAndForceDraw:YES];
+    [_implementation setNeedsDisplay];
 }
 
 - (void) mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
@@ -355,6 +381,11 @@
 //            ((FPParkingLotData*)sender).annotationIsDrawn = NO;
             
             [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                [_implementation updatePolygonsAndAnnotationsAndForceDraw:YES];
+                [_implementation setNeedsDisplay];
+            });
         });
         
 //        FPLotDetailViewController* dest = [segue destinationViewController];
