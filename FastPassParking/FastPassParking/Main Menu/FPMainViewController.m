@@ -12,6 +12,7 @@
 #import "FPParkingLotData.h"
 #import "ParkingLotHandler.h"
 #import "parkingLot.h"
+#import "SWRevealViewController.h"
 
 #define showLotDetailView @"showLotDetailView"
 #define kFPPAnnotationReuseIdentifier @"kFPPAnnotationReuseIdentifier"
@@ -25,6 +26,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    //Slide out menu
+   // _barButton.target = self.revealViewController;
+   // _barButton.action = @selector(revealToggle:);
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
+    [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 0, 32, 32)];
+    //UIBarButtonItem *barButton =
+    self.mainNavigationBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     // View initializing properties
     appDelegate = [[UIApplication sharedApplication] delegate];    CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
@@ -178,11 +192,7 @@
     [_mainNavigationBar setTitle:accountBalancePlus];
     [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
     
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
-    //    [button addTarget:self action:@selector(blah) forControlEvents:UIControlEventTouchUpInside];
-    [button setFrame:CGRectMake(0, 0, 32, 32)];
-    self.mainNavigationBar.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
     
 }
 
