@@ -127,62 +127,6 @@
     newPoly2.polygonIsDrawn = YES;
     newPoly2.annotationIsDrawn = NO;
     
-    // testing lot handler; request, parse, and add to map
-//    NSNumber* MILA = [NSNumber numberWithInt:15];
-//    NSNumber* MALA = [NSNumber numberWithInt:17];
-//    NSNumber* MILO = [NSNumber numberWithInt:15];
-//    NSNumber* MALO = [NSNumber numberWithInt:17];
-//    [ParkingLotHandler getParkingLotsForBoundingBox:MILA withMaxLat:MALA withMinLong:MILO withMaxLong:MALO withCompletionHandler:^(BOOL success, NSArray* lotArray){
-//        if(success)
-//        {
-//            NSLog(@"Success - got lots");
-//            
-//            for(parkingLot* lot in lotArray)
-//            {
-//                CLLocationCoordinate2D* lotVs = malloc(sizeof(CLLocationCoordinate2D) * [lot.coordinates count] + 1);
-//                int i = 0;
-//                
-//                for(NSDictionary* coord in lot.coordinates)
-//                {
-//                    double gLat = [[coord valueForKey:@"latitude"] doubleValue];
-//                    double gLong = [[coord valueForKey:@"longitude"] doubleValue];
-//                    CLLocationCoordinate2D c = CLLocationCoordinate2DMake(gLat, gLong);
-//                    
-//                    lotVs[i++] = c;
-//                }
-//                
-//                // test data does not have repeated first and last entries; no big deal.
-//                lotVs[i] = lotVs[0];
-//                
-//                FPParkingLotData* newLotFromNet = [FPParkingLotData createPolygonWithCoordinates:lotVs andCount:[lot.coordinates count] + 1];
-//                
-//                MKPolygonRenderer* netRender = [[MKPolygonRenderer alloc] initWithPolygon:newLotFromNet];
-//                netRender.lineWidth = 2.0;
-//                netRender.strokeColor = [UIColor blackColor];
-//                netRender.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
-//                newLotFromNet.rendererForLot = netRender;
-//                newLotFromNet.parkingLotName = lot.name;
-//                
-//                [implementation addOverlay:newLotFromNet];
-//                [_parkingLotDataObjectsIDsToPolygons setObject:newLotFromNet forKey:newLotFromNet.parkingLotName];
-//                
-//                newLotFromNet.polygonIsDrawn = YES;
-//                newLotFromNet.annotationIsDrawn = NO;
-//                
-//                free(lotVs);
-//            }
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^(){
-//                [_parkingLotTableView reloadData];
-//            });
-//        }
-//        else
-//        {
-//            NSLog(@"Parking lot net query unsuccessful; skipping.");
-//        }
-//    }];
-    // end lot handler
-    
     [_parkingLotTableView reloadData];
     
     //Move global variable to title
@@ -241,17 +185,6 @@
     return nil;
 }
 
-- (void) mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
-{
-    for(UIGestureRecognizer* gr in _implementation.gestureRecognizers)
-        if(gr.state != 0)
-            _isRecognizer = YES;
-    NSArray* grs = [[_implementation.subviews firstObject] gestureRecognizers];
-    for(id gr in grs)
-        if(((UIGestureRecognizer*)gr).state != 0)
-            _isRecognizer = YES;
-    
-}
 
 - (void) performNetRequestAndUpdateAllViews
 {
@@ -310,7 +243,7 @@
                 newLotFromNet.rendererForLot = netRender;
                 newLotFromNet.parkingLotName = lot.name;
                 
-//                [_implementation addOverlay:newLotFromNet];
+                [_implementation addOverlay:newLotFromNet];
                 [_parkingLotDataObjectsIDsToPolygons setObject:newLotFromNet forKey:newLotFromNet.parkingLotName];
                 
                 newLotFromNet.polygonIsDrawn = NO;
@@ -330,6 +263,18 @@
             NSLog(@"Parking lot net query unsuccessful; skipping.");
         }
     }];
+}
+
+- (void) mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
+{
+    for(UIGestureRecognizer* gr in _implementation.gestureRecognizers)
+        if(gr.state != 0)
+            _isRecognizer = YES;
+    NSArray* grs = [[_implementation.subviews firstObject] gestureRecognizers];
+    for(id gr in grs)
+        if(((UIGestureRecognizer*)gr).state != 0)
+            _isRecognizer = YES;
+    
 }
 
 - (void) mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
