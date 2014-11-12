@@ -19,6 +19,7 @@
 @interface FPMapView : MKMapView <UIGestureRecognizerDelegate>
 
 @property (nonatomic, assign) double lastZoomLevel;
+@property (nonatomic, assign) CLLocationCoordinate2D lastQueriedCenter;
 
 @property (strong, nonatomic) UIPinchGestureRecognizer* pinchToZoom;
 @property (strong, nonatomic) UITapGestureRecognizer* tapRecognizer;
