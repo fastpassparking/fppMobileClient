@@ -56,7 +56,26 @@ NSString *const SERVER_BASE_URL = BASE_URL;
     
 }
 + (void) httpPutRequest:(NSString*) endUrl withObjectBody:(NSObject*) object withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler {
+    NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
     
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:NULL];
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"PUT";
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    request.HTTPBody = jsonData;
+    
+    NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        handler(data, response, error);
+    }];
+    
+    [task resume];
 }
 
 @end
