@@ -8,6 +8,8 @@
 
 #import "UpdateProfile.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
+#import "SWRevealViewController.h"
 
 @interface UpdateProfile ()
 
@@ -17,6 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
+    [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    [button setFrame:CGRectMake(0, 0, 32, 32)];
+    //UIBarButtonItem *barButton =
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
+    
     // Do any additional setup after loading the view.
     FirstName.layer.borderColor = [UIColor blackColor].CGColor;
     FirstName.layer.borderWidth = 1.0;
@@ -28,6 +40,14 @@
     Password.layer.borderWidth = 1.0;
     MobileNumber.layer.borderColor = [UIColor blackColor].CGColor;
     MobileNumber.layer.borderWidth = 1.0;
+    
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    FirstNameTextField.text = appDelegate->loggedInUser.firstName;
+    LastNameTextField.text = appDelegate->loggedInUser.lastName;
+    EmailTextField.text = appDelegate->loggedInUser.email;
+    PasswordTextField.text = appDelegate->loggedInUser.password;
+    MobileNUmberTextField.text = appDelegate->loggedInUser.phoneNumber;
+    
     
 }
 
