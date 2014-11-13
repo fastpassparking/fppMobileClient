@@ -21,6 +21,7 @@
         self.make = [jsonObject valueForKey:@"make"];
         self.model = [jsonObject valueForKey:@"model"];
         self.color = [jsonObject valueForKey:@"color"];
+        self.year = [jsonObject valueForKey:@"year"];
     }
     return self;
 }
@@ -39,6 +40,7 @@
         [newVehicle setObject:vehicleObject.make forKey:@"make"];
         [newVehicle setObject:vehicleObject.model forKey:@"model"];
         [newVehicle setObject:vehicleObject.color forKey:@"color"];
+        [newVehicle setObject:vehicleObject.year forKey:@"year"];
         
         [vehicleWrapper setObject:newVehicle forKey:@"vehicle"];
     }

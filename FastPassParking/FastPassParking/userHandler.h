@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HttpRequestHandler.h"
 #import "user.h"
 
 @interface UserHandler : NSObject

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -154,15 +154,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbW-b4-XMZ">
-                                <rect key="frame" x="176" y="211" width="249" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="DRJ-jN-Zph"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uj-AK-cof">
                                 <rect key="frame" x="176" y="156" width="249" height="25"/>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -194,6 +185,15 @@
                                 <color key="pageIndicatorTintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0078431372550000003" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HbW-b4-XMZ">
+                                <rect key="frame" x="176" y="211" width="249" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="DRJ-jN-Zph"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -238,12 +238,17 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="cE1-80-5Oe">
                             <connections>
-                                <action selector="nextBtnPressed:" destination="1BY-pM-51T" id="AvH-yt-Upg"/>
-                                <segue destination="DBY-xe-aE3" kind="show" id="7dL-aK-mEI"/>
+                                <action selector="createAccountNextButton:" destination="1BY-pM-51T" id="bn2-Bq-G4j"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                     <connections>
+                    <connections>
+                        <outlet property="emailTextField" destination="pMb-83-t8O" id="e1d-bX-ud7"/>
+                        <outlet property="firstNameTextField" destination="gDi-h1-YHx" id="8ha-FY-kDF"/>
+                        <outlet property="lastNameTextField" destination="HbW-b4-XMZ" id="shs-Q2-rJR"/>
+                        <outlet property="passwordTextField" destination="exQ-hT-7Uy" id="rpF-r5-NIF"/>
+                        <outlet property="phoneNumberTextField" destination="q75-Nn-RUZ" id="4ET-dp-3jj"/>
+                        <segue destination="DBY-xe-aE3" kind="show" identifier="showAddVehicle" id="hIh-Zp-enb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOi-qB-B9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -780,15 +785,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Credit Card Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V9h-1x-X5n">
-                                <rect key="frame" x="176" y="211" width="249" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="axb-hf-y9U"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXR-Jf-9VR">
                                 <rect key="frame" x="176" y="156" width="249" height="25"/>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -830,6 +826,15 @@
                                     <segue destination="TfZ-gX-eoy" kind="show" id="X6b-gt-GSb"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Credit Card Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V9h-1x-X5n">
+                                <rect key="frame" x="176" y="211" width="249" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="axb-hf-y9U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -863,10 +868,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Credit Card" id="vSk-8A-hOV">
                         <barButtonItem key="backBarButtonItem" title="Back" id="vyw-gj-zC4"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="8JC-Q9-h7z"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="8JC-Q9-h7z">
+                            <connections>
+                                <action selector="creditCardNextButton:" destination="ptg-dK-Uxl" id="V36-Y4-Mgr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ScanCreditCardButton" destination="rX8-Vd-y5l" id="NiW-O6-xOP"/>
+                        <outlet property="codeTextField" destination="hsP-uL-2D8" id="gN0-VM-jt6"/>
+                        <outlet property="monthTextField" destination="oNO-Bu-AQ8" id="Ubv-31-Xtx"/>
+                        <outlet property="numberTextField" destination="V9h-1x-X5n" id="QBi-Gp-qb5"/>
+                        <outlet property="typeTextField" destination="Ypn-uo-cgk" id="GPu-2u-Hiy"/>
+                        <outlet property="yearTextField" destination="F99-D6-u7V" id="wid-Ek-bTH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yu3-0e-Deo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -885,15 +899,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="License Plate #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-fi-gqE">
-                                <rect key="frame" x="176" y="181" width="249" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="lJW-PJ-9pP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Vehicle Make" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZyL-Yj-C7r">
                                 <rect key="frame" x="176" y="241" width="249" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -961,6 +966,15 @@
                                 <color key="pageIndicatorTintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.0078431372550000003" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="License Plate #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-fi-gqE">
+                                <rect key="frame" x="176" y="181" width="249" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="lJW-PJ-9pP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -1004,10 +1018,19 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="VcJ-iG-Hru"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="2z5-vM-oq6">
                             <connections>
-                                <segue destination="ptg-dK-Uxl" kind="show" id="hBG-1n-JeN"/>
+                                <action selector="addCarNextButton:" destination="DBY-xe-aE3" id="UFN-ac-eJp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="licensePlateNumberTextField" destination="6M7-fi-gqE" id="sMQ-O8-UO0"/>
+                        <outlet property="licensePlateStateTextField" destination="P93-1h-sMI" id="xWe-3B-397"/>
+                        <outlet property="vehicleColorTextField" destination="YOR-rX-fCj" id="hKM-ge-Ct0"/>
+                        <outlet property="vehicleMakeTextField" destination="ZyL-Yj-C7r" id="XJ8-pV-sG6"/>
+                        <outlet property="vehicleModelTextField" destination="NBi-qD-7F6" id="FK7-Zb-X8r"/>
+                        <outlet property="vehicleYearTextField" destination="EjL-U3-qOP" id="3eG-aH-dUR"/>
+                        <segue destination="ptg-dK-Uxl" kind="show" identifier="showAddCreditCard" id="F3b-wh-bZ8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exG-Ns-sj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

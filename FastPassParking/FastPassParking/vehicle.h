@@ -17,6 +17,7 @@
 @property(nonatomic,copy) NSString* make;
 @property(nonatomic,copy) NSString* model;
 @property(nonatomic,copy) NSString* color;
+@property(nonatomic,copy) NSString* year;
 
 // Constructor
 - (id) initWithJson:(NSObject*) jsonObject;
