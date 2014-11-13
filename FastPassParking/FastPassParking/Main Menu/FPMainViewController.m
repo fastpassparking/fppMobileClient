@@ -41,7 +41,8 @@
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     
     // View initializing properties
-    appDelegate = [[UIApplication sharedApplication] delegate];    CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    CLLocationCoordinate2D ucfCampusCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
     MKCoordinateSpan span = MKCoordinateSpanMake(0.005, 0.005);
     MKCoordinateRegion region = MKCoordinateRegionMake(ucfCampusCenter, span);
     
@@ -192,7 +193,10 @@
     {
         _implementation.lastQueriedCenter = _implementation.centerCoordinate;
     }
-    float delta = .7;
+
+    float delta = .0005;
+    float queryDelta = .05;
+    
     CLLocationCoordinate2D newCenter = _implementation.centerCoordinate;
     
     float latDelta = fabsf(newCenter.latitude - _implementation.lastQueriedCenter.latitude);
@@ -207,10 +211,10 @@
     
 //    _parkingLotDataObjectsIDsToPolygons = [[NSMutableDictionary alloc] init];
     
-    NSNumber* MILA = [NSNumber numberWithFloat:newCenter.latitude - delta * 2];
-    NSNumber* MALA = [NSNumber numberWithFloat:newCenter.latitude + delta * 2];
-    NSNumber* MILO = [NSNumber numberWithFloat:newCenter.longitude - delta * 2];
-    NSNumber* MALO = [NSNumber numberWithFloat:newCenter.longitude + delta * 2];
+    NSNumber* MILA = [NSNumber numberWithFloat:newCenter.latitude - queryDelta];
+    NSNumber* MALA = [NSNumber numberWithFloat:newCenter.latitude + queryDelta];
+    NSNumber* MILO = [NSNumber numberWithFloat:newCenter.longitude - queryDelta];
+    NSNumber* MALO = [NSNumber numberWithFloat:newCenter.longitude + queryDelta];
     
     [ParkingLotHandler getParkingLotsForBoundingBox:MILA withMaxLat:MALA withMinLong:MILO withMaxLong:MALO withCompletionHandler:^(BOOL success, NSArray* lotArray){
         if(success)
@@ -219,6 +223,9 @@
             NSLog(@"%@", lotArray);
             for(parkingLot* lot in lotArray)
             {
+                if([_parkingLotDataObjectsIDsToPolygons objectForKey:lot.name])
+                    continue;
+                
                 CLLocationCoordinate2D* lotVs = malloc(sizeof(CLLocationCoordinate2D) * [lot.coordinates count] + 1);
                 int i = 0;
                 
@@ -246,7 +253,7 @@
                 [_implementation addOverlay:newLotFromNet];
                 [_parkingLotDataObjectsIDsToPolygons setObject:newLotFromNet forKey:newLotFromNet.parkingLotName];
                 
-                newLotFromNet.polygonIsDrawn = NO;
+                newLotFromNet.polygonIsDrawn = YES;
                 newLotFromNet.annotationIsDrawn = NO;
                 
                 free(lotVs);
@@ -263,6 +270,7 @@
             NSLog(@"Parking lot net query unsuccessful; skipping.");
         }
     }];
+    
 }
 
 - (void) mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated
@@ -417,7 +425,15 @@
             
             _selectedLot = (FPParkingLotData*)sender;
             
-            [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
+//            [_implementation setCenterCoordinate:((FPParkingLotData*)sender).coordinate];
+//            [_implementation setVisibleMapRect:_selectedLot.boundingMapRect];
+            
+//            CLLocationCoordinate2D regionCenter = CLLocationCoordinate2DMake(28.602428, -81.20006);
+//            MKCoordinateSpan span = MKCoordinateRegionForMapRect(_selectedLot.boundingMapRect);
+            MKCoordinateRegion region = MKCoordinateRegionForMapRect(_selectedLot.boundingMapRect);
+            region.span = MKCoordinateSpanMake(region.span.latitudeDelta + 0.005, region.span.longitudeDelta + 0.005);
+            
+            [_implementation setRegion:region];
             
             dispatch_async(dispatch_get_main_queue(), ^(){
                 [_implementation updatePolygonsAndAnnotationsAndForceDraw:YES];

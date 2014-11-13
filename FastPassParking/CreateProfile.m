@@ -7,8 +7,13 @@
 //
 
 #import "CreateProfile.h"
+#import "ViewController.h"
+#import "User.h"
+#import "UserHandler.h"
+#import "AppDelegate.h"
 
 @interface CreateProfile ()
+
 
 @end
 
@@ -17,8 +22,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
+}
+- (IBAction)nextBtnPressed:(id)sender {
+    // Todo: do local validation for each string, use regex???
     
+    //do database validation??
+    
+    				
     
 }
 
