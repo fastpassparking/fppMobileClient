@@ -85,5 +85,33 @@
     // Pass the selected object to the new view controller.
 }
 */
++(void) updateAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*))handler {
+    
+    NSString* endUrl = @"user";
+    NSMutableDictionary* userJsonObject = [user serializeToJson:userObject];
+    
+    [HttpRequestHandler httpPutRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        BOOL wasSuccessful = NO;
+        if(!error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            if(httpResponse.statusCode == 200) {
+                // Parse the user from json data
+                
+                // Set the completionHandler response
+                wasSuccessful = YES;
+            } else {
+                NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+            }
+        } else {
+            NSLog(@"Error");
+        }
+        
+
+    }];
+
+
+}
+
 
 @end
