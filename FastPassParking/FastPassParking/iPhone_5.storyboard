@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ufB-ED-ehF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -243,12 +243,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="emailStr" destination="pMb-83-t8O" id="p3S-Mr-3Hp"/>
-                        <outlet property="firstNameString" destination="gDi-h1-YHx" id="O3i-CN-Pw0"/>
-                        <outlet property="lastNameStr" destination="HbW-b4-XMZ" id="1FH-Mb-aIW"/>
-                        <outlet property="mobileNumStr" destination="q75-Nn-RUZ" id="6mw-ZW-ejo"/>
-                        <outlet property="passwordStr" destination="exQ-hT-7Uy" id="KsO-LD-e9b"/>
+                     <connections>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOi-qB-B9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -534,6 +529,19 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="FPP_Logo_Transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="GZW-oT-15J">
+                                <rect key="frame" x="253" y="373" width="95" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="95" id="JjF-bZ-aId"/>
+                                    <constraint firstAttribute="width" constant="95" id="dMF-0R-QPj"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="JjF-bZ-aId"/>
+                                        <exclude reference="dMF-0R-QPj"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -541,6 +549,7 @@
                             <constraint firstItem="31A-N0-Yci" firstAttribute="top" secondItem="UzU-Mn-FgY" secondAttribute="bottom" constant="125" id="7aL-5X-LJQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UzU-Mn-FgY" secondAttribute="trailing" constant="25" id="8w9-qL-v52"/>
                             <constraint firstItem="NVd-Wu-bPh" firstAttribute="leading" secondItem="w4d-I8-BUY" secondAttribute="trailing" id="9Uv-G5-ary"/>
+                            <constraint firstAttribute="centerX" secondItem="GZW-oT-15J" secondAttribute="centerX" constant="-0.5" id="B9b-b4-lsz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="raO-HT-aNy" secondAttribute="trailing" constant="-4" id="FYB-GD-e8c"/>
                             <constraint firstItem="lOX-dr-TZG" firstAttribute="leading" secondItem="1sp-4F-Jhr" secondAttribute="leadingMargin" constant="-4" id="Fa4-th-b80"/>
                             <constraint firstItem="UzU-Mn-FgY" firstAttribute="leading" secondItem="1sp-4F-Jhr" secondAttribute="leadingMargin" constant="-4" id="GDg-Bw-Mib"/>
@@ -561,6 +570,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="UzU-Mn-FgY" secondAttribute="trailing" constant="-16" id="XkQ-aA-aYr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tTE-e5-htS" secondAttribute="trailing" constant="-4" id="Xro-1L-1uK"/>
                             <constraint firstItem="hvS-dD-IvU" firstAttribute="top" secondItem="NVd-Wu-bPh" secondAttribute="bottom" id="aF0-hi-heJ"/>
+                            <constraint firstItem="GZW-oT-15J" firstAttribute="top" secondItem="tTE-e5-htS" secondAttribute="bottom" constant="75" id="aXd-vC-LyH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hvS-dD-IvU" secondAttribute="trailing" constant="-4" id="b0c-V4-D78"/>
                             <constraint firstItem="w4d-I8-BUY" firstAttribute="top" secondItem="YcM-Xa-Jss" secondAttribute="bottom" constant="67" id="dX8-0W-5O7"/>
                             <constraint firstItem="31A-N0-Yci" firstAttribute="top" secondItem="UzU-Mn-FgY" secondAttribute="bottom" id="evz-HJ-iR8"/>
@@ -572,6 +582,7 @@
                             <constraint firstItem="Ss7-KS-TW9" firstAttribute="leading" secondItem="1sp-4F-Jhr" secondAttribute="leadingMargin" constant="-4" id="kc3-hA-wJC"/>
                             <constraint firstItem="tTE-e5-htS" firstAttribute="leading" secondItem="d3Q-AO-DZo" secondAttribute="trailing" id="oLU-PZ-rnV"/>
                             <constraint firstItem="oPN-YH-AVS" firstAttribute="leading" secondItem="1sp-4F-Jhr" secondAttribute="leadingMargin" constant="-4" id="qHl-mo-nWw"/>
+                            <constraint firstItem="UzU-Mn-FgY" firstAttribute="top" secondItem="GZW-oT-15J" secondAttribute="bottom" constant="83" id="s61-il-C8n"/>
                             <constraint firstItem="hvS-dD-IvU" firstAttribute="leading" secondItem="lOX-dr-TZG" secondAttribute="trailing" id="sif-kn-4Qb"/>
                             <constraint firstItem="raO-HT-aNy" firstAttribute="leading" secondItem="oPN-YH-AVS" secondAttribute="trailing" id="vaj-xk-6yk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NVd-Wu-bPh" secondAttribute="trailing" constant="-4" id="yEz-40-csP"/>
@@ -580,6 +591,7 @@
                             <mask key="constraints">
                                 <exclude reference="jcg-8k-lPL"/>
                                 <exclude reference="04S-ZE-M6d"/>
+                                <exclude reference="aXd-vC-LyH"/>
                                 <exclude reference="8w9-qL-v52"/>
                                 <exclude reference="GDg-Bw-Mib"/>
                                 <exclude reference="KoN-sm-XH1"/>

@@ -25,14 +25,7 @@
 
     
 }
-- (IBAction)nextBtnPressed:(id)sender {
-    // Todo: do local validation for each string, use regex???
-    
-    //do database validation??
-    
-    				
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
