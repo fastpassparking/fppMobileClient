@@ -1,42 +1,33 @@
 //
-//  CreateProfile.m
+//  UpdateVehicleInfoViewController.m
 //  FastPassParking
 //
-//  Created by Alex Gordon on 10/1/14.
+//  Created by Alex Gordon on 11/16/14.
 //  Copyright (c) 2014 FastPassParking. All rights reserved.
 //
 
-#import "CreateProfile.h"
-#import "ViewController.h"
-#import "User.h"
-#import "UserHandler.h"
-#import "AppDelegate.h"
+#import "UpdateVehicleInfoViewController.h"
 
-@interface CreateProfile ()
-
+@interface UpdateVehicleInfoViewController ()
 
 @end
 
-@implementation CreateProfile
+@implementation UpdateVehicleInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    
 }
 
+- (IBAction)ClickUpdateButton:(id)sender{
+    
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-- (IBAction)CancelButtonAction:(id)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 /*

@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
 #import "SWRevealViewController.h"
+#import "user.h"
+#import "userHandler.h"
 
 @interface UpdateProfile ()
 
@@ -58,10 +60,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)BackButtonAction:(id)sender {
+- (IBAction)ClickUpdateButton:(id)sender{
     
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    appDelegate->loggedInUser.firstName = [FirstNameTextField text];
+    appDelegate->loggedInUser.lastName = [LastNameTextField text];
+    appDelegate->loggedInUser.email = [EmailTextField text];
+    appDelegate->loggedInUser.password = [PasswordTextField text];
+    appDelegate->loggedInUser.phoneNumber = [MobileNUmberTextField text];
+    
+    
+    [UserHandler updateAccount:appDelegate->loggedInUser withCompletionHandler:^(BOOL success) {
+        
+        if (success == YES) {
+            
+            UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Update Complete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+            
+            [updateComplete show];
+
+        }
+        
+        else{
+            
+            UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Update Incomplete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+            
+            [updateIncomplete show];
+        
+        }
+        
+        
+    }];
+    
+    
+    
     
 }
 

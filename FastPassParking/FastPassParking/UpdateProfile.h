@@ -23,10 +23,12 @@
     IBOutlet UITextField *PasswordTextField;
     IBOutlet UITextField *MobileNUmberTextField;
     
+    IBOutlet UILabel *UpdateButton;
+    
     AppDelegate *appDelegate;
     
     
 }
-
+- (IBAction)ClickUpdateButton:(id)sender;
 
 @end
