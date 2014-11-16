@@ -242,8 +242,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-<<<<<<< HEAD
-=======
                     <connections>
                         <outlet property="emailTextField" destination="pMb-83-t8O" id="e1d-bX-ud7"/>
                         <outlet property="firstNameTextField" destination="gDi-h1-YHx" id="8ha-FY-kDF"/>
@@ -252,7 +250,6 @@
                         <outlet property="phoneNumberTextField" destination="q75-Nn-RUZ" id="4ET-dp-3jj"/>
                         <segue destination="DBY-xe-aE3" kind="show" identifier="showAddVehicle" id="hIh-Zp-enb"/>
                     </connections>
->>>>>>> kyle-create-account
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOi-qB-B9D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

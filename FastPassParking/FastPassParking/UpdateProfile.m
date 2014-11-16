@@ -62,14 +62,14 @@
 
 - (IBAction)ClickUpdateButton:(id)sender{
     
-    appDelegate->loggedInUser.firstName = [FirstNameTextField text];
-    appDelegate->loggedInUser.lastName = [LastNameTextField text];
-    appDelegate->loggedInUser.email = [EmailTextField text];
-    appDelegate->loggedInUser.password = [PasswordTextField text];
-    appDelegate->loggedInUser.phoneNumber = [MobileNUmberTextField text];
+    appDelegate.loggedInUser.firstName = [FirstNameTextField text];
+    appDelegate.loggedInUser.lastName = [LastNameTextField text];
+    appDelegate.loggedInUser.email = [EmailTextField text];
+    appDelegate.loggedInUser.password = [PasswordTextField text];
+    appDelegate.loggedInUser.phoneNumber = [MobileNUmberTextField text];
     
     
-    [UserHandler updateAccount:appDelegate->loggedInUser withCompletionHandler:^(BOOL success) {
+    [UserHandler updateAccount:appDelegate.loggedInUser withCompletionHandler:^(BOOL success) {
         
         if (success == YES) {
             

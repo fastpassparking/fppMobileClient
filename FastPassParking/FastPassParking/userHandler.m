@@ -92,7 +92,9 @@
 +(void) updateAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL))handler {
     
     NSString* endUrl = @"user";
+    userObject.password = [HttpRequestHandler createSHA512:userObject.password];
     NSMutableDictionary* userJsonObject = [user serializeToJson:userObject];
+    
     
     [HttpRequestHandler httpPutRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -110,13 +112,13 @@
             NSLog(@"Error");
         }
         
-
+        // Return the completion handler to the caller
+        handler(wasSuccessful);
     }];
 
 
 }
 
-=======
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -124,7 +126,5 @@
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
  }
- */
->>>>>>> kyle-create-account
 
 @end
