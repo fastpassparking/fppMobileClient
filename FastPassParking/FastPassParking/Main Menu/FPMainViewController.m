@@ -492,11 +492,11 @@
             NSLog(@"Dollar amount is %f", _dollarFunds);
             NSLog(@"Cent amount is %f", _centsFunds);
             
-            float newBalance = [appDelegate->loggedInUser.availableCredit floatValue] + _dollarFunds + _centsFunds;
+            float newBalance = [appDelegate.loggedInUser.availableCredit floatValue] + _dollarFunds + _centsFunds;
             
             NSLog(@"New balance is %f", newBalance);
             
-            appDelegate->loggedInUser.availableCredit = [NSNumber numberWithFloat:newBalance];
+            appDelegate.loggedInUser.availableCredit = [NSNumber numberWithFloat:newBalance];
             [_mainNavigationBar setTitle:[NSString stringWithFormat:@"Balance: $%.2f", newBalance]];
             
             // reset fund variables
