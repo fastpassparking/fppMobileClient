@@ -11,7 +11,7 @@
 #import "VehicleHandler.h"
 #import "AppDelegate.h"
 
-@interface CreditCardInfo ()
+@interface CreditCardInfo () < UIAlertViewDelegate >
 @property (weak, nonatomic) IBOutlet UITextField *typeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *numberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *monthTextField;
@@ -47,6 +47,7 @@
                     [alert show];
                     
                     // Return to the main page
+                    //[self dismissViewControllerAnimated:YES completion:nil];
                     
                 } else {
                     // Make user aware that request failed
@@ -79,6 +80,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex == 0){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 /*

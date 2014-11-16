@@ -53,6 +53,14 @@
     
 }
 
+- (IBAction)dismissKeyboardTap:(id)sender {
+    
+    [FirstNameTextField resignFirstResponder];
+    [LastNameTextField resignFirstResponder];
+    [EmailTextField resignFirstResponder];
+    [PasswordTextField resignFirstResponder];
+    [MobileNUmberTextField resignFirstResponder];
+}
 
 
 - (void)didReceiveMemoryWarning {
