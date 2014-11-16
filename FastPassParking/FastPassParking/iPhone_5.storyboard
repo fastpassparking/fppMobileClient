@@ -301,7 +301,11 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Find A Parking Lot" id="yco-05-97F">
                         <barButtonItem key="backBarButtonItem" title="Item" id="V3b-qb-Sty"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3DQ-V1-hjA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3DQ-V1-hjA">
+                            <connections>
+                                <action selector="didPressAddFundsButton:" destination="VdS-K1-sAj" id="waP-dr-7e2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="barButton" destination="3DQ-V1-hjA" id="Zkn-aQ-j35"/>

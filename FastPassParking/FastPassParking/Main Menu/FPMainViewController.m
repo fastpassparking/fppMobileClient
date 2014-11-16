@@ -13,17 +13,24 @@
 #import "ParkingLotHandler.h"
 #import "parkingLot.h"
 #import "SWRevealViewController.h"
+#import "FPFundPickerView.h"
 
 #define showLotDetailView @"showLotDetailView"
 #define kFPPAnnotationReuseIdentifier @"kFPPAnnotationReuseIdentifier"
 
-@interface FPMainViewController ()
+@interface FPMainViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
+{
+    float _dollarFunds;
+    float _centsFunds;
+}
 @property (strong, nonatomic) IBOutlet UINavigationItem *mainNavigationBar;
-
+@property (strong, nonatomic) UIView *addFundsView;
+@property (strong, nonatomic) UIView *shadowView;
 @end
 
 @implementation FPMainViewController
 
+#pragma mark - ViewController Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -140,10 +147,22 @@
         [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIColor colorWithRed:3.0/255 green:172.0/255 blue:175.0/255 alpha:1.0] forKey: NSForegroundColorAttributeName] ];
     });
     
+    // set default adder balance
+    _dollarFunds = 1.0;
+    _centsFunds = 0.0;
+    
+    UIView *shadow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    shadow.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.0];
+    
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    
+    [shadow addGestureRecognizer:singleFingerTap];
+    self.shadowView = shadow;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [_implementation updatePolygonsAndAnnotationsAndForceDraw:YES];
     [_implementation setNeedsDisplay];
 }
@@ -159,7 +178,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma FPMapView delegate
+#pragma mark - FPMapView delegate
 - (void) respondToTapSelectionOfLotData:(FPParkingLotData *)lot
 {
     if(_selectedLot)
@@ -175,7 +194,7 @@
     [self performSegueWithIdentifier:showLotDetailView sender:lot];
 }
 
-#pragma MapView Delegate
+#pragma mark - MapView Delegate
 - (MKOverlayRenderer*) mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
     if([overlay isKindOfClass:[FPParkingLotData class]])
@@ -392,20 +411,188 @@
     }
 }
 
-
 #pragma mark - IBOutlet Actions
 
 - (IBAction)didPressAddFundsButton:(id)sender
 {
-    UIView *fundsPicker = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+    if ([_addFundsView isDescendantOfView:self.view])
+        return;
     
-    fundsPicker.center = self.view.center;
+    CGFloat initialY = self.view.bounds.size.height;
+    CGFloat initialX = (self.view.bounds.size.width / 2) - 110;
+    NSLog(@"Initial X: %f", initialX);
+    CGFloat containerHeight = 220.0;
+    CGFloat containerWidth = 220.0;
+    UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(initialX, initialY, containerWidth, containerHeight)];
+    containerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.9];
     
-    fundsPicker.backgroundColor = [UIColor greenColor];
+    UIPickerView *fundsPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, containerWidth, 170)];
+    fundsPicker.delegate = self;
+    fundsPicker.dataSource = self;
+    fundsPicker.showsSelectionIndicator = YES;
+    
+    UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 170, containerWidth, 50)];
+    [doneButton setTitle:@"+ Add Funds" forState:UIControlStateNormal];
+    doneButton.backgroundColor = [UIColor colorWithRed:0.07 green:0.329 blue:0.329 alpha:1.0];
+    [doneButton addTarget:self action:@selector(dismissAddFundsView) forControlEvents:UIControlEventTouchUpInside];
+    
+    [containerView addSubview:fundsPicker];
+    [containerView addSubview:doneButton];
+    
+    _addFundsView = containerView;
+
+    __weak FPMainViewController *weakSelf = self;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.view addSubview:fundsPicker];
+        [UIView animateWithDuration:0.3 animations:^{
+            _shadowView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.8];
+        }];
+        
+        [UIView animateWithDuration:0.6
+                              delay:0.0
+             usingSpringWithDamping:0.5
+              initialSpringVelocity:0.5
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^
+        {
+            _addFundsView.center = [weakSelf.view convertPoint:weakSelf.view.center fromView:weakSelf.view.superview];\
+            [weakSelf.view addSubview:_shadowView];
+            [weakSelf.view addSubview:containerView];
+        }
+                         completion:^(BOOL finished){}];
+        
     });
+}
+
+- (void)dismissAddFundsView
+{
+    // store funds in user model on database
+    
+    // change funds in super view
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.6 animations:^{
+            _shadowView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.0];
+        }];
+        
+        [UIView animateWithDuration:0.6
+                              delay:0.0
+             usingSpringWithDamping:0.5
+              initialSpringVelocity:0.5
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^
+        {
+            _addFundsView.transform = CGAffineTransformMakeTranslation(0, 400);
+        }
+                         completion:^(BOOL finished)
+        {
+            [_addFundsView removeFromSuperview];
+            [_shadowView removeFromSuperview];
+            
+            NSLog(@"Dollar amount is %f", _dollarFunds);
+            NSLog(@"Cent amount is %f", _centsFunds);
+            
+            float newBalance = [appDelegate.loggedInUser.availableCredit floatValue] + _dollarFunds + _centsFunds;
+            
+            NSLog(@"New balance is %f", newBalance);
+            
+            appDelegate.loggedInUser.availableCredit = [NSNumber numberWithFloat:newBalance];
+            [_mainNavigationBar setTitle:[NSString stringWithFormat:@"Balance: $%.2f", newBalance]];
+            
+            // reset fund variables
+            _dollarFunds = 1.0;
+            _centsFunds = 0.0;
+        }];
+        
+    });
+    
+}
+
+#pragma mark - Tap Gesture Recognizer
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"DID RECEIVE TAP");
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:0.6 animations:^{
+            _shadowView.backgroundColor = [UIColor colorWithWhite:0.1 alpha:0.0];
+        }];
+        
+        [UIView animateWithDuration:0.6
+                              delay:0.0
+             usingSpringWithDamping:0.5
+              initialSpringVelocity:0.5
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^
+         {
+             _addFundsView.transform = CGAffineTransformMakeTranslation(0, 400);
+         }
+                         completion:^(BOOL finished)
+         {
+             [_addFundsView removeFromSuperview];
+             [_shadowView removeFromSuperview];
+         }];
+        
+    });
+}
+
+#pragma mark - UIPicker Delegate
+
+//- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+//{
+//    NSString *title = @"sample title";
+//    NSAttributedString *attString = [[NSAttributedString alloc] initWithString:title attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//    
+//    return attString;
+//    
+//}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component {
+    // Handle the selection
+    NSLog(@"Selected row: %ld", row);
+    if (component == 0) {
+        _dollarFunds = row + 1.0;
+    } else
+    {
+        _centsFunds = row * 0.25;
+    }
+}
+
+// tell the picker how many rows are available for a given component
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    NSUInteger dollarRows = 25;
+    NSUInteger centsRow = 4;
+    
+    if (component == 0)
+        return dollarRows;
+    
+    return centsRow;
+}
+
+// tell the picker how many components it will have
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 2;
+}
+
+// tell the picker the title for a given component
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSString *title;
+    
+    if (component == 0)
+    {
+        title = [@"" stringByAppendingFormat:@"%ld",row + 1];
+    }
+    else
+    {
+        title = [@"" stringByAppendingFormat:@"%02ld",row * 25];
+    }
+    return title;
+}
+
+// tell the picker the width of each row for a given component
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    int sectionWidth = 70;
+    
+    return sectionWidth;
 }
 
 #pragma mark - Navigation
