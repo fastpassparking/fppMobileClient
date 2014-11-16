@@ -44,11 +44,11 @@
     MobileNumber.layer.borderWidth = 1.0;
     
     appDelegate = [[UIApplication sharedApplication] delegate];
-    FirstNameTextField.text = appDelegate->loggedInUser.firstName;
-    LastNameTextField.text = appDelegate->loggedInUser.lastName;
-    EmailTextField.text = appDelegate->loggedInUser.email;
-    PasswordTextField.text = appDelegate->loggedInUser.password;
-    MobileNUmberTextField.text = appDelegate->loggedInUser.phoneNumber;
+    FirstNameTextField.text = appDelegate.loggedInUser.firstName;
+    LastNameTextField.text = appDelegate.loggedInUser.lastName;
+    EmailTextField.text = appDelegate.loggedInUser.email;
+    PasswordTextField.text = appDelegate.loggedInUser.password;
+    MobileNUmberTextField.text = appDelegate.loggedInUser.phoneNumber;
     
     
 }

@@ -7,6 +7,7 @@
 //
 
 #import "UserHandler.h"
+#import "HttpRequestHandler.h"
 #import "user.h"
 
 @interface UserHandler ()
@@ -18,8 +19,9 @@
 +(void) authenticateLogin:(NSString*)loginName withLoginPassword:(NSString*)loginPassword withCompletionHandler:(void(^)(BOOL, user*)) handler{
     
     NSString* endUrl = @"user/login?email=";
+    loginPassword = [HttpRequestHandler createSHA512:loginPassword];
     endUrl = [endUrl  stringByAppendingFormat:@"%@&password=%@",loginName,loginPassword];
-
+    
     [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         BOOL wasSuccessful = NO;
@@ -49,6 +51,7 @@
 +(void) createAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*))handler {
     
     NSString* endUrl = @"user";
+    userObject.password = [HttpRequestHandler createSHA512:userObject.password];
     NSMutableDictionary* userJsonObject = [user serializeToJson:userObject];
     
     [HttpRequestHandler httpPostRequest:endUrl withObjectBody:userJsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -77,6 +80,7 @@
 
 
 /*
+<<<<<<< HEAD
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -112,5 +116,15 @@
 
 }
 
+=======
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+>>>>>>> kyle-create-account
 
 @end

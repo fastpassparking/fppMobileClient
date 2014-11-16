@@ -53,7 +53,7 @@
         if(success == YES) {
             // Set the logged in user
             AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
-            appDelegate->loggedInUser = returnedUser;
+            appDelegate.loggedInUser = returnedUser;
             
             // Perform segue
             dispatch_async(dispatch_get_main_queue(), ^(void){

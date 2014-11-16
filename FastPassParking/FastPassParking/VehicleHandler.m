@@ -12,7 +12,7 @@
 
 +(void) getVehiclesForUser:(NSString*) userId withCompletionHandler:(void(^)(BOOL, NSArray*)) handler {
     
-    NSString* endUrl = @"vehicle?userId=";
+    NSString* endUrl = @"vehicle?user_id=";
     endUrl = [endUrl  stringByAppendingFormat:@"%@", userId];
     
     [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -43,7 +43,9 @@
 
 +(void) createVehicle:(vehicle*) vehicleObject withUserId:(NSString*) userId withCompletionHandler:(void(^)(BOOL, vehicle*)) handler {
     
-    NSString* endUrl = @"vehicle";
+    NSString* endUrl = @"vehicle?user_id=";
+    endUrl = [endUrl  stringByAppendingFormat:@"%@", userId];
+    
     NSMutableDictionary* jsonObject = [vehicle serializeToJson:vehicleObject];
     
     [HttpRequestHandler httpPostRequest:endUrl withObjectBody:jsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
