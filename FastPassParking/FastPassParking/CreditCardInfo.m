@@ -34,12 +34,17 @@
         
         if(success == YES) {
             // Add the vehicle to the user
+            vehicleToCreate.userId = returnedUser.dbId;
             [VehicleHandler createVehicle:vehicleToCreate withUserId:returnedUser.dbId withCompletionHandler:^(BOOL success, vehicle* returnedVehicle) {
                 
                 if(success == YES) {
                     // Set global user and vehicle to nil
                     _creditCardDelegate.loggedInUser = nil;
                     _creditCardDelegate.selectedVehicle = nil;
+                    
+                    // Alert the user that the fields are incorrect
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account Created!" message:@"Your account has been created, please log in" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alert show];
                     
                     // Return to the main page
                     

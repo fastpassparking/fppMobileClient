@@ -7,6 +7,7 @@
 //
 
 #import "HttpRequestHandler.h"
+#import "errorObject.h"
 #import <CommonCrypto/CommonDigest.h>
 
 // Set the server's base url in a place that the entire app can reach
@@ -17,6 +18,8 @@ NSString *const SERVER_BASE_URL = BASE_URL;
 + (void) httpGetRequest:(NSString*) endUrl withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler {
     
     NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
+    NSLog(@"Making GET request at url: ");
+    NSLog([url description]);
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
@@ -26,6 +29,12 @@ NSString *const SERVER_BASE_URL = BASE_URL;
     NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
     
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        if(httpResponse.statusCode != 200) {
+            NSLog([NSString stringWithFormat:@"Error code %ld", (long)httpResponse.statusCode]);
+            errorObject* errorOb = [[errorObject alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+            NSLog(errorOb.errorMessage);
+        }
         handler(data, response, error);
     }];
     
@@ -35,6 +44,8 @@ NSString *const SERVER_BASE_URL = BASE_URL;
 + (void) httpPostRequest:(NSString*) endUrl withObjectBody:(NSMutableDictionary*) object withCompletionHandler:(void(^)(NSData*, NSURLResponse*, NSError*)) handler {
     
     NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
+    NSLog(@"Making POST request at url: ");
+    NSLog([url description]);
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
                                                        options:NSJSONWritingPrettyPrinted
@@ -50,6 +61,12 @@ NSString *const SERVER_BASE_URL = BASE_URL;
     request.HTTPBody = jsonData;
     
     NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+        if(httpResponse.statusCode != 200) {
+            NSLog([NSString stringWithFormat:@"Error code %ld", (long)httpResponse.statusCode]);
+            errorObject* errorOb = [[errorObject alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+            NSLog(errorOb.errorMessage);
+        }
         handler(data, response, error);
     }];
     
@@ -58,6 +75,9 @@ NSString *const SERVER_BASE_URL = BASE_URL;
 }
 + (void) httpPutRequest:(NSString*) endUrl withObjectBody:(NSObject*) object withCompletionHandler:(void(^)(NSData *data, NSURLResponse *response, NSError *error)) handler {
     NSURL* url = [NSURL URLWithString:[SERVER_BASE_URL stringByAppendingPathComponent:endUrl]];
+    
+    NSLog(@"Making PUT request at url: ");
+    NSLog([url description]);
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object
                                                        options:NSJSONWritingPrettyPrinted

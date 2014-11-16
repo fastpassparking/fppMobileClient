@@ -19,6 +19,8 @@
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
 		45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */ = {isa = PBXBuildFile; fileRef = 45847F3719EDC0B700F28C51 /* FPParkingLotData.m */; };
+		4B277DA01A148BC7004D0019 /* JsonSerializerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B277D9F1A148BC7004D0019 /* JsonSerializerUtils.m */; };
+		4B277DA31A149663004D0019 /* errorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B277DA21A149663004D0019 /* errorObject.m */; };
 		4B8DB9851A06DA59000F2D78 /* VehicleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */; };
 		4B8DB9881A06E3EA000F2D78 /* ParkingLotHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB9871A06E3EA000F2D78 /* ParkingLotHandler.m */; };
 		4B8DB98B1A06EB00000F2D78 /* ParkingPassHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB98A1A06EB00000F2D78 /* ParkingPassHandler.m */; };
@@ -84,6 +86,10 @@
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
 		45847F3619EDC0B700F28C51 /* FPParkingLotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPParkingLotData.h; path = "Lot Data/FPParkingLotData.h"; sourceTree = "<group>"; };
 		45847F3719EDC0B700F28C51 /* FPParkingLotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPParkingLotData.m; path = "Lot Data/FPParkingLotData.m"; sourceTree = "<group>"; };
+		4B277D9E1A148BC7004D0019 /* JsonSerializerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonSerializerUtils.h; sourceTree = "<group>"; };
+		4B277D9F1A148BC7004D0019 /* JsonSerializerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonSerializerUtils.m; sourceTree = "<group>"; };
+		4B277DA11A149663004D0019 /* errorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errorObject.h; sourceTree = "<group>"; };
+		4B277DA21A149663004D0019 /* errorObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = errorObject.m; sourceTree = "<group>"; };
 		4B8DB9831A06DA59000F2D78 /* VehicleHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleHandler.h; sourceTree = "<group>"; };
 		4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleHandler.m; sourceTree = "<group>"; };
 		4B8DB9861A06E3EA000F2D78 /* ParkingLotHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingLotHandler.h; sourceTree = "<group>"; };
@@ -322,6 +328,10 @@
 				4B95762D1A01F08A003DA5AF /* geoCoordinate.m */,
 				4B95762F1A01F0F0003DA5AF /* parkingViolation.h */,
 				4B9576301A01F0F0003DA5AF /* parkingViolation.m */,
+				4B277D9E1A148BC7004D0019 /* JsonSerializerUtils.h */,
+				4B277D9F1A148BC7004D0019 /* JsonSerializerUtils.m */,
+				4B277DA11A149663004D0019 /* errorObject.h */,
+				4B277DA21A149663004D0019 /* errorObject.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -438,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B9576281A01EDF0003DA5AF /* accountCredit.m in Sources */,
+				4B277DA01A148BC7004D0019 /* JsonSerializerUtils.m in Sources */,
 				45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */,
 				4B9234761A01B91200E9071A /* parkingPass.m in Sources */,
 				FAC0765919FD740E0024C87A /* userHandler.m in Sources */,
@@ -455,6 +466,7 @@
 				4BA82F391A022C3900A57843 /* httpRequestHandler.m in Sources */,
 				4B8DB9881A06E3EA000F2D78 /* ParkingLotHandler.m in Sources */,
 				4B9576311A01F0F0003DA5AF /* parkingViolation.m in Sources */,
+				4B277DA31A149663004D0019 /* errorObject.m in Sources */,
 				4B9576221A01E9D4003DA5AF /* vehicle.m in Sources */,
 				453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */,
 				9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */,

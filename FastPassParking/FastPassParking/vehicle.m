@@ -7,13 +7,14 @@
 //
 
 #import "vehicle.h"
+#import "JsonSerializerUtils.h"
 
 @implementation vehicle
 
 - (id) initWithJson:(NSObject*)jsonObject{
     self = [super init];
     if (self && jsonObject) {
-        self.dbId = [jsonObject valueForKey:@"id"];
+        self.dbId = [jsonObject valueForKey:@"_id"];
         self.userId = [jsonObject valueForKey:@"userId"];
         self.licenseNumber = [jsonObject valueForKey:@"licensePlateNumber"];
         self.licenseState = [jsonObject valueForKey:@"licenseState"];
@@ -32,7 +33,7 @@
     if(vehicleObject) {
         vehicleWrapper = [[NSMutableDictionary alloc] init];
         NSMutableDictionary* newVehicle = [[NSMutableDictionary alloc] init];
-        [newVehicle setObject:vehicleObject.dbId forKey:@"id"];
+        [JsonSerializerUtils setObject:vehicleObject.dbId forKey:@"_id" forDictionary:newVehicle];
         [newVehicle setObject:vehicleObject.userId forKey:@"userId"];
         [newVehicle setObject:vehicleObject.licenseNumber forKey:@"licensePlateNumber"];
         [newVehicle setObject:vehicleObject.licenseState forKey:@"licenseState"];
