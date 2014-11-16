@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface UpdateProfile : UIViewController{
     
@@ -16,8 +17,18 @@
     IBOutlet UILabel *Password;
     IBOutlet UILabel *MobileNumber;
     
+    IBOutlet UITextField *FirstNameTextField;
+    IBOutlet UITextField *LastNameTextField;
+    IBOutlet UITextField *EmailTextField;
+    IBOutlet UITextField *PasswordTextField;
+    IBOutlet UITextField *MobileNUmberTextField;
+    
+    IBOutlet UILabel *UpdateButton;
+    
+    AppDelegate *appDelegate;
+    
     
 }
-
+- (IBAction)ClickUpdateButton:(id)sender;
 
 @end

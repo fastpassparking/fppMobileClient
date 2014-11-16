@@ -7,6 +7,7 @@
 //
 
 #import "user.h"
+#import "JsonSerializerUtils.h"
 
 @interface user ()
 
@@ -17,7 +18,7 @@
 - (id) initWithJson:(NSObject*)jsonObject{
     self = [super init];
     if (self && jsonObject) {
-        self.dbId = [jsonObject valueForKey:@"id"];
+        self.dbId = [jsonObject valueForKey:@"_id"];
         self.firstName = [jsonObject valueForKey:@"firstName"];
         self.lastName = [jsonObject valueForKey:@"lastName"];
         self.email = [jsonObject valueForKey:@"email"];
@@ -34,13 +35,13 @@
     if(userObject) {
         userWrapper = [[NSMutableDictionary alloc] init];
         NSMutableDictionary* newUser = [[NSMutableDictionary alloc] init];
-        [newUser setObject:userObject.dbId forKey:@"id"];
+        [JsonSerializerUtils setObject:userObject.dbId forKey:@"_id" forDictionary:newUser];
         [newUser setObject:userObject.firstName forKey:@"firstName"];
         [newUser setObject:userObject.lastName forKey:@"lastName"];
         [newUser setObject:userObject.email forKey:@"email"];
         [newUser setObject:userObject.password forKey:@"password"];
         [newUser setObject:userObject.phoneNumber forKey:@"phoneNumber"];
-        [newUser setObject:userObject.availableCredit forKey:@"availableCredit"];
+        [JsonSerializerUtils setObject:userObject.availableCredit forKey:@"availableCredit" forDictionary:newUser];
         
         [userWrapper setObject:newUser forKey:@"user"];
     }

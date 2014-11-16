@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HttpRequestHandler.h"
 #import "user.h"
 
 @interface UserHandler : NSObject
@@ -16,5 +15,6 @@
 
 +(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword withCompletionHandler:(void(^)(BOOL, user*)) handler;
 +(void) createAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*)) handler;
++(void) updateAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL))handler;
 
 @end

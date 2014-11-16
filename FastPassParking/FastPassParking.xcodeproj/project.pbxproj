@@ -19,6 +19,8 @@
 		45438B4919CF3B700063F898 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45438B4719CF3B700063F898 /* LaunchScreen.xib */; };
 		45438B5519CF3B710063F898 /* FastPassParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 45438B5419CF3B710063F898 /* FastPassParkingTests.m */; };
 		45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */ = {isa = PBXBuildFile; fileRef = 45847F3719EDC0B700F28C51 /* FPParkingLotData.m */; };
+		4B277DA01A148BC7004D0019 /* JsonSerializerUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B277D9F1A148BC7004D0019 /* JsonSerializerUtils.m */; };
+		4B277DA31A149663004D0019 /* errorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B277DA21A149663004D0019 /* errorObject.m */; };
 		4B8DB9851A06DA59000F2D78 /* VehicleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */; };
 		4B8DB9881A06E3EA000F2D78 /* ParkingLotHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB9871A06E3EA000F2D78 /* ParkingLotHandler.m */; };
 		4B8DB98B1A06EB00000F2D78 /* ParkingPassHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8DB98A1A06EB00000F2D78 /* ParkingPassHandler.m */; };
@@ -41,6 +43,7 @@
 		FA376CE01A0FD9C600CD2295 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA376CDF1A0FD9C600CD2295 /* TableViewController.m */; };
 		FA44A9DE1A1003C300AE3306 /* UpdateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44A9DD1A1003C300AE3306 /* UpdateProfile.m */; };
 		FA44A9E31A10143F00AE3306 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44A9E21A10143F00AE3306 /* SWRevealViewController.m */; };
+		FA5AA15E1A19227800EA942F /* UpdateVehicleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5AA15D1A19227800EA942F /* UpdateVehicleInfoViewController.m */; };
 		FAA43E5319D37A7000335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5219D37A7000335A85 /* road.png */; };
 		FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */; };
 		FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */; };
@@ -85,6 +88,10 @@
 		45438B5419CF3B710063F898 /* FastPassParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastPassParkingTests.m; sourceTree = "<group>"; };
 		45847F3619EDC0B700F28C51 /* FPParkingLotData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPParkingLotData.h; path = "Lot Data/FPParkingLotData.h"; sourceTree = "<group>"; };
 		45847F3719EDC0B700F28C51 /* FPParkingLotData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPParkingLotData.m; path = "Lot Data/FPParkingLotData.m"; sourceTree = "<group>"; };
+		4B277D9E1A148BC7004D0019 /* JsonSerializerUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonSerializerUtils.h; sourceTree = "<group>"; };
+		4B277D9F1A148BC7004D0019 /* JsonSerializerUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonSerializerUtils.m; sourceTree = "<group>"; };
+		4B277DA11A149663004D0019 /* errorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errorObject.h; sourceTree = "<group>"; };
+		4B277DA21A149663004D0019 /* errorObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = errorObject.m; sourceTree = "<group>"; };
 		4B8DB9831A06DA59000F2D78 /* VehicleHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleHandler.h; sourceTree = "<group>"; };
 		4B8DB9841A06DA59000F2D78 /* VehicleHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleHandler.m; sourceTree = "<group>"; };
 		4B8DB9861A06E3EA000F2D78 /* ParkingLotHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingLotHandler.h; sourceTree = "<group>"; };
@@ -125,6 +132,8 @@
 		FA44A9DD1A1003C300AE3306 /* UpdateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateProfile.m; sourceTree = "<group>"; };
 		FA44A9E11A10143F00AE3306 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		FA44A9E21A10143F00AE3306 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		FA5AA15C1A19227800EA942F /* UpdateVehicleInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateVehicleInfoViewController.h; sourceTree = "<group>"; };
+		FA5AA15D1A19227800EA942F /* UpdateVehicleInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateVehicleInfoViewController.m; sourceTree = "<group>"; };
 		FAA43E5219D37A7000335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparent_FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPP_Logo_No_Words.png; sourceTree = "<group>"; };
@@ -224,8 +233,7 @@
 				45438B4719CF3B700063F898 /* LaunchScreen.xib */,
 				45438B3C19CF3B700063F898 /* FastPassParking.xcdatamodeld */,
 				45438B3519CF3B700063F898 /* Supporting Files */,
-				FA44A9DC1A1003C300AE3306 /* UpdateProfile.h */,
-				FA44A9DD1A1003C300AE3306 /* UpdateProfile.m */,
+				FA5AA15F1A19228800EA942F /* Update Controllers */,
 			);
 			path = FastPassParking;
 			sourceTree = "<group>";
@@ -299,6 +307,17 @@
 			path = SlideOutMenuFiles2;
 			sourceTree = "<group>";
 		};
+		FA5AA15F1A19228800EA942F /* Update Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA44A9DC1A1003C300AE3306 /* UpdateProfile.h */,
+				FA44A9DD1A1003C300AE3306 /* UpdateProfile.m */,
+				FA5AA15C1A19227800EA942F /* UpdateVehicleInfoViewController.h */,
+				FA5AA15D1A19227800EA942F /* UpdateVehicleInfoViewController.m */,
+			);
+			name = "Update Controllers";
+			sourceTree = "<group>";
+		};
 		FAC0764F19FD68420024C87A /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +346,10 @@
 				4B95762D1A01F08A003DA5AF /* geoCoordinate.m */,
 				4B95762F1A01F0F0003DA5AF /* parkingViolation.h */,
 				4B9576301A01F0F0003DA5AF /* parkingViolation.m */,
+				4B277D9E1A148BC7004D0019 /* JsonSerializerUtils.h */,
+				4B277D9F1A148BC7004D0019 /* JsonSerializerUtils.m */,
+				4B277DA11A149663004D0019 /* errorObject.h */,
+				4B277DA21A149663004D0019 /* errorObject.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -443,7 +466,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B9576281A01EDF0003DA5AF /* accountCredit.m in Sources */,
+				4B277DA01A148BC7004D0019 /* JsonSerializerUtils.m in Sources */,
 				45847F3819EDC0B700F28C51 /* FPParkingLotData.m in Sources */,
+				FA5AA15E1A19227800EA942F /* UpdateVehicleInfoViewController.m in Sources */,
 				4B9234761A01B91200E9071A /* parkingPass.m in Sources */,
 				FAC0765919FD740E0024C87A /* userHandler.m in Sources */,
 				4B95762E1A01F08A003DA5AF /* geoCoordinate.m in Sources */,
@@ -461,6 +486,7 @@
 				4B8DB9881A06E3EA000F2D78 /* ParkingLotHandler.m in Sources */,
 				935796C31A1456E000326FC4 /* FPFundPickerView.m in Sources */,
 				4B9576311A01F0F0003DA5AF /* parkingViolation.m in Sources */,
+				4B277DA31A149663004D0019 /* errorObject.m in Sources */,
 				4B9576221A01E9D4003DA5AF /* vehicle.m in Sources */,
 				453B892F19E1738A00D3483F /* FPMainViewController.m in Sources */,
 				9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */,

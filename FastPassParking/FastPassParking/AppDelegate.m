@@ -21,6 +21,8 @@
     self.window.rootViewController = [storyboard instantiateInitialViewController];
     [self.window makeKeyAndVisible];
     
+    //_loggedInUser = [user alloc];
+    //_selectedVehicle = [vehicle alloc];
     
     // Override point for customization after application launch.
     return YES;
