@@ -10,6 +10,7 @@
 #import "User.h"
 #import "UserHandler.h"
 #import "AppDelegate.h"
+#import "VehicleHandler.h"
 
 @interface ViewController () <UITextFieldDelegate>
 
@@ -24,6 +25,12 @@
     // Do any additional setup after loading the view, typically from a nib.
     SignInScreen_UserName.delegate = self;
     SignInScreen_Password.delegate = self;
+
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    SignInScreen_UserName.text = appDelegate.loggedInUser.email;
+    appDelegate.loggedInUser = nil;
+    appDelegate.selectedVehicle = nil;
     
 }
 
@@ -54,6 +61,13 @@
             // Set the logged in user
             AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
             appDelegate.loggedInUser = returnedUser;
+            
+            [VehicleHandler getVehiclesForUser:returnedUser.dbId withCompletionHandler:^(BOOL succeed, NSArray *userCars) {
+                
+                appDelegate.selectedVehicle = userCars[0];
+                
+            }];
+
             
             // Perform segue
             dispatch_async(dispatch_get_main_queue(), ^(void){

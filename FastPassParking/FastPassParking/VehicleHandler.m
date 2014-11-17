@@ -12,7 +12,7 @@
 
 +(void) getVehiclesForUser:(NSString*) userId withCompletionHandler:(void(^)(BOOL, NSArray*)) handler {
     
-    NSString* endUrl = @"vehicle?user_id=";
+    NSString* endUrl = @"vehicle/byUser?user_id=";
     endUrl = [endUrl  stringByAppendingFormat:@"%@", userId];
     
     [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -72,6 +72,37 @@
     }];
     
 }
+
++(void) updateVehicle:(vehicle*) vehicleObject withUserId:(NSString*) userId withCompletionHandler:(void(^)(BOOL)) handler {
+    
+    NSString* endUrl = @"vehicle?user_id=";
+    endUrl = [endUrl  stringByAppendingFormat:@"%@", userId];
+    
+    NSMutableDictionary* jsonObject = [vehicle serializeToJson:vehicleObject];
+    
+    [HttpRequestHandler httpPutRequest:endUrl withObjectBody:jsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        BOOL wasSuccessful = NO;
+
+        if(!error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            if(httpResponse.statusCode == 200 || httpResponse.statusCode == 204) {
+
+                // Set the completionHandler response
+                wasSuccessful = YES;
+            } else {
+                NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+            }
+        } else {
+            NSLog(@"Error");
+        }
+        
+        // Return the completion handler to the caller
+        handler(wasSuccessful);
+    }];
+    
+}
+
 
 // Method that parses an array of Vehicles
 +(NSArray*) parseVehicles:(NSArray*) dictionaryArray {

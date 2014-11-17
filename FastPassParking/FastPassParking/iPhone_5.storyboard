@@ -351,7 +351,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MjF-uc-cDG" id="mZq-CW-OHt">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Update Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgT-rV-j30">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PgT-rV-j30">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -369,7 +369,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yWh-98-Irj" id="xuG-pr-gQy">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Update Vehicle Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eGo-Wr-Sol">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Vehicle Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eGo-Wr-Sol">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -380,6 +380,39 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="RhF-ya-fa8" kind="custom" customClass="SWRevealViewControllerSegue" id="SCL-ug-APu"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fourth" textLabel="Utz-Jb-i0w" style="IBUITableViewCellStyleDefault" id="Jlv-5c-h0O">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jlv-5c-h0O" id="808-Lu-xP8">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Current Passes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Utz-Jb-i0w">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fifth" textLabel="r4f-fJ-36r" style="IBUITableViewCellStyleDefault" id="zDL-jm-qDf">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zDL-jm-qDf" id="rEe-03-tSr">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Logout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r4f-fJ-36r">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="ufB-ED-ehF" kind="custom" customClass="LogoutSegue" id="lrV-Fb-y8G"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -621,7 +654,7 @@
                         </connections>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Update Profile" id="bGy-NC-kIs"/>
+                    <navigationItem key="navigationItem" title="Profile" id="bGy-NC-kIs"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="Email" destination="Ss7-KS-TW9" id="AYj-Bh-kQP"/>
@@ -1244,6 +1277,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ClickUpdateButton:" destination="RhF-ya-fa8" eventType="touchUpInside" id="Znt-NH-fL2"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="FPP_Logo_Transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="1AK-57-u9C">
                                 <rect key="frame" x="253" y="373" width="95" height="95"/>
@@ -1260,6 +1296,7 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XfP-wZ-Icx" firstAttribute="leading" secondItem="GN6-DP-8fR" secondAttribute="leadingMargin" constant="25" id="0A1-H1-brV"/>
                             <constraint firstItem="L7U-W1-fla" firstAttribute="leading" secondItem="Ngu-bZ-FDb" secondAttribute="trailing" id="0AU-VM-cbz"/>
@@ -1321,9 +1358,12 @@
                                 <exclude reference="fTf-yS-ilU"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="KC8-CE-fcl" appends="YES" id="LJU-tz-Usd"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Update Vehicle Information" id="G4a-jf-eOU"/>
+                    <navigationItem key="navigationItem" title="Vehicle Information" id="G4a-jf-eOU"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="Color" destination="zbb-Gc-R5d" id="frn-bb-p43"/>
@@ -1341,6 +1381,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwp-Sb-zlh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KC8-CE-fcl">
+                    <connections>
+                        <action selector="dismissKeyboardTap:" destination="RhF-ya-fa8" id="bQh-6B-ghG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2562" y="1965"/>
         </scene>

@@ -44,6 +44,7 @@
 		FA44A9DE1A1003C300AE3306 /* UpdateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44A9DD1A1003C300AE3306 /* UpdateProfile.m */; };
 		FA44A9E31A10143F00AE3306 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA44A9E21A10143F00AE3306 /* SWRevealViewController.m */; };
 		FA5AA15E1A19227800EA942F /* UpdateVehicleInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5AA15D1A19227800EA942F /* UpdateVehicleInfoViewController.m */; };
+		FA5AA1631A19912200EA942F /* LogoutSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5AA1621A19912200EA942F /* LogoutSegue.m */; };
 		FAA43E5319D37A7000335A85 /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5219D37A7000335A85 /* road.png */; };
 		FAA43E5519D37AAB00335A85 /* Transparent_FPP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */; };
 		FAA43E5719D37AB900335A85 /* FPP_Logo_No_Words.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */; };
@@ -134,6 +135,8 @@
 		FA44A9E21A10143F00AE3306 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		FA5AA15C1A19227800EA942F /* UpdateVehicleInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateVehicleInfoViewController.h; sourceTree = "<group>"; };
 		FA5AA15D1A19227800EA942F /* UpdateVehicleInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateVehicleInfoViewController.m; sourceTree = "<group>"; };
+		FA5AA1611A19912200EA942F /* LogoutSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutSegue.h; sourceTree = "<group>"; };
+		FA5AA1621A19912200EA942F /* LogoutSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutSegue.m; sourceTree = "<group>"; };
 		FAA43E5219D37A7000335A85 /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = road.png; sourceTree = "<group>"; };
 		FAA43E5419D37AAB00335A85 /* Transparent_FPP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Transparent_FPP_Logo.png; sourceTree = "<group>"; };
 		FAA43E5619D37AB900335A85 /* FPP_Logo_No_Words.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FPP_Logo_No_Words.png; sourceTree = "<group>"; };
@@ -208,6 +211,7 @@
 		45438B3419CF3B700063F898 /* FastPassParking */ = {
 			isa = PBXGroup;
 			children = (
+				FA5AA1601A1990ED00EA942F /* Segues */,
 				4B95761F1A01E998003DA5AF /* Handlers */,
 				FAC0765019FD68810024C87A /* Models */,
 				FA1CA12019EAF64100EC98E7 /* Create Account */,
@@ -316,6 +320,15 @@
 				FA5AA15D1A19227800EA942F /* UpdateVehicleInfoViewController.m */,
 			);
 			name = "Update Controllers";
+			sourceTree = "<group>";
+		};
+		FA5AA1601A1990ED00EA942F /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				FA5AA1611A19912200EA942F /* LogoutSegue.h */,
+				FA5AA1621A19912200EA942F /* LogoutSegue.m */,
+			);
+			name = Segues;
 			sourceTree = "<group>";
 		};
 		FAC0764F19FD68420024C87A /* LogIn */ = {
@@ -492,6 +505,7 @@
 				9375F34C19E1DB9000790030 /* FPLotDetailViewController.m in Sources */,
 				45438B3E19CF3B700063F898 /* FastPassParking.xcdatamodeld in Sources */,
 				FA1CA11419DCCECF00EC98E7 /* CreateProfile.m in Sources */,
+				FA5AA1631A19912200EA942F /* LogoutSegue.m in Sources */,
 				4B95762B1A01EE40003DA5AF /* parkingLot.m in Sources */,
 				45438B4119CF3B700063F898 /* ViewController.m in Sources */,
 				45438B3819CF3B700063F898 /* main.m in Sources */,
