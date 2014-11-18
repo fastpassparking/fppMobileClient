@@ -16,6 +16,7 @@
         self.dbId = [jsonObject valueForKey:@"_id"];
         self.clientId = [jsonObject valueForKey:@"clientId"];
         self.name = [jsonObject valueForKey:@"name"];
+        self.costPerHour = [jsonObject valueForKey:@"costPerHour"];
         
         // TODO: Properly parse this nested object
         self.centerLocation = [jsonObject valueForKey:@"centerLocation"];
@@ -42,6 +43,7 @@
         [newObject setObject:object.dbId forKey:@"_id"];
         [newObject setObject:object.clientId forKey:@"clientId"];
         [newObject setObject:object.name forKey:@"name"];
+        [newObject setObject:object.costPerHour forKey:@"costPerHour"];
         
         // TODO: Properly
         [newObject setObject:object.centerLocation forKey:@"centerLocation"];

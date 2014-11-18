@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "user.h"
+#import "errorObject.h"
 
 @interface UserHandler : NSObject
 
 @property(nonatomic, strong) void (^Finished)(BOOL isFinished);
 
-+(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword withCompletionHandler:(void(^)(BOOL, user*)) handler;
++(void) authenticateLogin:(NSString*) loginName withLoginPassword:(NSString*) loginPassword withCompletionHandler:(void(^)(BOOL, errorObject*, user*)) handler;
 +(void) createAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*)) handler;
-+(void) updateAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL))handler;
++(void) updateAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*)) handler;
 
 @end

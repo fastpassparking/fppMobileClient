@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define BASE_URL @"http://107.203.220.120"
+#define BASE_URL @"107.203.220.120"
 extern NSString *const SERVER_BASE_URL;
 
 @interface HttpRequestHandler : NSObject

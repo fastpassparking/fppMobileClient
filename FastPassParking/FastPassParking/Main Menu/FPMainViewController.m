@@ -14,6 +14,8 @@
 #import "parkingLot.h"
 #import "SWRevealViewController.h"
 #import "FPFundPickerView.h"
+#import "user.h"
+#import "userHandler.h"
 
 #define showLotDetailView @"showLotDetailView"
 #define kFPPAnnotationReuseIdentifier @"kFPPAnnotationReuseIdentifier"
@@ -496,12 +498,38 @@
             
             NSLog(@"New balance is %f", newBalance);
             
-            appDelegate.loggedInUser.availableCredit = [NSNumber numberWithFloat:newBalance];
-            [_mainNavigationBar setTitle:[NSString stringWithFormat:@"Balance: $%.2f", newBalance]];
+            // Update the user in the database
+            user* userToUpdate = appDelegate.loggedInUser;
+            userToUpdate.availableCredit = [NSNumber numberWithFloat:newBalance];
+            
+            [UserHandler updateAccount:userToUpdate withCompletionHandler:^(BOOL success, user* returnedUser) {
+                
+                if (success == YES) {
+                    
+                    if(returnedUser != nil) {
+                        appDelegate.loggedInUser.availableCredit = returnedUser.availableCredit;
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [_mainNavigationBar setTitle:[NSString stringWithFormat:@"Balance: $%.2f", newBalance]];
+                        });
+                        
+                    }
+
+                }
+                else {
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Add funds Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+                        
+                        [updateIncomplete show];
+                    });
+                }
+            }];
             
             // reset fund variables
             _dollarFunds = 1.0;
             _centsFunds = 0.0;
+            
         }];
         
     });

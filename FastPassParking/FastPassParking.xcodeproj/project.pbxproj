@@ -222,8 +222,6 @@
 				9375F34B19E1DB9000790030 /* FPLotDetailViewController.m */,
 				45438B3919CF3B700063F898 /* AppDelegate.h */,
 				45438B3A19CF3B700063F898 /* AppDelegate.m */,
-				45438B3F19CF3B700063F898 /* ViewController.h */,
-				45438B4019CF3B700063F898 /* ViewController.m */,
 				FA376CDE1A0FD9C600CD2295 /* TableViewController.h */,
 				FA376CDF1A0FD9C600CD2295 /* TableViewController.m */,
 				453B893319E17FA500D3483F /* Lot Data */,
@@ -296,6 +294,8 @@
 		FA1CA12019EAF64100EC98E7 /* Create Account */ = {
 			isa = PBXGroup;
 			children = (
+				FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */,
+				FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */,
 				FA1CA11D19EAF62700EC98E7 /* CreditCardInfo.h */,
 				FA1CA11E19EAF62700EC98E7 /* CreditCardInfo.m */,
 			);
@@ -334,8 +334,8 @@
 		FAC0764F19FD68420024C87A /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
-				FA1CA11219DCCECF00EC98E7 /* CreateProfile.h */,
-				FA1CA11319DCCECF00EC98E7 /* CreateProfile.m */,
+				45438B4019CF3B700063F898 /* ViewController.m */,
+				45438B3F19CF3B700063F898 /* ViewController.h */,
 			);
 			name = LogIn;
 			sourceTree = "<group>";
