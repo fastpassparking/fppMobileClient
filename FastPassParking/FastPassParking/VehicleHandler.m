@@ -55,7 +55,7 @@
         if(!error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             if(httpResponse.statusCode == 200) {
-                // Parse the user from json data
+                // Parse the vehicle from json data
                 returnedObject = [[vehicle alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
                 
                 // Set the completionHandler response
@@ -73,7 +73,7 @@
     
 }
 
-+(void) updateVehicle:(vehicle*) vehicleObject withUserId:(NSString*) userId withCompletionHandler:(void(^)(BOOL)) handler {
++(void) updateVehicle:(vehicle*) vehicleObject withUserId:(NSString*) userId withCompletionHandler:(void(^)(BOOL, vehicle*)) handler {
     
     NSString* endUrl = @"vehicle?user_id=";
     endUrl = [endUrl  stringByAppendingFormat:@"%@", userId];
@@ -83,10 +83,12 @@
     [HttpRequestHandler httpPutRequest:endUrl withObjectBody:jsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         BOOL wasSuccessful = NO;
-
+        vehicle* returnedObject = nil;
         if(!error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             if(httpResponse.statusCode == 200 || httpResponse.statusCode == 204) {
+                // Parse the user from json data
+                returnedObject = [[vehicle alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
 
                 // Set the completionHandler response
                 wasSuccessful = YES;
@@ -98,7 +100,7 @@
         }
         
         // Return the completion handler to the caller
-        handler(wasSuccessful);
+        handler(wasSuccessful, returnedObject);
     }];
     
 }

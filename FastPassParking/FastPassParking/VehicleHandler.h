@@ -14,7 +14,7 @@
 
 +(void) getVehiclesForUser:(NSString*) userId withCompletionHandler:(void(^)(BOOL, NSArray*)) handler;
 +(void) createVehicle:(vehicle*) vehicleObject withUserId:(NSString*) userId withCompletionHandler:(void(^)(BOOL, vehicle*)) handler;
-+(void) updateVehicle:(vehicle*) vehicleObject withUserId:(NSString*) userId withCompletionHandler:(void(^)(BOOL)) handler;
++(void) updateVehicle:(vehicle*) vehicleObject withUserId:(NSString*) userId withCompletionHandler:(void(^)(BOOL, vehicle*)) handler;
 
 
 @end

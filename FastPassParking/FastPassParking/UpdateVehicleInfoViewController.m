@@ -69,27 +69,33 @@
 
 - (IBAction)ClickUpdateButton:(id)sender{
     
-    appDelegate.selectedVehicle.licenseNumber = [PlateNumberTextField text];
-    appDelegate.selectedVehicle.licenseState = [StateTextField text];
-    appDelegate.selectedVehicle.make = [MakeTextField text];
-    appDelegate.selectedVehicle.model = [ModelTextField text];
-    appDelegate.selectedVehicle.color = [ColorTextField text];
-    appDelegate.selectedVehicle.year = [YearTextField text];
+    vehicle* updatedVehicle = appDelegate.selectedVehicle;
+    updatedVehicle.licenseNumber = [PlateNumberTextField text];
+    updatedVehicle.licenseState = [StateTextField text];
+    updatedVehicle.make = [MakeTextField text];
+    updatedVehicle.model = [ModelTextField text];
+    updatedVehicle.color = [ColorTextField text];
+    updatedVehicle.year = [YearTextField text];
     
     
-    [VehicleHandler updateVehicle:appDelegate.selectedVehicle withUserId:appDelegate.loggedInUser.dbId withCompletionHandler:^(BOOL success) {
+    [VehicleHandler updateVehicle:updatedVehicle withUserId:appDelegate.loggedInUser.dbId withCompletionHandler:^(BOOL success, vehicle* returnedObject) {
         
         if (success == YES) {
+            
+            if(returnedObject != nil) {
+                appDelegate.selectedVehicle = returnedObject;
+            }
             
             UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Update Complete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
             
             [updateComplete show];
             
-            
         }
-        
-        else{
+        else {
             
+            UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Update Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+            
+            [updateIncomplete show];
             
         }
         

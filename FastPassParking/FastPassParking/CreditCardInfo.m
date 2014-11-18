@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *yearTextField;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 
-@property AppDelegate* creditCardDelegate;
+@property AppDelegate* appDelegate;
 
 @end
 
@@ -27,22 +27,23 @@
 - (IBAction)creditCardNextButton:(id)sender {
     
     // Create the User account
-    user* userToCreate = _creditCardDelegate.loggedInUser;
-    vehicle* vehicleToCreate = _creditCardDelegate.selectedVehicle;
+    user* userToCreate = _appDelegate.loggedInUser;
+    vehicle* vehicleToCreate = _appDelegate.selectedVehicle;
     
-    [UserHandler createAccount:userToCreate withCompletionHandler:^(BOOL success, user* returnedUser) {
+    [UserHandler createAccount:userToCreate withCompletionHandler:^(BOOL firstSuccess, user* returnedUser) {
         
-        if(success == YES) {
+        if(firstSuccess == YES) {
+            
             // Add the vehicle to the user
             vehicleToCreate.userId = returnedUser.dbId;
-            [VehicleHandler createVehicle:vehicleToCreate withUserId:returnedUser.dbId withCompletionHandler:^(BOOL success, vehicle* returnedVehicle) {
+            [VehicleHandler createVehicle:vehicleToCreate withUserId:returnedUser.dbId withCompletionHandler:^(BOOL secondSuccess, vehicle* returnedVehicle) {
                 
-                if(success == YES) {
+                if(secondSuccess == YES) {
                     // Set global user and vehicle to nil
-                    _creditCardDelegate.loggedInUser = nil;
-                    _creditCardDelegate.selectedVehicle = nil;
+                    _appDelegate.loggedInUser = nil;
+                    _appDelegate.selectedVehicle = nil;
                     
-                    // Alert the user that the fields are incorrect
+                    // Alert the user that account has been created
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account Created!" message:@"Your account has been created, please log in" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
                     
@@ -52,12 +53,16 @@
                 } else {
                     // Make user aware that request failed
                     NSLog(@"Error creating vehicle for user");
+                    UIAlertView *alertFailed = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:@"Error creating vehicle for user" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alertFailed show];
                 }
             }];
             
         } else {
             // Make user aware that request failed
             NSLog(@"Error creating user");
+            UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:@"Error creating user" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+            [alertFail show];
         }
     }];
     
@@ -66,7 +71,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _creditCardDelegate = [[UIApplication sharedApplication] delegate];
+    _appDelegate = [[UIApplication sharedApplication] delegate];
     
    // [ScanCreditCardButton setImage: [UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
    // [ScanCreditCardButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10)]; //top left botttom right

@@ -12,6 +12,7 @@
 #import "SWRevealViewController.h"
 #import "user.h"
 #import "userHandler.h"
+#import "httpRequestHandler.h"
 
 @interface UpdateProfile ()
 
@@ -70,32 +71,36 @@
 
 - (IBAction)ClickUpdateButton:(id)sender{
     
-    appDelegate.loggedInUser.firstName = [FirstNameTextField text];
-    appDelegate.loggedInUser.lastName = [LastNameTextField text];
-    appDelegate.loggedInUser.email = [EmailTextField text];
-    //appDelegate.loggedInUser.password = [PasswordTextField text];
-    appDelegate.loggedInUser.phoneNumber = [MobileNUmberTextField text];
+    user* updatedUser = appDelegate.loggedInUser;
+    updatedUser.firstName = [FirstNameTextField text];
+    updatedUser.lastName = [LastNameTextField text];
+    updatedUser.email = [EmailTextField text];
+    updatedUser.phoneNumber = [MobileNUmberTextField text];
     
+    // Update the password field only if it has been filled in
+    if([[PasswordTextField text] length] > 0) {
+        updatedUser.password = [HttpRequestHandler createSHA512:[PasswordTextField text]];
+    }
     
-    [UserHandler updateAccount:appDelegate.loggedInUser withCompletionHandler:^(BOOL success) {
+    [UserHandler updateAccount:updatedUser withCompletionHandler:^(BOOL success, user* returnedUser) {
         
         if (success == YES) {
+            
+            if(returnedUser != nil) {
+                appDelegate.loggedInUser = returnedUser;
+            }
             
             UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Update Complete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
             
             [updateComplete show];
-
         }
-        
-        else{
+        else {
             
-            UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Update Incomplete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+            UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Update Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
             
             [updateIncomplete show];
         
         }
-        
-        
     }];
     
     
