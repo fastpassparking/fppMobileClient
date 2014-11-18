@@ -14,6 +14,7 @@
 @property(nonatomic,copy) NSString* dbId;
 @property(nonatomic,copy) NSString* clientId;
 @property(nonatomic,copy) NSString* name;
+@property(nonatomic,copy) NSNumber* costPerHour;
 @property(nonatomic,copy) geoCoordinate* centerLocation;
 @property(nonatomic,copy) NSArray* coordinates;
 @property(nonatomic,copy) NSString* addressStreet;
