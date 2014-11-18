@@ -45,4 +45,48 @@
     
 }
 
++(void) getParkingPassesForUserId:(NSString*) userId
+            withCompletionHandler:(void(^)(BOOL, NSArray*)) handler {
+    
+    NSString* endUrl = @"parkingPass/byUser?user_id=";
+    endUrl = [endUrl  stringByAppendingFormat:@"%@", userId];
+    
+    [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        BOOL wasSuccessful = NO;
+        NSArray* returnedObjects = nil;
+        if(!error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            if(httpResponse.statusCode == 200) {
+                // Parse the vehicles from json data
+                returnedObjects = [self parseParkingPasses:(NSArray*)[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+                
+                // Set the completionHandler response
+                wasSuccessful = YES;
+            } else {
+                // Make user aware that
+                NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+            }
+        } else {
+            NSLog(@"Error");
+        }
+        
+        // Return the completion handler to the caller
+        handler(wasSuccessful, returnedObjects);
+    }];
+    
+}
+
+// Method that parses an array of ParkingPasses
++(NSArray*) parseParkingPasses:(NSArray*) dictionaryArray {
+    NSMutableArray* result = [[NSMutableArray alloc] initWithCapacity:[dictionaryArray count]];
+    
+    for(NSDictionary* passDic in dictionaryArray) {
+        parkingPass* newPass = [[parkingPass alloc] initWithJson:passDic];
+        [result addObject:newPass];
+    }
+    
+    return result;
+}
+
 @end
