@@ -14,11 +14,11 @@
     
     UIViewController *sourceViewController = (UIViewController*) [self sourceViewController];
     UIViewController *destinationController = (UIViewController*)[self destinationViewController];
-    //UINavigationController *navigationController = sourceViewController.navigationController;
+    UINavigationController *navigationController = sourceViewController.navigationController;
 
     // Pop to root view controller (not animated) before pushing
-    //[navigationController popToRootViewControllerAnimated:NO];
-   // [navigationController pushViewController:destinationController animated:YES];
+    //[navigationController popToViewController:destinationController animated:YES];
+    // [navigationController pushViewController:destinationController animated:YES];
    
     
     

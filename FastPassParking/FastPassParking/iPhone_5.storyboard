@@ -412,7 +412,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="ufB-ED-ehF" kind="custom" customClass="LogoutSegue" id="lrV-Fb-y8G"/>
+                                    <segue destination="ufB-ED-ehF" kind="custom" identifier="logout" customClass="LogoutSegue" id="lrV-Fb-y8G"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
