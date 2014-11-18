@@ -17,7 +17,7 @@
 
 @implementation UserHandler
 
-+(void) authenticateLogin:(NSString*)loginName withLoginPassword:(NSString*)loginPassword withCompletionHandler:(void(^)(BOOL, user*)) handler{
++(void) authenticateLogin:(NSString*)loginName withLoginPassword:(NSString*)loginPassword withCompletionHandler:(void(^)(BOOL, errorObject*, user*)) handler{
     
     NSString* endUrl = @"user/login?email=";
     loginPassword = [HttpRequestHandler createSHA512:loginPassword];
@@ -27,6 +27,7 @@
         
         BOOL wasSuccessful = NO;
         user* returnedUser = nil;
+        errorObject* errorMessage = nil;
         if(!error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             if(httpResponse.statusCode == 200) {
@@ -36,15 +37,18 @@
                 // Set the completionHandler response
                 wasSuccessful = YES;
             } else {
-                // Make user aware that
+                // Make user aware that login failed
                 NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+                
+                // Get the error message
+                errorMessage = [[errorObject alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
             }
         } else {
             NSLog(@"Error");
         }
         
         // Return the completion handler to the caller
-        handler(wasSuccessful, returnedUser);
+        handler(wasSuccessful, errorMessage, returnedUser);
     }];
     
 }

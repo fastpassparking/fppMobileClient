@@ -44,25 +44,28 @@
                     _appDelegate.selectedVehicle = nil;
                     
                     // Alert the user that account has been created
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account Created!" message:@"Your account has been created, please log in" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    [alert show];
-                    
-                    // Return to the main page
-                    //[self dismissViewControllerAnimated:YES completion:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Account Created!" message:@"Your account has been created, please log in" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        [alert show];
+                    });
                     
                 } else {
                     // Make user aware that request failed
                     NSLog(@"Error creating vehicle for user");
-                    UIAlertView *alertFailed = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:@"Error creating vehicle for user" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-                    [alertFailed show];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *alertFailed = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:@"Error creating vehicle for user" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                        [alertFailed show];
+                    });
                 }
             }];
             
         } else {
             // Make user aware that request failed
             NSLog(@"Error creating user");
-            UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:@"Error creating user" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-            [alertFail show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:@"Error creating user" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [alertFail show];
+            });
         }
     }];
     

@@ -90,16 +90,19 @@
                 appDelegate.loggedInUser = returnedUser;
             }
             
-            UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Update Complete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
-            
-            [updateComplete show];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Update Complete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+                
+                [updateComplete show];
+            });
         }
         else {
             
-            UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Update Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Update Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
             
-            [updateIncomplete show];
-        
+                [updateIncomplete show];
+            });
         }
     }];
     

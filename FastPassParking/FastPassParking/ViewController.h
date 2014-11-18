@@ -19,8 +19,6 @@
     IBOutlet UITextField *SignInScreen_UserName;
     IBOutlet UITextField *SignInScreen_Password;
 
-
-
 }
 
 - (IBAction)checkSignIn:(id)sender;
