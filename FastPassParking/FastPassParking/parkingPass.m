@@ -13,10 +13,10 @@
 - (id) initWithJson:(NSObject*)jsonObject{
     self = [super init];
     if (self && jsonObject) {
-        self.dbId = [jsonObject valueForKey:@"id"];
+        self.dbId = [jsonObject valueForKey:@"_id"];
         self.vehicleId = [jsonObject valueForKey:@"vehicleId"];
         self.parkingLotId = [jsonObject valueForKey:@"parkingLotId"];
-        self.parkingType = [jsonObject valueForKey:@"parkingType"];
+        self.parkingLotName = [jsonObject valueForKey:@"parkingLotName"];
         self.startDateTime = [jsonObject valueForKey:@"startDateTime"];
         self.endDateTime = [jsonObject valueForKey:@"endDateTime"];
         
@@ -35,10 +35,10 @@
     if(parkingPassObject) {
         parkingPassWrapper = [[NSMutableDictionary alloc] init];
         NSMutableDictionary* newParkingPass = [[NSMutableDictionary alloc] init];
-        [newParkingPass setObject:parkingPassObject.dbId forKey:@"id"];
+        [newParkingPass setObject:parkingPassObject.dbId forKey:@"_id"];
         [newParkingPass setObject:parkingPassObject.parkingLotId forKey:@"parkingLotId"];
         [newParkingPass setObject:parkingPassObject.vehicleId forKey:@"vehicleId"];
-        [newParkingPass setObject:parkingPassObject.parkingType forKey:@"parkingType"];
+        [newParkingPass setObject:parkingPassObject.parkingLotName forKey:@"parkingLotName"];
         [newParkingPass setObject:parkingPassObject.startDateTime forKey:@"startDateTime"];
         [newParkingPass setObject:parkingPassObject.endDateTime forKey:@"endDateTime"];
         
