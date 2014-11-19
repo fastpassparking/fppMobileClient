@@ -15,5 +15,7 @@
 +(void) createParkingPass:(parkingPayment*) parkingPassObject withLotId:(NSString*) lotId
             withVehicleId:(NSString*) vehicleId
             withCompletionHandler:(void(^)(BOOL, parkingPass*)) handler;
++(void) getParkingPassesForUserId:(NSString*) userId
+            withCompletionHandler:(void(^)(BOOL, NSArray*)) handler;
 
 @end
