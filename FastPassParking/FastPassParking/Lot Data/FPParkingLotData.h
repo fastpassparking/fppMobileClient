@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "parkingLot.h"
 
 @interface FPParkingLotData : MKPolygon <MKAnnotation>
 
 // Core Lot Details
 @property (nonatomic, strong) NSString* parkingLotName;
 @property (nonatomic, strong) NSString* parkingLotDocumentID;
-
+@property (nonatomic,strong) parkingLot* ParkingLot;
 
 // Rendering
 @property (nonatomic, strong) MKPolygonRenderer* rendererForLot;

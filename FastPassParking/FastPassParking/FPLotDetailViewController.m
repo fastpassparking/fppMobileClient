@@ -7,12 +7,21 @@
 //
 
 #import "FPLotDetailViewController.h"
+#import "parkingLot.h"
+#import "AppDelegate.h"
 
 @implementation FPLotDetailViewController
 
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    [_parkingLotName setText:appDelegate.selectedParkingLot.name];
+    [_ParkinLotAddress setText:appDelegate.selectedParkingLot.addressStreet];
+    [_parkingLotCityStateZip setText: [NSString stringWithFormat:@"%@, %@ %@",appDelegate.selectedParkingLot.addressCity,appDelegate.selectedParkingLot.addressState,appDelegate.selectedParkingLot.addressZipCode]];
+    
     
 }
 

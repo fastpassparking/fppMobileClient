@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "user.h"
 #import "vehicle.h"
+#import "parkingLot.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -21,6 +22,7 @@
 
 @property (strong, nonatomic) user* loggedInUser;
 @property (strong, nonatomic) vehicle* selectedVehicle;
+@property (strong,nonatomic) parkingLot* selectedParkingLot;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

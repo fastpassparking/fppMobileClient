@@ -12,6 +12,10 @@
 @interface FPLotDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *lotDetailMapView;
+@property (weak, nonatomic) IBOutlet UILabel *parkingLotName;
+@property (weak, nonatomic) IBOutlet UILabel *ParkinLotAddress;
+@property (weak, nonatomic) IBOutlet UILabel *parkingLotCityStateZip;
+
 @property (weak, nonatomic) FPMainViewController* main;
 @property (weak, nonatomic) FPParkingLotData* lot;
 

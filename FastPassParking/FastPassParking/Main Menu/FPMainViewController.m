@@ -16,6 +16,8 @@
 #import "FPFundPickerView.h"
 #import "user.h"
 #import "userHandler.h"
+#import "parkingLot.h"
+#import "AppDelegate.h"
 
 #define showLotDetailView @"showLotDetailView"
 #define kFPPAnnotationReuseIdentifier @"kFPPAnnotationReuseIdentifier"
@@ -193,6 +195,10 @@
     lot.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
     
+    //global parking lot = _selectedlot
+    AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
+    appDelegate.selectedParkingLot = _selectedLot.ParkingLot;
+    
     [self performSegueWithIdentifier:showLotDetailView sender:lot];
 }
 
@@ -270,6 +276,7 @@
                 netRender.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
                 newLotFromNet.rendererForLot = netRender;
                 newLotFromNet.parkingLotName = lot.name;
+                newLotFromNet.ParkingLot = lot;
                 
                 [_implementation addOverlay:newLotFromNet];
                 [_parkingLotDataObjectsIDsToPolygons setObject:newLotFromNet forKey:newLotFromNet.parkingLotName];
@@ -338,6 +345,10 @@
     lotForCell.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
     
+    //global parking lot = _selectedlot
+    //AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
+    //appDelegate.selectedParkingLot = _selectedLot.ParkingLot;
+    
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
     });
@@ -396,6 +407,11 @@
     
     lotForCell.rendererForLot.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
     [_mapView setNeedsDisplay];
+    
+    //global parking lot = _selectedlot
+    AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
+    appDelegate.selectedParkingLot = lotForCell.ParkingLot;
+
     
     [self performSegueWithIdentifier:showLotDetailView sender:lotForCell];
 }
