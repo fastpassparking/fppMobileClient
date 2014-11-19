@@ -7,6 +7,7 @@
 //
 
 #import "parkingPayment.h"
+#import "JsonSerializerUtils.h"
 
 @implementation parkingPayment
 
@@ -28,11 +29,15 @@
     if(parkingPaymentObject) {
         parkingPaymentWrapper = [[NSMutableDictionary alloc] init];
         NSMutableDictionary* newParkingPayment = [[NSMutableDictionary alloc] init];
-        [newParkingPayment setObject:parkingPaymentObject.timeInitiated forKey:@"timeInitiated"];
+        
+        // Required properties
         [newParkingPayment setObject:parkingPaymentObject.amountOfTime forKey:@"amountOfTime"];
         [newParkingPayment setObject:parkingPaymentObject.paymentAmount forKey:@"paymentAmount"];
-        [newParkingPayment setObject:parkingPaymentObject.lastFourOfCreditCard forKey:@"lastFourOfCreditCard"];
-        [newParkingPayment setObject:[NSNumber numberWithBool:parkingPaymentObject.fromAccountCredit] forKey:@"fromAccountCredit"];
+        
+        // Optional properties
+        [JsonSerializerUtils setObject:parkingPaymentObject.timeInitiated forKey:@"timeInitiated" forDictionary:newParkingPayment];
+        [JsonSerializerUtils setObject:parkingPaymentObject.lastFourOfCreditCard forKey:@"lastFourOfCreditCard" forDictionary:newParkingPayment];
+        [JsonSerializerUtils setObject:[NSNumber numberWithBool:parkingPaymentObject.fromAccountCredit] forKey:@"fromAccountCredit" forDictionary:newParkingPayment];
 
         [parkingPaymentWrapper setObject:newParkingPayment forKey:@"parkingPayment"];
     }
