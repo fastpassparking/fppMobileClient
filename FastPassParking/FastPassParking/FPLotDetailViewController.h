@@ -19,4 +19,6 @@
 @property (weak, nonatomic) FPMainViewController* main;
 @property (weak, nonatomic) FPParkingLotData* lot;
 
+- (IBAction)parkButtonclicked:(id)sender;
+
 @end

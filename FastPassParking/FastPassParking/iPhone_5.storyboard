@@ -703,6 +703,9 @@
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 </variation>
+                                <connections>
+                                    <action selector="parkButtonclicked:" destination="dNN-TO-a6C" eventType="touchUpInside" id="uAx-rv-DoJ"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-Or-fh9">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
