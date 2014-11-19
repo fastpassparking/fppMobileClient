@@ -53,7 +53,7 @@
     
 }
 
-+(void) createAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, user*))handler {
++(void) createAccount:(user*) userObject withCompletionHandler:(void(^)(BOOL, errorObject*, user*))handler {
     
     NSString* endUrl = @"user";
     userObject.password = [HttpRequestHandler createSHA512:userObject.password];
@@ -63,6 +63,7 @@
         
         BOOL wasSuccessful = NO;
         user* returnedUser = nil;
+        errorObject* errorMessage = nil;
         if(!error) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
             if(httpResponse.statusCode == 200) {
@@ -73,13 +74,16 @@
                 wasSuccessful = YES;
             } else {
                 NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+                
+                // Get the error message
+                errorMessage = [[errorObject alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
             }
         } else {
             NSLog(@"Error");
         }
         
         // Return the completion handler to the caller
-        handler(wasSuccessful, returnedUser);
+        handler(wasSuccessful, errorMessage, returnedUser);
     }];
 }
 

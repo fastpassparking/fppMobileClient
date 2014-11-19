@@ -30,7 +30,7 @@
     user* userToCreate = _appDelegate.loggedInUser;
     vehicle* vehicleToCreate = _appDelegate.selectedVehicle;
     
-    [UserHandler createAccount:userToCreate withCompletionHandler:^(BOOL firstSuccess, user* returnedUser) {
+    [UserHandler createAccount:userToCreate withCompletionHandler:^(BOOL firstSuccess, errorObject* errorMessage, user* returnedUser) {
         
         if(firstSuccess == YES) {
             
@@ -62,8 +62,13 @@
         } else {
             // Make user aware that request failed
             NSLog(@"Error creating user");
+            NSString* errorString = errorMessage.errorMessage;
+            
+            if(errorString == nil || [errorString length] < 5) {
+                errorString = @"Error logging in";
+            }
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:@"Error creating user" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                UIAlertView *alertFail = [[UIAlertView alloc] initWithTitle:@"Creation Error!" message:errorString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                 [alertFail show];
             });
         }
