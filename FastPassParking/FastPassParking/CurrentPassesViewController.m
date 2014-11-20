@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "userHandler.h"
 #import "parkingPass.h"
+#import "parkingPayment.h"
 
 @interface CurrentPassesViewController () < UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate >
 {
@@ -164,37 +165,34 @@
              NSLog(@"Cent amount is %f", _centsFunds);
              
              AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+             parkingPayment *payment = [[parkingPayment alloc]init];
              
-             float newBalance = [appDelegate.loggedInUser.availableCredit floatValue] + _dollarFunds + _centsFunds;
+             NSNumber *newBalance = [NSNumber numberWithFloat:((_dollarFunds * 60.0) + _centsFunds)];
+             payment.paymentAmount = [NSNumber numberWithDouble:3.0];
+             payment.amountOfTime = newBalance;
              
-             NSLog(@"New balance is %f", newBalance);
+           //  NSLog(@"New balance is %f", newBalance);
              
              // Update the user in the database
-             user* userToUpdate = appDelegate.loggedInUser;
-             userToUpdate.availableCredit = [NSNumber numberWithFloat:newBalance];
+            // user* userToUpdate = appDelegate.loggedInUser;
+             //userToUpdate.availableCredit = [NSNumber numberWithFloat:newBalance];
              
-             [UserHandler updateAccount:userToUpdate withCompletionHandler:^(BOOL success, user* returnedUser) {
+             [ParkingPassHandler updateParkingPass:_pass.dbId withParkingPayment:payment withCompletionHandler:^(BOOL success, parkingPass * returnedParkingPass) {
                  
                  if (success == YES) {
                      
-                     if(returnedUser != nil) {
-                         appDelegate.loggedInUser.availableCredit = returnedUser.availableCredit;
-                         
-//                         dispatch_async(dispatch_get_main_queue(), ^{
-//                             [_mainNavigationBar setTitle:[NSString stringWithFormat:@"Balance: $%.2f", newBalance]];
-//                         });
-                         
-                     }
-                     
-                 }
-                 else {
-                     
                      dispatch_async(dispatch_get_main_queue(), ^{
-                         UIAlertView *updateIncomplete = [[UIAlertView alloc] initWithTitle:@"Add funds Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+                         UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Update Complete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
                          
-                         [updateIncomplete show];
+                         [updateComplete show];
                      });
+                     
                  }
+                 
+                 else{
+                     NSLog(@"Failed");
+                 }
+                 
              }];
              
              // reset fund variables
@@ -308,19 +306,19 @@
     
     static NSString *CellIdentifier = @"carTableCell";
     UITableViewCell *carTableCell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    parkingPass *pass = [_data objectAtIndex:indexPath.row];
+    _pass = [_data objectAtIndex:indexPath.row];
     
     if(carTableCell == nil){
         carTableCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [carTableCell.textLabel setText:pass.parkingLotName];
+    [carTableCell.textLabel setText:_pass.parkingLotName];
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
-    dateFormatter.dateFormat = @"MM/dd/yyyy";
-    NSLog(@"%@",[dateFormatter stringFromDate:pass.startDateTime]);
+    dateFormatter.dateFormat = @"M/d/yyyy hh:ss a";
+    NSLog(@"%@",[dateFormatter stringFromDate:_pass.startDateTime]);
     
-    [carTableCell.detailTextLabel setText:[dateFormatter stringFromDate:pass.startDateTime]];
+    [carTableCell.detailTextLabel setText:[dateFormatter stringFromDate:_pass.startDateTime]];
     
     return carTableCell;
     
@@ -330,15 +328,15 @@
 - (void) tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     
-    parkingPass *pass = [_data objectAtIndex:indexPath.row];
+    _pass = [_data objectAtIndex:indexPath.row];
     
-    NSDate* date1 = pass.startDateTime;
-    NSDate* date2 = pass.endDateTime;
+    NSDate* date1 = _pass.startDateTime;
+    NSDate* date2 = _pass.endDateTime;
     //NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
     //double secondsInAnHour = 3600;
     //NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
     
-    _parkingLotName.text = pass.parkingLotName;
+    _parkingLotName.text = _pass.parkingLotName;
     _timeLeft.text = [NSString stringWithFormat:@"Time Left: %d",5];
     
     NSLog(@"here");
