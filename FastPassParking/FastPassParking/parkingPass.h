@@ -14,7 +14,7 @@
 @property(nonatomic,copy) NSString* dbId;
 @property(nonatomic,copy) NSString* vehicleId;
 @property(nonatomic,copy) NSString* parkingLotId;
-@property(nonatomic,copy) NSString* parkingType;
+@property(nonatomic,copy) NSString* parkingLotName;
 @property(nonatomic,copy) geoCoordinate* parkingLocation;
 @property(nonatomic,copy) NSNumber* parkingLocationLatitude;
 @property(nonatomic,copy) NSNumber* parkingLocationLongitude;
