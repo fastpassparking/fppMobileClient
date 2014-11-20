@@ -34,6 +34,8 @@
     
     self.fundsPicker.delegate = self;
     self.fundsPicker.dataSource = self;
+    
+    [_fundsPicker selectRow:2 inComponent:0 animated:NO];
 }
 
 - (void) viewWillAppear:(BOOL)animated
