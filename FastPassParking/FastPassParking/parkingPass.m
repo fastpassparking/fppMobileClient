@@ -7,6 +7,7 @@
 //
 
 #import "parkingPass.h"
+#import "JsonSerializerUtils.h"
 
 @implementation parkingPass
 
@@ -45,7 +46,8 @@
         [newParkingPass setObject:parkingPassObject.dbId forKey:@"_id"];
         [newParkingPass setObject:parkingPassObject.parkingLotId forKey:@"parkingLotId"];
         [newParkingPass setObject:parkingPassObject.vehicleId forKey:@"vehicleId"];
-        [newParkingPass setObject:parkingPassObject.parkingLotName forKey:@"parkingLotName"];
+        [JsonSerializerUtils setObject:parkingPassObject.parkingLotName forKey:@"parkingLotName" forDictionary:newParkingPass];
+        [JsonSerializerUtils setObject:parkingPassObject.costPerHour forKey:@"costPerHour" forDictionary:newParkingPass];
         [newParkingPass setObject:parkingPassObject.startDateTime forKey:@"startDateTime"];
         [newParkingPass setObject:parkingPassObject.endDateTime forKey:@"endDateTime"];
         

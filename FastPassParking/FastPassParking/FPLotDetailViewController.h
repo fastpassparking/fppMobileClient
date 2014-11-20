@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "FPMainViewController.h"
 
-@interface FPLotDetailViewController : UIViewController
+@interface FPLotDetailViewController : UIViewController < UIPickerViewDelegate, UIPickerViewDataSource >
 
 @property (weak, nonatomic) IBOutlet UIView *lotDetailMapView;
 @property (weak, nonatomic) IBOutlet UILabel *parkingLotName;
 @property (weak, nonatomic) IBOutlet UILabel *ParkinLotAddress;
 @property (weak, nonatomic) IBOutlet UILabel *parkingLotCityStateZip;
+@property (weak, nonatomic) IBOutlet UILabel *costPerHourLabel;
+@property (strong, nonatomic) IBOutlet UIPickerView *fundsPicker;
 
 @property (weak, nonatomic) FPMainViewController* main;
 @property (weak, nonatomic) FPParkingLotData* lot;
