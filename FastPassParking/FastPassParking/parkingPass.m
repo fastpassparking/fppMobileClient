@@ -17,8 +17,15 @@
         self.vehicleId = [jsonObject valueForKey:@"vehicleId"];
         self.parkingLotId = [jsonObject valueForKey:@"parkingLotId"];
         self.parkingLotName = [jsonObject valueForKey:@"parkingLotName"];
-        self.startDateTime = [jsonObject valueForKey:@"startDateTime"];
-        self.endDateTime = [jsonObject valueForKey:@"endDateTime"];
+        
+        NSDate *startDate, *endDate;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSz"];
+        startDate = [dateFormatter dateFromString:[(NSDictionary*)jsonObject objectForKey:@"startDateTime"]];
+        endDate = [dateFormatter dateFromString:[(NSDictionary*)jsonObject objectForKey:@"endDateTime"]];
+        
+        self.startDateTime = startDate;
+        self.endDateTime = endDate;
         
         // TODO: Properly parse these fields
         self.parkingLocation = [jsonObject valueForKey:@"parkingLocation"];
