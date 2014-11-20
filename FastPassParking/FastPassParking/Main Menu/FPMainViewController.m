@@ -142,9 +142,13 @@
     [_parkingLotTableView reloadData];
     
     //Move global variable to title
-    NSString *accountBalance = [appDelegate.loggedInUser.availableCredit stringValue];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    formatter.minimumFractionDigits = 2;
+    formatter.maximumFractionDigits = 2;
+    
     NSString *currentBalance = @"Balance: $";
-    NSString *accountBalancePlus = [currentBalance stringByAppendingString:accountBalance];
+    NSString *accountBalancePlus = [currentBalance stringByAppendingString:[formatter stringFromNumber:appDelegate.loggedInUser.availableCredit]];
     
     dispatch_async(dispatch_get_main_queue(), ^() {
         [_mainNavigationBar setTitle:accountBalancePlus];
