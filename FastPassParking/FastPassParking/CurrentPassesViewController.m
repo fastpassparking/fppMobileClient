@@ -313,9 +313,16 @@
     }
     
     [carTableCell.textLabel setText:_pass.parkingLotName];
-    
+
+    NSLocale *englishLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en"];
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
-    dateFormatter.dateFormat = @"M/d/yyyy hh:ss a";
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    [dateFormatter setLocale:englishLocale];
+    
+    NSDate* passDate = _pass.startDateTime;
+    
+    NSString* dateString = [dateFormatter stringFromDate:passDate];
+    
     NSLog(@"%@",[dateFormatter stringFromDate:_pass.startDateTime]);
     
     [carTableCell.detailTextLabel setText:[dateFormatter stringFromDate:_pass.startDateTime]];
