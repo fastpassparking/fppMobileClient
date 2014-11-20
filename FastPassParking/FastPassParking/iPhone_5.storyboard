@@ -1437,9 +1437,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="u6t-D8-5qE">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="u6t-D8-5qE">
+                                <rect key="frame" x="0.0" y="325" width="600" height="275"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="carTableCell" textLabel="hVe-aM-UFS" detailTextLabel="bs9-ZU-AdV" style="IBUITableViewCellStyleSubtitle" id="D3x-94-WCd" customClass="CurrentPassTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1466,9 +1466,48 @@
                                     <outlet property="dataSource" destination="6HL-fJ-a8z" id="Jey-VA-ACm"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Parking Lot Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQA-ko-efA">
+                                <rect key="frame" x="15" y="94" width="570" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time Left: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQW-4J-9Jf">
+                                <rect key="frame" x="15" y="142" width="570" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsF-QA-3br">
+                                <rect key="frame" x="55" y="217" width="490" height="38"/>
+                                <color key="backgroundColor" red="0.078431372550000003" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Update">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="FQA-ko-efA" secondAttribute="trailing" constant="-1" id="Byk-Bq-vro"/>
+                            <constraint firstItem="FQA-ko-efA" firstAttribute="top" secondItem="qgM-SR-CUG" secondAttribute="bottom" constant="30" id="ENe-A8-JXJ"/>
+                            <constraint firstItem="mic-fk-6MY" firstAttribute="top" secondItem="u6t-D8-5qE" secondAttribute="bottom" id="Ktz-vu-vIf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HQW-4J-9Jf" secondAttribute="trailing" constant="-1" id="ML2-W5-vus"/>
+                            <constraint firstItem="HQW-4J-9Jf" firstAttribute="top" secondItem="FQA-ko-efA" secondAttribute="bottom" constant="8" id="bNq-qA-517"/>
+                            <constraint firstItem="FQA-ko-efA" firstAttribute="leading" secondItem="VP1-iB-tEh" secondAttribute="leadingMargin" constant="-1" id="e9b-3P-e21"/>
+                            <constraint firstItem="HQW-4J-9Jf" firstAttribute="leading" secondItem="VP1-iB-tEh" secondAttribute="leadingMargin" constant="-1" id="fBh-js-Jyk"/>
+                            <constraint firstItem="u6t-D8-5qE" firstAttribute="top" secondItem="QsF-QA-3br" secondAttribute="bottom" constant="70" id="nnu-0E-yQI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QsF-QA-3br" secondAttribute="trailing" constant="39" id="qK0-jk-PMk"/>
+                            <constraint firstItem="QsF-QA-3br" firstAttribute="leading" secondItem="VP1-iB-tEh" secondAttribute="leadingMargin" constant="39" id="roO-V7-wWg"/>
+                            <constraint firstItem="QsF-QA-3br" firstAttribute="top" secondItem="HQW-4J-9Jf" secondAttribute="bottom" constant="54" id="y9Q-9T-web"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Current Passes" id="YQq-bo-683"/>

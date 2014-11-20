@@ -89,7 +89,14 @@
         carTableCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [carTableCell.textLabel setText:pass.parkingLotId];
+    [carTableCell.textLabel setText:pass.parkingLotName];
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
+    dateFormatter.dateFormat = @"dd/MM/yyyy";
+    NSLog(@"%@",[dateFormatter stringFromDate:pass.startDateTime]);
+    
+    [carTableCell.detailTextLabel setText:[dateFormatter stringFromDate:pass.startDateTime]];
+    
     return carTableCell;
     
 }
