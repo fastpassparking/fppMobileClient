@@ -14,5 +14,7 @@
 
 @property (strong,nonatomic) NSArray *data;
 
+@property (weak,nonatomic) IBOutlet UILabel *parkingLotName;
+@property (weak,nonatomic) IBOutlet UILabel *timeLeft;
 
 @end

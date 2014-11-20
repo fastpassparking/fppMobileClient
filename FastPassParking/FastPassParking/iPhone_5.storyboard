@@ -1428,7 +1428,7 @@
         <!--Profile View-->
         <scene sceneID="JFg-1z-T6Y">
             <objects>
-                <viewController title="Profile View" id="6HL-fJ-a8z" customClass="CurrentPassesViewController" sceneMemberID="viewController">
+                <viewController title="Profile View" automaticallyAdjustsScrollViewInsets="NO" id="6HL-fJ-a8z" customClass="CurrentPassesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qgM-SR-CUG"/>
                         <viewControllerLayoutGuide type="bottom" id="mic-fk-6MY"/>
@@ -1513,7 +1513,9 @@
                     <navigationItem key="navigationItem" title="Current Passes" id="YQq-bo-683"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="parkingLotName" destination="FQA-ko-efA" id="rEq-O2-JZX"/>
                         <outlet property="parkingPassTableView" destination="u6t-D8-5qE" id="z43-RO-nNw"/>
+                        <outlet property="timeLeft" destination="HQW-4J-9Jf" id="Fti-aR-A8F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijo-f5-r3T" userLabel="First Responder" sceneMemberID="firstResponder"/>

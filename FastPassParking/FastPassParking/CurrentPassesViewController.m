@@ -22,6 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.parkingPassTableView.delegate = self;
+    
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"Logo"] forState:UIControlStateNormal];
     [button addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
@@ -92,12 +94,31 @@
     [carTableCell.textLabel setText:pass.parkingLotName];
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
-    dateFormatter.dateFormat = @"dd/MM/yyyy";
+    dateFormatter.dateFormat = @"MM/dd/yyyy";
     NSLog(@"%@",[dateFormatter stringFromDate:pass.startDateTime]);
     
     [carTableCell.detailTextLabel setText:[dateFormatter stringFromDate:pass.startDateTime]];
     
     return carTableCell;
+    
+}
+
+
+- (void) tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    
+    parkingPass *pass = [_data objectAtIndex:indexPath.row];
+    
+    NSDate* date1 = pass.startDateTime;
+    NSDate* date2 = pass.endDateTime;
+    //NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
+    //double secondsInAnHour = 3600;
+    //NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    
+    _parkingLotName.text = pass.parkingLotName;
+    _timeLeft.text = [NSString stringWithFormat:@"Time Left: %d",5];
+    
+    NSLog(@"here");
     
 }
 
