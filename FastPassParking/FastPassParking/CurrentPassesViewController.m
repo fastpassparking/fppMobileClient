@@ -312,18 +312,18 @@
         carTableCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    [carTableCell.textLabel setText:pass.parkingLotName];
+    [carTableCell.textLabel setText:_pass.parkingLotName];
 
     NSLocale *englishLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en"];
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     [dateFormatter setLocale:englishLocale];
     
-    NSDate* passDate = pass.startDateTime;
+    NSDate* passDate = _pass.startDateTime;
     
     NSString* dateString = [dateFormatter stringFromDate:passDate];
     
-    NSLog(@"%@",[dateFormatter stringFromDate:pass.startDateTime]);
+    NSLog(@"%@",[dateFormatter stringFromDate:_pass.startDateTime]);
     
     [carTableCell.detailTextLabel setText:[dateFormatter stringFromDate:_pass.startDateTime]];
     
