@@ -46,10 +46,18 @@
 }
 
 +(void) getParkingPassesForUserId:(NSString*) userId
-            withCompletionHandler:(void(^)(BOOL, NSArray*)) handler {
+    onlyCurrent:(BOOL) current
+    withCompletionHandler:(void(^)(BOOL, NSArray*)) handler {
+    
+    NSString* currentString;
+    if(current && current == YES) {
+        currentString = @"true";
+    } else {
+        currentString = @"false";
+    }
     
     NSString* endUrl = @"parkingPass/byUser?user_id=";
-    endUrl = [endUrl  stringByAppendingFormat:@"%@", userId];
+    endUrl = [endUrl  stringByAppendingFormat:@"%@&current=%@", userId, currentString];
     
     [HttpRequestHandler httpGetRequest:endUrl withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -73,6 +81,38 @@
         
         // Return the completion handler to the caller
         handler(wasSuccessful, returnedObjects);
+    }];
+    
+}
+
++(void) updateParkingPass:(NSString*) parkingPassId withParkingPayment:(parkingPayment*) payment withCompletionHandler:(void(^)(BOOL, parkingPass*)) handler {
+    
+    NSString* endUrl = @"parkingPass?parking_pass_id=";
+    endUrl = [endUrl  stringByAppendingFormat:@"%@", parkingPassId];
+    
+    NSMutableDictionary* jsonObject = [parkingPayment serializeToJson:payment];
+    
+    [HttpRequestHandler httpPutRequest:endUrl withObjectBody:jsonObject withCompletionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        BOOL wasSuccessful = NO;
+        parkingPass* returnedObject = nil;
+        if(!error) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            if(httpResponse.statusCode == 200 || httpResponse.statusCode == 204) {
+                // Parse the user from json data
+                returnedObject = [[parkingPass alloc] initWithJson:[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+                
+                // Set the completionHandler response
+                wasSuccessful = YES;
+            } else {
+                NSLog(@"Error code: %ld", (long)httpResponse.statusCode);
+            }
+        } else {
+            NSLog(@"Error");
+        }
+        
+        // Return the completion handler to the caller
+        handler(wasSuccessful, returnedObject);
     }];
     
 }

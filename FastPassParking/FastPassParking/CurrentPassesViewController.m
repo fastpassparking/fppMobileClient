@@ -16,6 +16,8 @@
 
 @end
 
+
+
 @implementation CurrentPassesViewController
 
 - (void)viewDidLoad {
@@ -33,7 +35,10 @@
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
-    [ParkingPassHandler getParkingPassesForUserId:appDelegate.loggedInUser.dbId withCompletionHandler:^(BOOL success, NSArray * returnedParkingPasses) {
+    // Set variable to get current passes / get history
+    _onlyCurrentPasses = YES;
+    
+    [ParkingPassHandler getParkingPassesForUserId:appDelegate.loggedInUser.dbId onlyCurrent:_onlyCurrentPasses withCompletionHandler:^(BOOL success, NSArray * returnedParkingPasses) {
         
         if (success == YES) {
             

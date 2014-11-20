@@ -13,6 +13,7 @@
 @property (strong,nonatomic) IBOutlet UITableView *parkingPassTableView;
 
 @property (strong,nonatomic) NSArray *data;
+@property BOOL onlyCurrentPasses;
 
 @property (weak,nonatomic) IBOutlet UILabel *parkingLotName;
 @property (weak,nonatomic) IBOutlet UILabel *timeLeft;
