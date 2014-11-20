@@ -10,6 +10,7 @@
 #import "parkingLot.h"
 #import "AppDelegate.h"
 #import "ParkingPassHandler.h"
+#import "userHandler.h"
 #import "parkingPayment.h"
 
 @implementation FPLotDetailViewController
@@ -61,10 +62,25 @@
     NSNumber *time = [NSNumber numberWithInt:180];
     NSNumber *hour = [NSNumber numberWithInt:60];
     NSNumber *timePerHour = [NSNumber numberWithInt:(time.intValue / hour.intValue)];
-    NSNumber *ammount = [NSNumber numberWithInt:(timePerHour.intValue * appDelegate.selectedParkingLot.costPerHour.intValue)];
+    NSNumber *ammount = [NSNumber numberWithDouble:(timePerHour.doubleValue * appDelegate.selectedParkingLot.costPerHour.doubleValue)];
+    NSNumber *currentCredit = appDelegate.loggedInUser.availableCredit;
     
     Payment.amountOfTime = time;
     Payment.paymentAmount = ammount;
+    
+    NSLog(@"Current Credit: %f\n",currentCredit.doubleValue);
+    NSLog(@"Ammount: %f",ammount.doubleValue);
+    
+    if (currentCredit.doubleValue < ammount.doubleValue) {
+       
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Insufficient Funds" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+            
+            [updateComplete show];
+        });
+    }
+    
+    else{
     
     [ParkingPassHandler createParkingPass:Payment withLotId:appDelegate.selectedParkingLot.dbId withVehicleId:appDelegate.selectedVehicle.dbId withCompletionHandler:^(BOOL success, parkingPass *currentPass) {
         
@@ -75,6 +91,26 @@
                 
                 [updateComplete show];
             });
+            
+            
+            NSNumber *updatedCredit = [NSNumber numberWithDouble: currentCredit.doubleValue - ammount.doubleValue];
+            appDelegate.loggedInUser.availableCredit = updatedCredit;
+            
+            
+            [UserHandler updateAccount:appDelegate.loggedInUser withCompletionHandler:^(BOOL success, user* returnedUser) {
+                
+                if (success) {
+                    NSLog(@"Success");
+                }
+                
+                else
+                    NSLog(@"No Success");
+ 
+            }];
+
+            
+            
+            
             
             
         }
@@ -92,6 +128,7 @@
         
     }];
     
+    }
     
 }
 
