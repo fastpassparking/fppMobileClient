@@ -168,7 +168,7 @@
              parkingPayment *payment = [[parkingPayment alloc]init];
              
              NSNumber *newBalance = [NSNumber numberWithFloat:((_dollarFunds * 60.0) + _centsFunds)];
-             payment.paymentAmount = [NSNumber numberWithDouble:3.0];
+             payment.paymentAmount = _pass.costPerHour;
              payment.amountOfTime = newBalance;
              
            //  NSLog(@"New balance is %f", newBalance);

@@ -15,7 +15,7 @@
 @property(nonatomic,copy) NSString* vehicleId;
 @property(nonatomic,copy) NSString* parkingLotId;
 @property(nonatomic,copy) NSString* parkingLotName;
-@property(nonatomic,copy) NSString* costPerHour;
+@property(nonatomic,copy) NSNumber* costPerHour;
 @property(nonatomic,copy) geoCoordinate* parkingLocation;
 @property(nonatomic,copy) NSNumber* parkingLocationLatitude;
 @property(nonatomic,copy) NSNumber* parkingLocationLongitude;
