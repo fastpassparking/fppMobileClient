@@ -11,5 +11,6 @@
 @interface JsonSerializerUtils : NSObject
 
 + (NSDictionary*) setObject:(NSObject*) object forKey:(NSString*) string forDictionary:(NSMutableDictionary*) dictionary;
++ (NSDate*) getDateFromString:(NSString*) string;
 
 @end

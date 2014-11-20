@@ -342,12 +342,14 @@
     
     NSDate* date1 = _pass.startDateTime;
     NSDate* date2 = _pass.endDateTime;
-    //NSTimeInterval distanceBetweenDates = [date1 timeIntervalSinceDate:date2];
-    //double secondsInAnHour = 3600;
-    //NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
+    int secondsInAnHour = 3600;
+
+    NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+    NSInteger minutesLeft = (NSInteger)distanceBetweenDates % secondsInAnHour;
     
     _parkingLotName.text = _pass.parkingLotName;
-    _timeLeft.text = [NSString stringWithFormat:@"Time Left: %d",5];
+    _timeLeft.text = [NSString stringWithFormat:@"Time Left: %ld:%ld", (long)hoursBetweenDates, (long)minutesLeft];
     
     NSLog(@"here");
     

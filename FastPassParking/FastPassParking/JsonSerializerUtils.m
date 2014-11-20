@@ -19,4 +19,14 @@
     return dictionary;
 }
 
++ (NSDate*) getDateFromString:(NSString*) string {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSz"];
+    
+    return [dateFormatter dateFromString:string];
+}
+
+
+
 @end
