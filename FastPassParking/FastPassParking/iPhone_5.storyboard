@@ -710,47 +710,52 @@
                                     <action selector="parkButtonclicked:" destination="dNN-TO-a6C" eventType="touchUpInside" id="uAx-rv-DoJ"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-Or-fh9">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DCB-Or-fh9">
+                                <rect key="frame" x="0.0" y="20" width="600" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="EAy-E5-oxl"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Parking Lot Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-UP-F7F">
-                                <rect key="frame" x="15" y="179" width="570" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Lot Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-UP-F7F">
+                                <rect key="frame" x="15" y="199" width="570" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Parking Lot Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7O-wm-TQu">
-                                <rect key="frame" x="15" y="227" width="570" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Lot Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m7O-wm-TQu">
+                                <rect key="frame" x="15" y="242" width="570" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="City, State Zipcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulr-pR-drh">
-                                <rect key="frame" x="15" y="256" width="570" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, State Zipcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulr-pR-drh">
+                                <rect key="frame" x="15" y="271" width="570" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cost Per Hour: $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTs-pO-kk5">
-                                <rect key="frame" x="0.0" y="307" width="600" height="21"/>
+                                <rect key="frame" x="0.0" y="322" width="600" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GA-Ic-WxE">
-                                <rect key="frame" x="0.0" y="293" width="600" height="1"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GA-Ic-WxE">
+                                <rect key="frame" x="0.0" y="308" width="600" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleAspectFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t9I-PT-qvL">
+                                <rect key="frame" x="0.0" y="376" width="600" height="162"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="m7O-wm-TQu" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-1" id="0do-Rj-X3h"/>
+                            <constraint firstItem="Nun-9i-Xpk" firstAttribute="top" secondItem="t9I-PT-qvL" secondAttribute="bottom" constant="33" id="11Y-iK-3MP"/>
+                            <constraint firstItem="LTs-pO-kk5" firstAttribute="bottom" secondItem="t9I-PT-qvL" secondAttribute="bottom" constant="8" id="5rF-le-5gL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LTs-pO-kk5" secondAttribute="trailing" constant="-1" id="7pD-fv-H7Y"/>
                             <constraint firstItem="5GA-Ic-WxE" firstAttribute="top" secondItem="Ulr-pR-drh" secondAttribute="bottom" constant="16" id="AAl-TY-XYf"/>
                             <constraint firstItem="Ucc-XU-CHG" firstAttribute="top" secondItem="Nun-9i-Xpk" secondAttribute="bottom" id="BDS-cU-nw9"/>
@@ -758,6 +763,7 @@
                             <constraint firstItem="5GA-Ic-WxE" firstAttribute="leading" secondItem="Ulr-pR-drh" secondAttribute="trailing" constant="-585" id="INs-0l-zMo"/>
                             <constraint firstItem="ZD2-UP-F7F" firstAttribute="top" secondItem="DCB-Or-fh9" secondAttribute="bottom" constant="29" id="JvW-OT-Nhk"/>
                             <constraint firstAttribute="trailing" secondItem="DCB-Or-fh9" secondAttribute="trailing" id="N2N-UR-YRS"/>
+                            <constraint firstItem="Nun-9i-Xpk" firstAttribute="top" secondItem="t9I-PT-qvL" secondAttribute="bottom" constant="8" id="NOR-sj-cY5"/>
                             <constraint firstItem="ZD2-UP-F7F" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-1" id="OHJ-4w-j8F"/>
                             <constraint firstItem="LTs-pO-kk5" firstAttribute="top" secondItem="5GA-Ic-WxE" secondAttribute="bottom" constant="6" id="ONE-dJ-eXx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LTs-pO-kk5" secondAttribute="trailing" constant="-16" id="TOQ-gS-8KI"/>
@@ -770,8 +776,11 @@
                             <constraint firstItem="Ulr-pR-drh" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-1" id="h35-Hg-7Ja"/>
                             <constraint firstItem="m7O-wm-TQu" firstAttribute="top" secondItem="ZD2-UP-F7F" secondAttribute="bottom" constant="8" id="haA-ta-Oq9"/>
                             <constraint firstItem="LTs-pO-kk5" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-1" id="iWt-ei-DJf"/>
+                            <constraint firstItem="t9I-PT-qvL" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-16" id="k1G-QB-5BC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZD2-UP-F7F" secondAttribute="trailing" constant="-1" id="kVM-h4-vLU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="m7O-wm-TQu" secondAttribute="trailing" constant="-1" id="o63-4N-cry"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t9I-PT-qvL" secondAttribute="trailing" constant="-16" id="oLV-Sg-JRu"/>
+                            <constraint firstItem="t9I-PT-qvL" firstAttribute="top" secondItem="LTs-pO-kk5" secondAttribute="bottom" constant="8" id="p8B-0d-Kk1"/>
                             <constraint firstItem="LTs-pO-kk5" firstAttribute="top" secondItem="5GA-Ic-WxE" secondAttribute="bottom" constant="13" id="qU1-K7-WIm"/>
                             <constraint firstItem="Ulr-pR-drh" firstAttribute="top" secondItem="m7O-wm-TQu" secondAttribute="bottom" constant="8" id="qVv-4f-HS2"/>
                             <constraint firstItem="Nun-9i-Xpk" firstAttribute="leading" secondItem="hfl-e8-U0p" secondAttribute="leadingMargin" constant="-16" id="qlE-0N-4Aw"/>
@@ -783,10 +792,12 @@
                             <mask key="constraints">
                                 <exclude reference="INs-0l-zMo"/>
                                 <exclude reference="Za7-NZ-j4q"/>
+                                <exclude reference="5rF-le-5gL"/>
                                 <exclude reference="7pD-fv-H7Y"/>
                                 <exclude reference="ONE-dJ-eXx"/>
                                 <exclude reference="UFf-Pb-vZ0"/>
                                 <exclude reference="iWt-ei-DJf"/>
+                                <exclude reference="11Y-iK-3MP"/>
                             </mask>
                         </variation>
                     </view>
@@ -794,6 +805,7 @@
                     <connections>
                         <outlet property="ParkinLotAddress" destination="m7O-wm-TQu" id="ttR-WY-vgl"/>
                         <outlet property="costPerHourLabel" destination="LTs-pO-kk5" id="6dc-Id-Qof"/>
+                        <outlet property="fundsPicker" destination="t9I-PT-qvL" id="6Qj-g3-ydl"/>
                         <outlet property="lotDetailMapView" destination="DCB-Or-fh9" id="wWk-Sd-89y"/>
                         <outlet property="parkingLotCityStateZip" destination="Ulr-pR-drh" id="JPG-e8-NW0"/>
                         <outlet property="parkingLotName" destination="ZD2-UP-F7F" id="Dp0-cL-7m9"/>
