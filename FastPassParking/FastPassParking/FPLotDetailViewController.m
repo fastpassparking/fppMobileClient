@@ -35,7 +35,7 @@
     self.fundsPicker.delegate = self;
     self.fundsPicker.dataSource = self;
     
-    [_fundsPicker selectRow:2 inComponent:0 animated:NO];
+  //  [_fundsPicker selectRow:2 inComponent:0 animated:NO];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -80,7 +80,7 @@
         _numberOfHoursToPark = row;
     } else
     {
-        _numberOfMinToPark = row * 0.15;
+        _numberOfMinToPark = row * 15;
     }
 }
 
@@ -139,10 +139,11 @@
     
     AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     parkingPayment* Payment = [parkingPayment alloc];
-    NSNumber *time = [NSNumber numberWithFloat:((_numberOfHoursToPark*60)+_numberOfMinToPark)];
+    NSNumber *time = [NSNumber numberWithFloat:((_numberOfHoursToPark*60))];
     NSNumber *hour = [NSNumber numberWithInt:60];
     NSNumber *timePerHour = [NSNumber numberWithInt:(time.intValue / hour.intValue)];
-    NSNumber *ammount = [NSNumber numberWithDouble:(timePerHour.doubleValue * appDelegate.selectedParkingLot.costPerHour.doubleValue)];
+    NSNumber *timePerMinute = [NSNumber numberWithInt:((int)_numberOfMinToPark % hour.intValue)];
+    NSNumber *ammount = [NSNumber numberWithDouble:(timePerHour.doubleValue * appDelegate.selectedParkingLot.costPerHour.doubleValue) +((timePerMinute.doubleValue / 60.0) * appDelegate.selectedParkingLot.costPerHour.doubleValue)];
     NSNumber *currentCredit = appDelegate.loggedInUser.availableCredit;
     
     Payment.amountOfTime = time;
@@ -162,19 +163,12 @@
     
     else{
     
-        [ParkingPassHandler createParkingPass:Payment
-                                    withLotId:appDelegate.selectedParkingLot.dbId
-                                withVehicleId:appDelegate.selectedVehicle.dbId
-                        withCompletionHandler:^(BOOL success, parkingPass *currentPass) {
-        
-                            if(success == YES){
+        [ParkingPassHandler createParkingPass:Payment withLotId:appDelegate.selectedParkingLot.dbId withVehicleId:appDelegate.selectedVehicle.dbId withCompletionHandler:^(BOOL success, parkingPass* currentPass) {
             
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Parking Pass Purchased"
-                                                                                             message:@"Click OK to Continue"
-                                                                                            delegate:self
-                                                                                   cancelButtonTitle:@"OK"
-                                                                                   otherButtonTitles: nil, nil];
+                if(success == YES){
+            
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Parking Pass Purchased" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
                 
                                     [updateComplete show];
                                 });

@@ -53,6 +53,8 @@
            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.parkingPassTableView reloadData];
+                
+
             });
             
             
@@ -102,7 +104,7 @@
     fundsPicker.showsSelectionIndicator = YES;
     
     UIButton *doneButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 170, containerWidth, 50)];
-    [doneButton setTitle:@"+ Add Funds" forState:UIControlStateNormal];
+    [doneButton setTitle:@"+ Add Time" forState:UIControlStateNormal];
     doneButton.backgroundColor = [UIColor colorWithRed:0.07 green:0.329 blue:0.329 alpha:1.0];
     [doneButton addTarget:self action:@selector(dismissUpdateView) forControlEvents:UIControlEventTouchUpInside];
     
@@ -228,7 +230,7 @@
 
 // tell the picker how many rows are available for a given component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSUInteger dollarRows = 25;
+    NSUInteger dollarRows = 12;
     NSUInteger centsRow = 4;
     
     if (component == 0)
@@ -252,7 +254,7 @@
     }
     else
     {
-        title = [@"" stringByAppendingFormat:@"%02ld",row * 25];
+        title = [@"" stringByAppendingFormat:@"%02ld",row * 15];
     }
     return title;
 }
@@ -326,6 +328,7 @@
     NSLog(@"%@",[dateFormatter stringFromDate:_pass.startDateTime]);
     
     [carTableCell.detailTextLabel setText:[dateFormatter stringFromDate:_pass.startDateTime]];
+    
     
     return carTableCell;
     
