@@ -19,17 +19,11 @@
         self.parkingLotId = [jsonObject valueForKey:@"parkingLotId"];
         self.parkingLotName = [jsonObject valueForKey:@"parkingLotName"];
         
-        NSDate *startDate, *endDate;
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSz"];
-        startDate = [dateFormatter dateFromString:[(NSDictionary*)jsonObject objectForKey:@"startDateTime"]];
-        endDate = [dateFormatter dateFromString:[(NSDictionary*)jsonObject objectForKey:@"endDateTime"]];
-        
-        self.startDateTime = startDate;
-        self.endDateTime = endDate;
+        self.startDateTime = [JsonSerializerUtils getDateFromString:[(NSDictionary*)jsonObject objectForKey:@"startDateTime"]];
+        self.endDateTime = [JsonSerializerUtils getDateFromString:[(NSDictionary*)jsonObject objectForKey:@"endDateTime"]];
         
         // TODO: Properly parse these fields
-        self.parkingLocation = [jsonObject valueForKey:@"parkingLocation"];
+        //self.parkingLocation = [jsonObject valueForKey:@"parkingLocation"];
         
         // TODO: Properly parse this array of parking payments objects
         self.parkingPayments = [jsonObject valueForKey:@"parkingPayments"];
@@ -52,7 +46,7 @@
         [newParkingPass setObject:parkingPassObject.endDateTime forKey:@"endDateTime"];
         
         // TODO: Properly set these nested json fields
-        [newParkingPass setObject:parkingPassObject.parkingLocation forKey:@"parkingLocation"];
+        //[newParkingPass setObject:parkingPassObject.parkingLocation forKey:@"parkingLocation"];
         
         // TODO: Properly set this array of parking payment objects
         [newParkingPass setObject:parkingPassObject.parkingPayments forKey:@"parkingPayments"];
