@@ -196,7 +196,7 @@
     [_mapView setNeedsDisplay];
     
     //global parking lot = _selectedlot
-    AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
+//    AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
     appDelegate.selectedParkingLot = _selectedLot.ParkingLot;
     
     [self performSegueWithIdentifier:showLotDetailView sender:lot];
@@ -409,7 +409,7 @@
     [_mapView setNeedsDisplay];
     
     //global parking lot = _selectedlot
-    AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
+//    AppDelegate* appDelegate = [[UIApplication sharedApplication]delegate];
     appDelegate.selectedParkingLot = lotForCell.ParkingLot;
 
     
