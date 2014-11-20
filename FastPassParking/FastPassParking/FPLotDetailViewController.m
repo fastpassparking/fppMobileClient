@@ -25,6 +25,10 @@
     [_ParkinLotAddress setText:appDelegate.selectedParkingLot.addressStreet];
     [_parkingLotCityStateZip setText: [NSString stringWithFormat:@"%@, %@ %@",appDelegate.selectedParkingLot.addressCity,appDelegate.selectedParkingLot.addressState,appDelegate.selectedParkingLot.addressZipCode]];
     
+    double cost = [appDelegate.selectedParkingLot.costPerHour doubleValue];
+    [_costPerHourLabel setText: [NSString stringWithFormat:@"Cost Per Hour: $%.02lf", cost]];
+    
+
     
     
     
