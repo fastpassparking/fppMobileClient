@@ -15,8 +15,8 @@
 
 @implementation FPLotDetailViewController
 {
-    float _numberOfHoursToPark;
-    float _numberOfMinToPark;
+    int _numberOfHoursToPark;
+    int _numberOfMinToPark;
 }
 
 - (void) viewDidLoad
@@ -137,7 +137,7 @@
     NSNumber *ammount = [NSNumber numberWithDouble:(timePerHour.doubleValue * appDelegate.selectedParkingLot.costPerHour.doubleValue) +((timePerMinute.doubleValue / 60.0) * appDelegate.selectedParkingLot.costPerHour.doubleValue)];
     NSNumber *currentCredit = appDelegate.loggedInUser.availableCredit;
     
-    Payment.amountOfTime = time;
+    Payment.amountOfTime = [NSNumber numberWithInt:(time.intValue + _numberOfMinToPark)];
     Payment.paymentAmount = ammount;
     
     NSLog(@"Current Credit: %f\n",currentCredit.doubleValue);

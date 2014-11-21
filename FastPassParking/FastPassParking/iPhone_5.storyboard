@@ -1051,7 +1051,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Bf8-90-80a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="License Plate State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P93-1h-sMI">
                                 <rect key="frame" x="176" y="211" width="249" height="30"/>
