@@ -23,5 +23,6 @@
 
 @property (weak,nonatomic) IBOutlet UILabel *parkingLotName;
 @property (weak,nonatomic) IBOutlet UILabel *timeLeft;
+@property (weak,nonatomic) IBOutlet UIButton *updateButton;
 
 @end

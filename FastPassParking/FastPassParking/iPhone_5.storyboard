@@ -397,7 +397,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="6HL-fJ-a8z" kind="custom" customClass="SWRevealViewControllerSegue" id="biS-iw-E64"/>
+                                    <segue destination="6HL-fJ-a8z" kind="custom" identifier="testing" customClass="SWRevealViewControllerSegue" id="biS-iw-E64"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fifth" textLabel="r4f-fJ-36r" style="IBUITableViewCellStyleDefault" id="zDL-jm-qDf">
@@ -1567,6 +1567,7 @@
                         <outlet property="parkingLotName" destination="FQA-ko-efA" id="rEq-O2-JZX"/>
                         <outlet property="parkingPassTableView" destination="u6t-D8-5qE" id="z43-RO-nNw"/>
                         <outlet property="timeLeft" destination="HQW-4J-9Jf" id="Fti-aR-A8F"/>
+                        <outlet property="updateButton" destination="QsF-QA-3br" id="HJ2-7p-tLt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijo-f5-r3T" userLabel="First Responder" sceneMemberID="firstResponder"/>

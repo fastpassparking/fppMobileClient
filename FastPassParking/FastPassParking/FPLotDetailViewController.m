@@ -124,18 +124,9 @@
 
 - (IBAction)parkButtonclicked:(id)sender{
     
-    if (_numberOfHoursToPark == 0 && _numberOfMinToPark == 0)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You must select an amount of time to park"
-                                                                     message:nil
-                                                                    delegate:self
-                                                           cancelButtonTitle:@"OK"
-                                                           otherButtonTitles: nil, nil];
-            
-            [alert show];
-        });
-    }
+
+    
+    
     
     AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     parkingPayment* Payment = [parkingPayment alloc];
@@ -151,6 +142,21 @@
     
     NSLog(@"Current Credit: %f\n",currentCredit.doubleValue);
     NSLog(@"Ammount: %f",ammount.doubleValue);
+    
+    if (_numberOfHoursToPark == 0 && _numberOfMinToPark == 0)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You must select an amount of time to park"
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles: nil, nil];
+            
+            [alert show];
+        });
+    }
+    
+    else{
     
     if (currentCredit.doubleValue < ammount.doubleValue) {
        
@@ -203,6 +209,8 @@
                             }
         
                         }];
+    }
+        
     }
     
 }

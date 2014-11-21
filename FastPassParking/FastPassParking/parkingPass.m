@@ -18,7 +18,7 @@
         self.vehicleId = [jsonObject valueForKey:@"vehicleId"];
         self.parkingLotId = [jsonObject valueForKey:@"parkingLotId"];
         self.parkingLotName = [jsonObject valueForKey:@"parkingLotName"];
-        
+        self.costPerHour = [jsonObject valueForKey:@"costPerHour"];
         self.startDateTime = [JsonSerializerUtils getDateFromString:[(NSDictionary*)jsonObject objectForKey:@"startDateTime"]];
         self.endDateTime = [JsonSerializerUtils getDateFromString:[(NSDictionary*)jsonObject objectForKey:@"endDateTime"]];
         

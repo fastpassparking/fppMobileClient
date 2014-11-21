@@ -49,11 +49,41 @@
         
         if (success == YES) {
             
+            
+            
             _data = returnedParkingPasses;
            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.parkingPassTableView reloadData];
                 
+                if ([_data count] > 0) {
+                    
+                _updateButton.hidden = NO;
+                _pass = [_data objectAtIndex:0];
+                
+                NSDate* currentDate = [NSDate date];
+                NSDate* date1 = _pass.startDateTime;
+                NSDate* date2 = _pass.endDateTime;
+                NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:currentDate];
+                int secondsInAnHour = 3600;
+                int secondsInAMinute = 60;
+                
+                NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
+                NSInteger minutesLeft = (NSInteger)distanceBetweenDates % secondsInAnHour;
+                NSInteger minutesLeft2 = minutesLeft / secondsInAMinute;
+                
+                _parkingLotName.text = _pass.parkingLotName;
+                _timeLeft.text = [NSString stringWithFormat:@"Time Left: %ld Hours %ld Minutes", (long)hoursBetweenDates, (long)minutesLeft2];
+                }
+                
+                else{
+                    
+                    _parkingLotName.text = @"No Current Passes";
+                    _timeLeft.text = @"";
+                    _updateButton.hidden = YES;
+                    
+                    
+                }
 
             });
             
@@ -78,6 +108,7 @@
     [shadow addGestureRecognizer:singleFingerTap];
 
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -169,9 +200,13 @@
              AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
              parkingPayment *payment = [[parkingPayment alloc]init];
              
+             //Dollar Funds = Hours  Cents Funds = Minutes
+             //New Balance is the total ammount of time in minutes
              NSNumber *newBalance = [NSNumber numberWithFloat:((_dollarFunds * 60.0) + _centsFunds)];
-             payment.paymentAmount = _pass.costPerHour;
+             payment.paymentAmount = [NSNumber numberWithDouble:(_pass.costPerHour.doubleValue * (newBalance.doubleValue / 60.0))];
              payment.amountOfTime = newBalance;
+             
+             
              
            //  NSLog(@"New balance is %f", newBalance);
              
@@ -179,9 +214,52 @@
             // user* userToUpdate = appDelegate.loggedInUser;
              //userToUpdate.availableCredit = [NSNumber numberWithFloat:newBalance];
              
+             if (_dollarFunds == 0 && _centsFunds == 0) {
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"You must select an amount of time to update" message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+                     
+                     [updateComplete show];
+                 });
+                 
+             }
+             
+             else{
+             
+             if (appDelegate.loggedInUser.availableCredit.doubleValue < payment.paymentAmount.doubleValue) {
+                 
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Insufficient Funds" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+                     
+                     [updateComplete show];
+                 });
+                 
+                 
+             }
+             
+             else{
+             
              [ParkingPassHandler updateParkingPass:_pass.dbId withParkingPayment:payment withCompletionHandler:^(BOOL success, parkingPass * returnedParkingPass) {
                  
                  if (success == YES) {
+                     
+                     NSNumber *newAmount = [NSNumber numberWithDouble:(appDelegate.loggedInUser.availableCredit.doubleValue - payment.paymentAmount.doubleValue)];
+                     
+                     appDelegate.loggedInUser.availableCredit = newAmount;
+                     
+                     [UserHandler updateAccount:appDelegate.loggedInUser withCompletionHandler:^(BOOL success, user * returnedUser) {
+                         
+                         if (success == YES) {
+                             
+                             NSLog(@"Success");
+                             
+                         }
+                         
+                         else{
+                             
+                             NSLog(@"Failed");
+                         }
+                     }];
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
                          UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Update Complete" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
@@ -197,8 +275,10 @@
                  
              }];
              
+             }
+             }
              // reset fund variables
-             _dollarFunds = 1.0;
+             _dollarFunds = 0.0;
              _centsFunds = 0.0;
              
          }];
@@ -221,16 +301,16 @@
     // Handle the selection
     NSLog(@"Selected row: %ld", row);
     if (component == 0) {
-        _dollarFunds = row + 1.0;
+        _dollarFunds = row;
     } else
     {
-        _centsFunds = row * 0.25;
+        _centsFunds = row * 15;
     }
 }
 
 // tell the picker how many rows are available for a given component
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    NSUInteger dollarRows = 12;
+    NSUInteger dollarRows = 13;
     NSUInteger centsRow = 4;
     
     if (component == 0)
@@ -250,7 +330,7 @@
     
     if (component == 0)
     {
-        title = [@"" stringByAppendingFormat:@"%ld",row + 1];
+        title = [@"" stringByAppendingFormat:@"%ld",row];
     }
     else
     {
@@ -340,18 +420,33 @@
     
     _pass = [_data objectAtIndex:indexPath.row];
     
+    NSDate* currentDate = [NSDate date];
     NSDate* date1 = _pass.startDateTime;
     NSDate* date2 = _pass.endDateTime;
-    NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:date1];
+    NSTimeInterval distanceBetweenDates = [date2 timeIntervalSinceDate:currentDate];
     int secondsInAnHour = 3600;
+    int secondsInAMinute = 60;
 
     NSInteger hoursBetweenDates = distanceBetweenDates / secondsInAnHour;
     NSInteger minutesLeft = (NSInteger)distanceBetweenDates % secondsInAnHour;
+    NSInteger minutesLeft2 = minutesLeft / secondsInAMinute;
     
     _parkingLotName.text = _pass.parkingLotName;
-    _timeLeft.text = [NSString stringWithFormat:@"Time Left: %ld:%ld", (long)hoursBetweenDates, (long)minutesLeft];
+    _timeLeft.text = [NSString stringWithFormat:@"Time Left: %ld Hours %ld Minutes", (long)hoursBetweenDates, (long)minutesLeft2];
     
     NSLog(@"here");
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if(buttonIndex == 0){
+        
+        //[self recallViewDidLoad];
+        
+        
+        [self viewDidLoad];
+    }
     
 }
 
