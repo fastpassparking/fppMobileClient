@@ -415,7 +415,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="ufB-ED-ehF" kind="custom" identifier="logout" customClass="LogoutSegue" id="lrV-Fb-y8G"/>
+                                    <segue destination="ufB-ED-ehF" kind="presentation" modalTransitionStyle="crossDissolve" id="hMh-8U-K2g"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -809,6 +809,7 @@
                         <outlet property="lotDetailMapView" destination="DCB-Or-fh9" id="wWk-Sd-89y"/>
                         <outlet property="parkingLotCityStateZip" destination="Ulr-pR-drh" id="JPG-e8-NW0"/>
                         <outlet property="parkingLotName" destination="ZD2-UP-F7F" id="Dp0-cL-7m9"/>
+                        <segue destination="6HL-fJ-a8z" kind="presentation" identifier="toCurrentPasses" id="mAd-qv-LxH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yN-2i-zRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1583,5 +1584,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6bG-ZR-yJY"/>
+        <segue reference="mAd-qv-LxH"/>
     </inferredMetricsTieBreakers>
 </document>

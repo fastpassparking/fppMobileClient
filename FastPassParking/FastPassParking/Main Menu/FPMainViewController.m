@@ -168,6 +168,11 @@
     self.shadowView = shadow;
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+    
+    [self viewDidLoad];
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FPMainViewController.h"
+#import "parkingPayment.h"
 
 @interface FPLotDetailViewController : UIViewController < UIPickerViewDelegate, UIPickerViewDataSource >
 
@@ -20,6 +21,8 @@
 
 @property (weak, nonatomic) FPMainViewController* main;
 @property (weak, nonatomic) FPParkingLotData* lot;
+
+@property (strong,nonatomic) parkingPayment* Payment;
 
 - (IBAction)parkButtonclicked:(id)sender;
 

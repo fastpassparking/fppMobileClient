@@ -12,6 +12,7 @@
 #import "ParkingPassHandler.h"
 #import "userHandler.h"
 #import "parkingPayment.h"
+#import "SWRevealViewController.h"
 
 @implementation FPLotDetailViewController
 {
@@ -22,6 +23,8 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    //self.navigationItem.leftBarButtonItem.title = @"Back";
     
     AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -129,7 +132,7 @@
     
     
     AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
-    parkingPayment* Payment = [parkingPayment alloc];
+    _Payment = [parkingPayment alloc];
     NSNumber *time = [NSNumber numberWithFloat:((_numberOfHoursToPark*60))];
     NSNumber *hour = [NSNumber numberWithInt:60];
     NSNumber *timePerHour = [NSNumber numberWithInt:(time.intValue / hour.intValue)];
@@ -137,8 +140,8 @@
     NSNumber *ammount = [NSNumber numberWithDouble:(timePerHour.doubleValue * appDelegate.selectedParkingLot.costPerHour.doubleValue) +((timePerMinute.doubleValue / 60.0) * appDelegate.selectedParkingLot.costPerHour.doubleValue)];
     NSNumber *currentCredit = appDelegate.loggedInUser.availableCredit;
     
-    Payment.amountOfTime = [NSNumber numberWithInt:(time.intValue + _numberOfMinToPark)];
-    Payment.paymentAmount = ammount;
+    _Payment.amountOfTime = [NSNumber numberWithInt:(time.intValue + _numberOfMinToPark)];
+    _Payment.paymentAmount = ammount;
     
     NSLog(@"Current Credit: %f\n",currentCredit.doubleValue);
     NSLog(@"Ammount: %f",ammount.doubleValue);
@@ -168,51 +171,93 @@
     }
     
     else{
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Confirm Purchase" message:[NSString stringWithFormat:@"%d Hours %d Minutes for $%.02f",_numberOfHoursToPark,_numberOfMinToPark,ammount.doubleValue] delegate:self cancelButtonTitle:@"OK" otherButtonTitles: @"Cancel", nil];
+            
+            updateComplete.tag = 1;
+            
+            [updateComplete show];
+        });
     
-        [ParkingPassHandler createParkingPass:Payment withLotId:appDelegate.selectedParkingLot.dbId withVehicleId:appDelegate.selectedVehicle.dbId withCompletionHandler:^(BOOL success, parkingPass* currentPass) {
-            
-                if(success == YES){
-            
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Parking Pass Purchased" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
-                
-                                    [updateComplete show];
-                                });
-            
-            
-                                NSNumber *updatedCredit = [NSNumber numberWithDouble: currentCredit.doubleValue - ammount.doubleValue];
-                                appDelegate.loggedInUser.availableCredit = updatedCredit;
-            
-                                
-                                [UserHandler updateAccount:appDelegate.loggedInUser
-                                     withCompletionHandler:^(BOOL success, user* returnedUser) {
-                
-                                         if (success) {
-                                             NSLog(@"Success");
-                                         }
-                
-                                         else
-                                             NSLog(@"No Success");
- 
-                                     }];
-            
-                            }
+      }
         
-                            else {
-            
-                                dispatch_async(dispatch_get_main_queue(), ^{
-                                    UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Parking Pass Purchase Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
-                
-                                    [updateComplete show];
-                                });
-            
-                            }
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    
+    
+    if(alertView.tag == 1){
         
-                        }];
+        if(buttonIndex == 0){
+            [self createTheParkingPass];
+            
+        }
+        
+        else if(buttonIndex == 1){
+        
+           
     }
         
     }
     
 }
+
+- (void) createTheParkingPass{
+    
+    AppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    [ParkingPassHandler createParkingPass:_Payment withLotId:appDelegate.selectedParkingLot.dbId withVehicleId:appDelegate.selectedVehicle.dbId withCompletionHandler:^(BOOL success, parkingPass* currentPass) {
+        
+        if(success == YES){
+            
+            
+            
+            
+            NSNumber *updatedCredit = [NSNumber numberWithDouble: appDelegate.loggedInUser.availableCredit.doubleValue - _Payment.paymentAmount.doubleValue];
+            
+            appDelegate.loggedInUser.availableCredit = updatedCredit;
+            
+            
+            [UserHandler updateAccount:appDelegate.loggedInUser
+                 withCompletionHandler:^(BOOL success, user* returnedUser) {
+                     
+                     if (success) {
+                         NSLog(@"Success");
+                         
+                        // [self.navigationController popViewControllerAnimated:YES];
+                         dispatch_async(dispatch_get_main_queue(), ^{
+
+                        [self.navigationController popViewControllerAnimated:YES];
+                             [self.navigationController viewDidLoad];
+                         });
+                     }
+                     
+                     else
+                         NSLog(@"No Success");
+                     
+                 }];
+            
+        }
+        
+        else {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *updateComplete = [[UIAlertView alloc] initWithTitle:@"Parking Pass Purchase Failed" message:@"Click OK to Continue" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+                
+                [updateComplete show];
+            });
+            
+        }
+        
+    }];
+
+    
+    
+}
+
 
 @end
