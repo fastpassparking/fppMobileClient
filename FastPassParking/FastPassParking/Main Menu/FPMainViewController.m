@@ -80,7 +80,63 @@
     // Scorpius top right -     28.602919, -81.196587
     // Scorpius bottom right -  28.601758, -81.196624
     // Scorpius bottom left -   28.601734, -81.197566
+    CLLocationCoordinate2D* polygonVertices = malloc(sizeof(CLLocationCoordinate2D) * 5);
+    CLLocationCoordinate2D tl = CLLocationCoordinate2DMake(28.602912, -81.197560);
+    CLLocationCoordinate2D tr = CLLocationCoordinate2DMake(28.602919, -81.196587);
+    CLLocationCoordinate2D br = CLLocationCoordinate2DMake(28.601758, -81.196624);
+    CLLocationCoordinate2D bl = CLLocationCoordinate2DMake(28.601734, -81.197566);
+    polygonVertices[0] = tl;
+    polygonVertices[1] = tr;
+    polygonVertices[2] = br;
+    polygonVertices[3] = bl;
+    polygonVertices[4] = tl;
     
+    FPParkingLotData* newPoly = [FPParkingLotData createPolygonWithCoordinates:polygonVertices andCount:5];
+    MKPolygonRenderer* renderer = [[MKPolygonRenderer alloc] initWithPolygon:newPoly];
+    renderer.lineWidth = 2.0;
+    renderer.strokeColor = [UIColor blackColor];
+    renderer.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    newPoly.rendererForLot = renderer;
+    newPoly.parkingLotName = @"UCF Parking Lot M";
+    
+    [implementation addOverlay:newPoly];
+    [_parkingLotDataObjectsIDsToPolygons setObject:newPoly forKey:newPoly.parkingLotName];
+    free(polygonVertices);
+    
+    // poly 2
+    polygonVertices = malloc(sizeof(CLLocationCoordinate2D) * 8);
+    bl = CLLocationCoordinate2DMake(28.603145, -81.197847);
+    CLLocationCoordinate2D ml = CLLocationCoordinate2DMake(28.603595, -81.198118);
+    tl = CLLocationCoordinate2DMake(28.604065, -81.198570);
+    CLLocationCoordinate2D tm = CLLocationCoordinate2DMake(28.604592, -81.198361);
+    tr = CLLocationCoordinate2DMake(28.605002, -81.198077);
+    CLLocationCoordinate2D mr = CLLocationCoordinate2DMake(28.604168, -81.197079);
+    br = CLLocationCoordinate2DMake(28.603156, -81.196591);
+    polygonVertices[0] = bl;
+    polygonVertices[1] = ml;
+    polygonVertices[2] = tl;
+    polygonVertices[3] = tm;
+    polygonVertices[4] = tr;
+    polygonVertices[5] = mr;
+    polygonVertices[6] = br;
+    polygonVertices[7] = bl;
+    
+    FPParkingLotData* newPoly2 = [FPParkingLotData createPolygonWithCoordinates:polygonVertices andCount:8];
+    MKPolygonRenderer* renderer2 = [[MKPolygonRenderer alloc] initWithPolygon:newPoly2];
+    renderer2.lineWidth = 2.0;
+    renderer2.strokeColor = [UIColor blackColor];
+    renderer2.fillColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+    newPoly2.rendererForLot = renderer2;
+    newPoly2.parkingLotName = @"UCF Parking Lot Q";
+    
+    [implementation addOverlay:newPoly2];
+    [_parkingLotDataObjectsIDsToPolygons setObject:newPoly2 forKey:newPoly2.parkingLotName];
+    
+    
+    newPoly.polygonIsDrawn = YES;
+    newPoly.annotationIsDrawn = NO;
+    newPoly2.polygonIsDrawn = YES;
+    newPoly2.annotationIsDrawn = NO;
     
     [_parkingLotTableView reloadData];
     
@@ -617,6 +673,14 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             
             FPLotDetailViewController* dest = [segue destinationViewController];
+            
+            UIBarButtonItem *newBackButton =
+            [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                             style:UIBarButtonItemStylePlain
+                                            target:nil
+                                            action:nil];
+            [[self navigationItem] setBackBarButtonItem:newBackButton];
+            
             
             dest.main = self;
             dest.lot = (FPParkingLotData*)sender;
