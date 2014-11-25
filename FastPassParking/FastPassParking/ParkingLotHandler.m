@@ -2,7 +2,7 @@
 //  ParkingLotHandler.m
 //  FastPassParking
 //
-//  Created by Kerl on 11/2/14.
+//  Created by Kyle Mera on 11/2/14.
 //  Copyright (c) 2014 FastPassParking. All rights reserved.
 //
 

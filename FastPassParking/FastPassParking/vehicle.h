@@ -2,7 +2,7 @@
 //  vehicle.h
 //  FastPassParking
 //
-//  Created by Kerl on 10/29/14.
+//  Created by Kyle Mera on 10/29/14.
 //  Copyright (c) 2014 FastPassParking. All rights reserved.
 //
 
